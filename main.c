@@ -1,6 +1,6 @@
 #include <stdio.h> 
 #include <stdlib.h> 
-#include "account.c"
+#include "user_account.c"
 
 int main() { 
     char username[50]; 
