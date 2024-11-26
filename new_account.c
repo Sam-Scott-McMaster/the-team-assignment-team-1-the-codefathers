@@ -52,7 +52,7 @@ void check_email() {
 
     }
 	
-}
+} 
 
 typedef struct {
     int day;
