@@ -10,3 +10,9 @@ filepath="$folder/${username}.txt"
 
 # Create the history file (or overwrite if it already exists)
 touch "$filepath"
+
+folder="./transaction_logs"
+filepath="$folder/${username}.txt"
+
+# Create the transactions file (or overwrite if it already exists)
+touch "$filepath"

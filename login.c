@@ -18,7 +18,7 @@ void ask_if_has_account() {
 
 int check_credentials(const char *username, const char *password) {
 
-    // if (find_user_file(username) == 0 && ){
+    // if (find_user_file(username, "history_logs") == 0 && ){
 
     // } 
 

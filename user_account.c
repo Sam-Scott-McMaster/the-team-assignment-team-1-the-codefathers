@@ -10,13 +10,13 @@ void create_user_history_file(const char *username){
 
     int ret = system(command); 
     
-    printf("History file created for user: %s\n", username);
+    printf("History & Transaction file created for user: %s\n", username);
 } 
 
-int find_user_file(const char *username){
-    const char *history_logs = "history_logs"; // Name of the folder 
+int find_user_file(const char *username, const char *folder_name){
+    // const char *folder_name = "history_logs"; // Name of the folder 
 
-    DIR *dir = opendir(history_logs); // Open the directory 
+    DIR *dir = opendir(folder_name); // Open the directory 
     
     struct dirent *entry;
     while ((entry = readdir(dir)) != NULL) { // Read each entry
