@@ -3,6 +3,7 @@
 #include <string.h>
 #include <regex.h>
 #include "new_account.h"
+#include "user_account.h"
 
 char *check_first_name() {
     const char *pattern = "^[A-Za-z]+$";
@@ -84,12 +85,31 @@ char *scan_username(){
     char *username = malloc(20 * sizeof(char));
     puts("Enter a username between 4-20 characters: ");
 
-    while(scanf("%20s", username) != 1 || regexec(&regex, username, 0, NULL, 0 != 0)){
-        puts("Username invalid. Kindly enter one in the format...:");
+    while(scanf("%20s", username) != 1 || regexec(&regex, username, 0, NULL, 0 != 0) || find_user_file(username) == 0){
+        if (find_user_file(username) == 0){
+            puts("This username already exists. Please choose a unique username.");
+        } else {
+            puts("Username invalid. Kindly enter one in the correct format:");
+        }
         while(getchar()!='\n');
     }
 
     //check existence of username
 
     return username;
+}
+char *scan_phone(){
+    char *phone_num = malloc(11*sizeof(char));
+    regex_t regex;
+    char *pattern = "[0-9]{10}";
+    regcomp(&regex, pattern, REG_EXTENDED);
+
+    puts("Enter phone number in the format \"DDDDDDDDDD\": ");
+
+    while(scanf("%10s", phone_num) != 1 || regexec(&regex, phone_num, 0, NULL, 0) != 0){
+        puts("Invalid phone number. Please enter in the format \"DDDDDDDDDD\" where D is a digit: ");
+        while(getchar()!='\n');
+    }
+
+    return phone_num;
 }
