@@ -14,24 +14,25 @@ void deposit_money() {
     scanf("%f, &amount");
 
     printf("\nEnter card type (debit/credit): ");
-    scanf("%c, &cardType");
+    scanf("%s, &cardType");
 
-    //check user account
     
     for (int i = 0; i < ?; i++) {
         if (accounts[i].accountNumber == accountNumber) {
             if (strcmp (cardType, "debit") == 0) {
                 accounts[i].debitBalance += amount;
-                printf("\nAmount deposited successfully!")
+                printf("\nAmount deposited successfully!");
+                return;
                 
             } else if (strcmp (cardType, "credit") == 0) {
                 accounts[i].creditBalance += amount; 
                 printf("\nAmount deposited successfully!");
+                return;
             } else {
                 printf("\nEntered card type not found");
+                return;
             }
         }
-        return;
     }
     
     printf("\nAccount number not found!\n")
