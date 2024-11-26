@@ -37,17 +37,19 @@ char *check_last_name() {
     return last_name;
 }
 
-void check_address() {
-    const char *numPat = "^[1-9][0-9]*$";
-    const char *streetPat = "^[A-Za-z]+$";
-    const char *suffixPat = "^[A-Za-z]+$";
-    const char *postalPat = "^[A-Z][0-9][A-Z][0-9][A-Z][0-9]$";
-    const char *cityPat = "^[A-Za-z]+$";
-    const char *provincePat = "^[A-Za-z]+$";
-    const char *countryPat = "^[A-Za-z]+$";
+void check_email() {
+    const char *pattern = "^[A-Za-z0-9]+[@][a-z]+[\\.][ca|com]$";
     regex_t regex;
-    regcomp(&regex, numPat, REG_EXTENDED);
+    regcomp(&regex, pattern, REG_EXTENDED);
 
+    char *email = malloc(50 * sizeof(char));
+    puts("Please enter your email: ");
+
+    while (scanf("%50s", email) || regexec(&regex, email, 0, NULL, 0 != 0)) {
+        puts("Please enter a valid email");
+        while(getchar()!='n');
+
+    }
 	
 }
 
