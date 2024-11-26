@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "login.h"
+#include "user_account.h"
 
 //ask if the user already has an account
 void ask_if_has_account() {
@@ -16,6 +17,10 @@ void ask_if_has_account() {
 }
 
 int check_credentials(const char *username, const char *password) {
+
+    // if (find_user_file(username) == 0 && ){
+
+    // } 
 
     //compare with the stored credentials to make it work
     //should connect to actual stored data
