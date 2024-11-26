@@ -3,6 +3,7 @@
 #include <string.h>
 #include <regex.h>
 #include "new_account.h"
+#include "user_account.h"
 
 char *check_first_name() {
     const char *pattern = "^[A-Za-z]+$";
@@ -82,8 +83,12 @@ char *scan_username(){
     char *username = malloc(20 * sizeof(char));
     puts("Enter a username between 4-20 characters: ");
 
-    while(scanf("%20s", username) != 1 || regexec(&regex, username, 0, NULL, 0 != 0)){
-        puts("Username invalid. Kindly enter one in the format...:");
+    while(scanf("%20s", username) != 1 || regexec(&regex, username, 0, NULL, 0 != 0) || find_user_file(username) == 0){
+        if (find_user_file(username) == 0){
+            puts("This username already exists. Please choose a unique username.");
+        } else {
+            puts("Username invalid. Kindly enter one in the correct format:");
+        }
         while(getchar()!='\n');
     }
 

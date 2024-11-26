@@ -1,7 +1,7 @@
 #include <stdio.h> 
 #include <stdlib.h> 
 #include "user_account.h"
-
+#include "new_account.h"
 int main() { 
     char username[50]; 
 
