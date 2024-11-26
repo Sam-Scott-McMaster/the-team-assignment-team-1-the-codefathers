@@ -4,6 +4,53 @@
 #include <regex.h>
 #include "new_account.h"
 
+char *check_first_name() {
+    const char *pattern = "^[A-Za-z]+$";
+    regex_t regex;
+    regcomp(&regex, pattern, REG_EXTENDED);
+
+    char *first_name = malloc(20 * sizeof(char));
+    puts("Please enter your first name: ");
+
+    while (scanf("%20s", first_name) || regexec(&regex, first_name, 0, NULL, 0 != 0)) {
+        puts("Your first name cannot contain non-alphabetical characters");
+        while(getchar()!='\n');
+    }
+
+    return first_name;
+
+}
+
+char *check_last_name() {
+    const char *pattern = "^[A-Za-z]+$";
+    regex_t regex;
+    regcomp(&regex, pattern, REG_EXTENDED);
+
+    char *last_name = malloc(20 * sizeof(char));
+    puts("Please enter your last name: ");
+
+    while (scanf("%20s", last_name) || regexec(&regex, last_name, 0, NULL, 0 != 0)) {
+        puts("Your last name cannot contain non-alphabetical characters");
+        while(getchar()!='\n');
+    }
+
+    return last_name;
+}
+
+void check_address() {
+    const char *numPat = "^[1-9][0-9]*$";
+    const char *streetPat = "^[A-Za-z]+$";
+    const char *suffixPat = "^[A-Za-z]+$";
+    const char *postalPat = "^[A-Z][0-9][A-Z][0-9][A-Z][0-9]$";
+    const char *cityPat = "^[A-Za-z]+$";
+    const char *provincePat = "^[A-Za-z]+$";
+    const char *countryPat = "^[A-Za-z]+$";
+    regex_t regex;
+    regcomp(&regex, numPat, REG_EXTENDED);
+
+	
+}
+
 typedef struct {
     int day;
     int month;
