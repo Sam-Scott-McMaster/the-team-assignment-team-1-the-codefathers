@@ -3,8 +3,8 @@
 #include "deposit_money.h"
 
 void deposit_money() {
-    char response;
     int accountNumber;
+    char cardType[10];
     float amount;
 
     printf("\nEnter account number: ");
@@ -13,25 +13,26 @@ void deposit_money() {
     printf("\nEnter amount to deposit: ");
     scanf("%f, &amount");
 
-    printf("\nEnter the account type that you would like to deposit money (Debit/Credit): ");
-    scanf("%c, &response");
+    printf("\nEnter card type (debit/credit): ");
+    scanf("%c, &cardType");
 
-    //open user account and see if it is null
-    //if null return error
-
-    for (int i = 0; i < account_num; i++) {
-        if (accounts[i].accountNumber == accountNumber)
-        if (response == "Debit" || response == "D") {
-            //consider the distinction between debit and credit
-            account.balance += amount;
-            printf("\nAmount deposited successfully!")
-            
-        } else if (response == "Credit" || response == "C") {
-            //consider the distinction between debit and credit
-            account.balance += amount; 
-            printf("\nAmount deposited successfully!");
-
+    //check user account
+    
+    for (int i = 0; i < ?; i++) {
+        if (accounts[i].accountNumber == accountNumber) {
+            if (strcmp (cardType, "debit") == 0) {
+                accounts[i].debitBalance += amount;
+                printf("\nAmount deposited successfully!")
+                
+            } else if (strcmp (cardType, "credit") == 0) {
+                accounts[i].creditBalance += amount; 
+                printf("\nAmount deposited successfully!");
+            } else {
+                printf("\nEntered card type not found");
+            }
         }
+        return;
     }
-        printf("\nAccount not found!\n")
+    
+    printf("\nAccount number not found!\n")
 }
