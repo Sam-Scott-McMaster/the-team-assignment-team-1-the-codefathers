@@ -47,7 +47,7 @@ void check_email() {
     puts("Please enter your email: ");
 
     while (scanf("%50s", email) || regexec(&regex, email, 0, NULL, 0 != 0)) {
-        puts("Please enter a valid email");
+        puts("Please enter a valid email.");
         while(getchar()!='n');
 
     }
@@ -112,4 +112,14 @@ char *scan_phone(){
     }
 
     return phone_num;
+}
+
+char *password_hashing() {
+
+    return;
+}
+
+char *password_processing() {
+
+    return;
 }
