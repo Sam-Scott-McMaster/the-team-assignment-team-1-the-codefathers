@@ -39,5 +39,7 @@ int login(const char *username, const char *password) {
     else {
         printf("Invalid username or password\n");
         return 0;
+
+        //if username does not exist, refer back to creating an account
     }
 }
