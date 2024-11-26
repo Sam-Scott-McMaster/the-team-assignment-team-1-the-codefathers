@@ -91,3 +91,18 @@ char *scan_username(){
 
     return username;
 }
+char *scan_phone(){
+    char *phone_num = malloc(11*sizeof(char));
+    regex_t regex;
+    char *pattern = "[0-9]{10}";
+    regcomp(&regex, pattern, REG_EXTENDED);
+
+    puts("Enter phone number in the format \"DDDDDDDDDD\": ");
+
+    while(scanf("%10s", phone_num) != 1 || regexec(&regex, phone_num, 0, NULL, 0) != 0){
+        puts("Invalid phone number. Please enter in the format \"DDDDDDDDDD\" where D is a digit: ");
+        while(getchar()!='\n');
+    }
+
+    return phone_num;
+}
