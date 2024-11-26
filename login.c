@@ -15,6 +15,15 @@ void ask_if_has_account() {
     }
 }
 
+int check_credentials(const char *username, const char *password) {
+
+    //compare with the stored credentials to make it work
+    //should connect to actual stored data
+
+    //simulates credential validation by comparing the inputs with a username and password
+    return strcmp(username, "testuser") == 0 && strcmp(password, "testpass") == 0;
+}
+
 //log in the user (takes username and password as input)
 int login(const char *username, const char *password) {
     //validate credentials
@@ -26,13 +35,4 @@ int login(const char *username, const char *password) {
         printf("Invalid username or password\n");
         return 0;
     }
-}
-
-int check_credentials(const char *username, const char *password) {
-
-    //compare with the stored credentials to make it work
-    //should connect to actual stored data
-
-    //simulates credential validation by comparing the inputs with a username and password
-    return strcmp(username, "testuser") == 0 && strcmp(password, "testpass") == 0;
 }

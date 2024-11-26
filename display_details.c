@@ -4,7 +4,7 @@
 #include "display_details.h"
 
 //helper function to read user data from a file
-int load_user_info(const char *username, char *account_type, double *debit_balance, double *credit_balance, double *balance, char *name, char *card_number) {
+int load_user_info(const char *username, char *account_type, double *debit_balance, double *credit_balance, double *balance, char *name) {
     char filename[100]; //char array to store the filename
     sprintf(filename, "%s.txt", username); //constructs the file name by appending ".txt" to the username and stores it in filename
 
@@ -21,10 +21,10 @@ int load_user_info(const char *username, char *account_type, double *debit_balan
     fscanf(file, "Debit Balance: %lf\n", debit_balance); //Reads debit balance
     fscanf(file, "Credit Balance: %lf\n", credit_balance); //Reads credit balance
 
+    fscanf(file, "Budget: %lf\n", budget);
+
     fgets(name, 100, file); //Read name from the file using fgets, removing the newline char at the end
     name[strcspn(name, "\n")] = '\0'; //Removes the newline char if it's there
-
-    fscanf(file, "Card Number: %s\n", card_number);//Reads card number
 
     fclose(file); //closes file
     return 1; //successful
@@ -53,9 +53,12 @@ void display_account_balance(const char *account_type, double debit_balance, dou
     }
 }
 
-void display_personal_info(const char *name, const char *card_number) {
+void display_personal_info(const char *name) {
 
     //takes user details as input and prints it
     printf("Name: %s\n", name);
-    printf("Card Number: %s\n", card_number);
+}
+
+void display_budget(double budget) {
+    printf("Budget: $%.2f\n", budget);
 }
