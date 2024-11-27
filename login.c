@@ -32,14 +32,6 @@ int check_credentials(const char *username, char *stored_username, char *stored_
 
     fclose(file);
     return 1;
-    // if (find_user_file(username, "history_logs") == 0 && ){
-
-    // } 
-
-    //compare with the stored credentials to make it work
-    //should connect to actual stored data
-
-    //simulates credential validation by comparing the inputs with a username and password
 }
 
 //log in the user (takes username and password as input)
