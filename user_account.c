@@ -75,7 +75,7 @@ void add_transaction_to_user_file(const char *folder_name, const char *username,
 }
 
 // Function to get the most recent credit balance from the user's file
-void get_recent_credit_balance(const char *folder_name, const char *username, float *recent_credit_balance) {
+void get_recent_credit_balance(const char *folder_name, const char *username, float *credit_balance) {
     char filepath[256];
     snprintf(filepath, sizeof(filepath), "%s/%s.txt", folder_name, username); // Construct the file path
 
@@ -87,14 +87,14 @@ void get_recent_credit_balance(const char *folder_name, const char *username, fl
     }
 
     char line[256]; // Buffer to store each line from the file
-    *recent_credit_balance = 0.00;  // Initialize the recent credit balance
+    *credit_balance = 0.00;  // Initialize the recent credit balance
 
     // Read the file line by line
     while (fgets(line, sizeof(line), file)) {
         if (strstr(line, "Transaction Type: Credit") != NULL) {
             // Extract credit amount and update the recent credit balance
             if (fgets(line, sizeof(line), file)) {
-                sscanf(line, "Amount: %f", recent_credit_balance);
+                sscanf(line, "Amount: %f", credit_balance);
             }
         }
     }
@@ -103,7 +103,7 @@ void get_recent_credit_balance(const char *folder_name, const char *username, fl
 }
 
 // Function to get the most recent debit balance from the user's file
-void get_recent_debit_balance(const char *folder_name, const char *username, float *recent_debit_balance) {
+void get_recent_debit_balance(const char *folder_name, const char *username, float *debit_balance) {
     char filepath[256];
     snprintf(filepath, sizeof(filepath), "%s/%s.txt", folder_name, username); // Construct the file path
 
@@ -115,14 +115,14 @@ void get_recent_debit_balance(const char *folder_name, const char *username, flo
     }
 
     char line[256]; // Buffer to store each line from the file
-    *recent_debit_balance = 0.00;  // Initialize the recent debit balance
+    *debit_balance = 0.00;  // Initialize the recent debit balance
 
     // Read the file line by line
     while (fgets(line, sizeof(line), file)) {
         if (strstr(line, "Transaction Type: Debit") != NULL) {
             // Extract debit amount and update the recent debit balance
             if (fgets(line, sizeof(line), file)) {
-                sscanf(line, "Amount: %f", recent_debit_balance);
+                sscanf(line, "Amount: %f", debit_balance);
             }
         }
     }
