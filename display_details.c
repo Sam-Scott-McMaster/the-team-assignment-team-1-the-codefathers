@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "display_details.h"
+#include "budget.h"
 
 //helper function to read user data from a file
 int load_user_info(const char *username, char *account_type, double *debit_balance, double *credit_balance, double *balance, char *name) {
@@ -21,7 +22,7 @@ int load_user_info(const char *username, char *account_type, double *debit_balan
     fscanf(file, "Debit Balance: %lf\n", debit_balance); //Reads debit balance
     fscanf(file, "Credit Balance: %lf\n", credit_balance); //Reads credit balance
 
-    fscanf(file, "Budget: %lf\n", budget);
+    fscanf(file, "Budget: %lf\n", returnBudget(username));
 
     fgets(name, 100, file); //Read name from the file using fgets, removing the newline char at the end
     name[strcspn(name, "\n")] = '\0'; //Removes the newline char if it's there

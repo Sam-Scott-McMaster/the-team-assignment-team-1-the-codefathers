@@ -55,8 +55,7 @@ void add_info_to_user_file(const char *folder_name, const char *username, const 
 }
 
 // Function to format and add a transaction entry to the user's file without category
-void add_transaction_to_user_file(const char *folder_name, const char *username, const char *type, 
-                                   float amount, const char *date, float balance, const char *description) {
+void add_transaction_to_user_file(const char *folder_name, const char *username, const char *type, float amount, const char *date, float balance, const char *description) {
     char filepath[256]; 
     snprintf(filepath, sizeof(filepath), "%s/%s.txt", folder_name, username); // Construct the file path
 
@@ -128,4 +127,87 @@ void get_recent_debit_balance(const char *folder_name, const char *username, flo
     }
 
     fclose(file); // Close the file
+}
+
+// Function to set a budget in the user's history log
+void set_budget_to_user_file(const char *username, double budget) {
+    char filepath[256];
+    snprintf(filepath, sizeof(filepath), "%s/%s.txt", "history_logs", username); // Construct file path
+
+    FILE *file = fopen(filepath, "a"); // Open file in append mode
+
+    if (!file) {
+        printf("Error: Could not open file %s for writing.\n", filepath);
+        return;
+    }
+
+    fprintf(file, "Budget: %.2f\n", budget); // Add budget entry
+    fclose(file);
+    printf("Budget of %.2f set for user: %s\n", budget, username);
+}
+
+// Function to retrieve the most recent budget from the user's history log
+double get_budget_from_user_file(const char *username) {
+    char filepath[256];
+    snprintf(filepath, sizeof(filepath), "%s/%s.txt", "history_logs", username); // Construct file path
+
+    FILE *file = fopen(filepath, "r"); // Open file in read mode
+
+    if (!file) {
+        printf("Error: Could not open file %s for reading.\n", filepath);
+        return 0.0;
+    }
+
+    char line[256];
+    double budget = 0.0;
+
+    while (fgets(line, sizeof(line), file)) {
+        if (strstr(line, "Budget:") != NULL) {
+            sscanf(line, "Budget: %lf", &budget); // Extract the budget value
+        }
+    }
+
+    fclose(file);
+    return budget;
+}
+
+// Function to update the budget in the user's history log
+void update_budget(const char *username, double new_budget) {
+    char filepath[256];
+    snprintf(filepath, sizeof(filepath), "%s/%s.txt", "history_logs", username); // Construct file path
+
+    FILE *file = fopen(filepath, "r"); // Open file in read mode
+
+    if (!file) {
+        printf("Error: Could not open file %s for reading.\n", filepath);
+        return;
+    }
+
+    char temp_filepath[256];
+    snprintf(temp_filepath, sizeof(temp_filepath), "%s/temp.txt", "history_logs"); // Temporary file for modifications
+
+    FILE *temp_file = fopen(temp_filepath, "w");
+    if (!temp_file) {
+        printf("Error: Could not open temporary file for writing.\n");
+        fclose(file);
+        return;
+    }
+
+    char line[256];
+    while (fgets(line, sizeof(line), file)) {
+        if (strstr(line, "Budget:") != NULL) {
+            fprintf(temp_file, "Budget: %.2f\n", new_budget); // Write updated budget
+        } else {
+            fprintf(temp_file, "%s", line); // Copy unchanged lines
+        }
+    }
+
+    fclose(file);
+    fclose(temp_file);
+
+    // Replace the original file with the updated file
+    remove(filepath);
+    rename(temp_filepath, filepath);
+
+    printf("Budget updated to %.2f for user: %s\n", new_budget, username);
 }
