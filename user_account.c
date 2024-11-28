@@ -19,6 +19,27 @@ int find_user_file(const char *username, const char *folder_name) {
     return WEXITSTATUS(ret);  // Returns 0 if found, 1 if not
 }
 
+// Function to get the stored password for a user
+void get_user_password(const char *username, char *password_buffer, size_t buffer_size) {
+    char command[256];
+    snprintf(command, sizeof(command), "./get_password.sh %s", username);
+
+    FILE *pipe = popen(command, "r");  // Open a pipe to read the script output
+    if (!pipe) {
+        printf("Error: Could not retrieve password for user: %s\n", username);
+        return;
+    }
+
+    if (fgets(password_buffer, buffer_size, pipe) != NULL) {
+        // Remove trailing newline character, if any
+        password_buffer[strcspn(password_buffer, "\n")] = '\0';
+    } else {
+        printf("Error: No password retrieved for user: %s\n", username);
+    }
+
+    pclose(pipe);
+}
+
 // Function to add user information to the history log using a Bash script
 void add_user_info_to_history_log(const char *folder_name, const char *username, const char *name, const char *password, const char *birthday, const char *email, const char *phone_number, double budget) {
     // Prepare the command string to pass all the arguments to the Bash script
@@ -56,7 +77,6 @@ void get_recent_credit_balance(const char *folder_name, const char *username, do
     fscanf(pipe, "%lf", credit_balance);  // Read the balance
     pclose(pipe);
 }
-
 
 // Function to get the most recent debit balance from the user's file
 void get_recent_debit_balance(const char *folder_name, const char *username, double *debit_balance) {
