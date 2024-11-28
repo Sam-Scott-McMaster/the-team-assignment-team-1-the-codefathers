@@ -78,14 +78,15 @@ char *scan_birthday() {
 }
 
 char *scan_username(){
-    const char *pattern = "^[a-zA-z]+[_0-9a-zA-z]*[a-zA-Z0-9]+$";
+    const char *pattern = "^[a-zA-Z][_0-9a-zA-z]{2,18}[a-zA-Z]$";
     regex_t regex;
     regcomp(&regex, pattern, REG_EXTENDED);
 
     char *username = malloc(20 * sizeof(char));
-    puts("Enter a username between 4-20 characters: ");
+    puts("Enter a username between 6-18 characters: ");
 
-    while(scanf("%20s", username) != 1 || regexec(&regex, username, 0, NULL, 0 != 0) || find_user_file(username) == 0){
+
+    while(scanf("%s", username) != 1 || regexec(&regex, username, 0, NULL, 0 != 0) || find_user_file(username) == 0){
         if (find_user_file(username) == 0){
             puts("This username already exists. Please choose a unique username.");
         } else {
@@ -93,8 +94,6 @@ char *scan_username(){
         }
         while(getchar()!='\n');
     }
-
-    //check existence of username
 
     return username;
 }
