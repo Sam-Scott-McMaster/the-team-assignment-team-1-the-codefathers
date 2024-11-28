@@ -128,7 +128,7 @@ char *password_hashing(char *name, char* password) {
 }
 
 char *password_processing(char *name) {
-    char *password = malloc(30*sizeof(char));
+    char *password = malloc(32*sizeof(char));
     regex_t regex;
     char *pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[.@#$!*?&():;]).{8,32}$";
 
@@ -147,8 +147,10 @@ char *password_processing(char *name) {
         while(getchar()!='\n');
     }
 
+    password = realloc(password, strlen(password)+1 * sizeof(char));
+
     char *hashed_password = malloc((strlen(password)+1) * sizeof(char));
     hashed_password =  password_hashing(name, password);
 
-    return "hashed_password"; //remove quotations;
+    return hashed_password;
 }
