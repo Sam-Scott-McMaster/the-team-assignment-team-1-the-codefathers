@@ -6,7 +6,7 @@
 //ask if the user already has an account
 int check_username(const char *username) {
     
-    if (find_user_file(username, "credentials") != 0) {
+    if (find_user_file(username, "history_logs") != 0) {
         int choice;
         printf("Username not found. What would you like to do?\n");
         printf("1. Re-enter the username\n");
@@ -56,37 +56,16 @@ int login(const char *username, const char *password) {
 
     char stored_username[50], stored_password[50];
 
-    /*while (1) {
-        int username_check = check_username(username);
-
-        if (username_check == 0) {
-            printf("Please re-enter your username: "):
-            scanf("%s", (char *)username);
-        }
-        else if (username_check == 2) {
-            printf("Redirecting to account creation..");
-            //call function to create account (new_account(username);)
-            break;
-        }
-        else if (username_check == 1) {
-            if (checl_credentials(username, stored_username, stored_password)) {
-                if (strcmp(username, stored_username) == 0 && strcmp(password, stored_password) == 0) {
-                    printf("Login successful\n");
-                    return 1;
-                }
-                else {
-                    printf("Invalid username or password\n");
-                    return 0;
-                }
-            }
-        }
-        else {
-            //retry if an invalid choice was made
-            continue;
-        }
-    } */
-
-    //if above is implemented, remove what's below
+    int result = check_username(username);
+    if (result == 0); {
+        return 0;
+    }
+    else if (result == 2) {
+        return 2;
+    }
+    else if (result == -1) {
+        return -1;
+    }
 
     if (check_credentials(username, stored_username, stored_password)) {
 
