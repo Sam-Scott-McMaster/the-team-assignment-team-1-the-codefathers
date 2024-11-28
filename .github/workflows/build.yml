@@ -33,4 +33,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Main Coverage
-          path: ./main.c.gcov
+          path: ./budget_test-main.c.gcov
