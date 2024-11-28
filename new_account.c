@@ -13,7 +13,7 @@ char *check_first_name() {
     char *first_name = malloc(20 * sizeof(char));
     puts("Please enter your first name: ");
 
-    while (scanf("%20s", first_name) || regexec(&regex, first_name, 0, NULL, 0 != 0)) {
+    while (scanf("%20s", first_name) !=1 || regexec(&regex, first_name, 0, NULL, 0) != 0) {
         puts("Your first name cannot contain non-alphabetical characters");
         while(getchar()!='\n');
     }
@@ -30,7 +30,7 @@ char *check_last_name() {
     char *last_name = malloc(20 * sizeof(char));
     puts("Please enter your last name: ");
 
-    while (scanf("%20s", last_name) || regexec(&regex, last_name, 0, NULL, 0 != 0)) {
+    while (scanf("%20s", last_name) != 1 || regexec(&regex, last_name, 0, NULL, 0) != 0) {
         puts("Your last name cannot contain non-alphabetical characters");
         while(getchar()!='\n');
     }
@@ -46,7 +46,7 @@ void check_email() {
     char *email = malloc(50 * sizeof(char));
     puts("Please enter your email: ");
 
-    while (scanf("%50s", email) || regexec(&regex, email, 0, NULL, 0 != 0)) {
+    while (scanf("%50s", email) !=1 || regexec(&regex, email, 0, NULL, 0) != 0) {
         puts("Please enter a valid email.");
         while(getchar()!='n');
 
@@ -134,6 +134,7 @@ char *password_hashing(char *name, char* password) {
 }
 
 char *password_processing(char *name) {
+    char *password = malloc();
 
     // char *hashed_password = malloc((strlen(password)+1) * sizeof(char));
     // hashed_password =  password_hashing(char *name, password);
