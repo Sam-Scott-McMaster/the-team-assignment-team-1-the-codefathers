@@ -16,6 +16,10 @@
 declare -i tc=0
 declare -i fails=0
 
+# Set dynamic coverage path
+export GCOV_PREFIX=$(pwd)
+export GCOV_PREFIX_STRIP=$(pwd | tr -cd '/' | wc -c)
+
 ############################################
 # Run a single test. Runs a given command 
 # to check the return value, stdout, and stderr
