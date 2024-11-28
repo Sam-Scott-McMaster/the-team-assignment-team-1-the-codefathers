@@ -66,11 +66,11 @@ int main() {
     //Display account information
     void display_account_balance(const char *username); 
 
-    /* get_recent_debit_balance("transaction_logs", username, &debit_balance);
+    get_recent_debit_balance("transaction_logs", username, &debit_balance);
     get_recent_credit_balance("transaction_logs", username, &credit_balance);
     printf("Your Current Debit Balance: %.2f\n", debit_balance);
     printf("Your Current Credit Balance: %.2f\n", credit_balance);
-    printf("Credit debt: %.2f\n", credit_debt); */ 
+    printf("Credit debt: %.2f\n", credit_debt);
 
     printf("Please Enter The Transaction Date (YYYY-MM-DD): ");
     scanf("%10s", date);
