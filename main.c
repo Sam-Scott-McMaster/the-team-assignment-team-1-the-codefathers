@@ -44,7 +44,6 @@ int main(int argc, char *argv[]) {
 
     if (result == 2){
         printf("Creating new account: \n");
-        create_user_history_file(username); 
 
         //Get first and last name 
         char *name = check_first_name();
@@ -59,6 +58,10 @@ int main(int argc, char *argv[]) {
         
         printf("What is your monthly spending budget?: ");
         scanf("%f", &budget);
+
+
+        //username = user; 
+        create_user_history_file(user); 
         add_user_info_to_history_log("transaction_logs", user, name, password, birthday, email, phone_num, budget);
     }
 
