@@ -32,7 +32,7 @@ void add_user_info_to_history_log(const char *folder_name, const char *username,
         printf("User information added successfully to the history log for user: %s\n", username);
     } else {
         printf("Error: Could not add user information to history log.\n");
-    }
+    } 
 }
 
 // Function to format and add a transaction entry to the user's file without category
