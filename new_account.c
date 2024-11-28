@@ -114,12 +114,29 @@ char *scan_phone(){
     return phone_num;
 }
 
-char *password_hashing() {
+char *password_hashing(char *name, char* password) {
+    int key = 0;    
 
-    return;
+    for (int i=0; i<sizeof(name); i++){
+        key += name[i];
+    }
+    password = realloc(password, sizeof(char) * (strlen(password)+1));
+
+    char *hashed_password = malloc(sizeof(char) * (strlen(password) + 1));
+
+    for (int i=0; i<strlen(password); i++){
+        hashed_password[i] = password[i] ^ key;
+    }     
+
+    free(password);
+    
+    return hashed_password;
 }
 
-char *password_processing() {
+char *password_processing(char *name) {
 
-    return;
+    // char *hashed_password = malloc((strlen(password)+1) * sizeof(char));
+    // hashed_password =  password_hashing(char *name, password);
+
+    return "hashed_password"; //remove quotations;
 }
