@@ -36,59 +36,35 @@ void add_transaction_to_user_file(const char *folder_name, const char *username,
 
 // Function to get the most recent credit balance from the user's file
 void get_recent_credit_balance(const char *folder_name, const char *username, float *credit_balance) {
-    char filepath[256];
-    snprintf(filepath, sizeof(filepath), "%s/%s.txt", folder_name, username); // Construct the file path
+    char command[256];
+    snprintf(command, sizeof(command), "./get_recent_credit.sh %s %s", folder_name, username);
 
-    FILE *file = fopen(filepath, "r"); // Open the file in read mode
-
-    if (!file) {
-        printf("Error: Could not open file %s for reading.\n", filepath);
+    FILE *pipe = popen(command, "r");  // Open a pipe to read the script output
+    if (!pipe) {
+        printf("Error: Could not retrieve credit balance.\n");
         return;
     }
 
-    char line[256]; // Buffer to store each line from the file
-    *credit_balance = 0.00;  // Initialize the recent credit balance
-
-    // Read the file line by line
-    while (fgets(line, sizeof(line), file)) {
-        if (strstr(line, "Transaction Type: Credit") != NULL) {
-            // Extract credit amount and update the recent credit balance
-            if (fgets(line, sizeof(line), file)) {
-                sscanf(line, "Amount: %f", credit_balance);
-            }
-        }
-    }
-
-    fclose(file); // Close the file
+    fscanf(pipe, "%f", credit_balance);  // Read the balance
+    pclose(pipe);
 }
+
 
 // Function to get the most recent debit balance from the user's file
 void get_recent_debit_balance(const char *folder_name, const char *username, float *debit_balance) {
-    char filepath[256];
-    snprintf(filepath, sizeof(filepath), "%s/%s.txt", folder_name, username); // Construct the file path
+    char command[256];
+    snprintf(command, sizeof(command), "./get_recent_debit.sh %s %s", folder_name, username);
 
-    FILE *file = fopen(filepath, "r"); // Open the file in read mode
-
-    if (!file) {
-        printf("Error: Could not open file %s for reading.\n", filepath);
+    FILE *pipe = popen(command, "r");  // Open a pipe to read the script output
+    if (!pipe) {
+        printf("Error: Could not retrieve debit balance.\n");
         return;
     }
 
-    char line[256]; // Buffer to store each line from the file
-    *debit_balance = 0.00;  // Initialize the recent debit balance
-
-    // Read the file line by line
-    while (fgets(line, sizeof(line), file)) {
-        if (strstr(line, "Transaction Type: Debit") != NULL) {
-            // Extract debit amount and update the recent debit balance
-            if (fgets(line, sizeof(line), file)) {
-                sscanf(line, "Amount: %f", debit_balance);
-            }
-        }
-    }
-
-    fclose(file); // Close the file
+    fscanf(pipe, "%f", debit_balance);  // Read the balance
+    pclose(pipe);
 }
+
 
 // Function to set a budget in the user's history log
 void set_budget_to_user_file(const char *username, double budget) {
@@ -99,66 +75,31 @@ void set_budget_to_user_file(const char *username, double budget) {
 
 // Function to retrieve the most recent budget from the user's history log
 double get_budget_from_user_file(const char *username) {
-    char filepath[256];
-    snprintf(filepath, sizeof(filepath), "%s/%s.txt", "history_logs", username); // Construct file path
+    char command[256];
+    snprintf(command, sizeof(command), "./get_budget.sh %s", username);
 
-    FILE *file = fopen(filepath, "r"); // Open file in read mode
-
-    if (!file) {
-        printf("Error: Could not open file %s for reading.\n", filepath);
-        return 0.0;
-    }
-
-    char line[256];
     double budget = 0.0;
-
-    while (fgets(line, sizeof(line), file)) {
-        if (strstr(line, "Budget:") != NULL) {
-            sscanf(line, "Budget: %lf", &budget); // Extract the budget value
-        }
+    FILE *pipe = popen(command, "r");  // Open a pipe to read the script output
+    if (!pipe) {
+        printf("Error: Could not retrieve budget.\n");
+        return budget;
     }
 
-    fclose(file);
+    fscanf(pipe, "%lf", &budget);  // Read the budget value
+    pclose(pipe);
+
     return budget;
 }
 
 // Function to update the budget in the user's history log
 void update_budget(const char *username, double new_budget) {
-    char filepath[256];
-    snprintf(filepath, sizeof(filepath), "%s/%s.txt", "history_logs", username); // Construct file path
+    char command[256];
+    snprintf(command, sizeof(command), "./update_budget.sh %s %.2lf", username, new_budget);
 
-    FILE *file = fopen(filepath, "r"); // Open file in read mode
-
-    if (!file) {
-        printf("Error: Could not open file %s for reading.\n", filepath);
-        return;
+    int ret = system(command);
+    if (ret == -1) {
+        printf("Error: Could not update budget.\n");
+    } else {
+        printf("Budget updated successfully for user: %s.\n", username);
     }
-
-    char temp_filepath[256];
-    snprintf(temp_filepath, sizeof(temp_filepath), "%s/temp.txt", "history_logs"); // Temporary file for modifications
-
-    FILE *temp_file = fopen(temp_filepath, "w");
-    if (!temp_file) {
-        printf("Error: Could not open temporary file for writing.\n");
-        fclose(file);
-        return;
-    }
-
-    char line[256];
-    while (fgets(line, sizeof(line), file)) {
-        if (strstr(line, "Budget:") != NULL) {
-            fprintf(temp_file, "Budget: %.2f\n", new_budget); // Write updated budget
-        } else {
-            fprintf(temp_file, "%s", line); // Copy unchanged lines
-        }
-    }
-
-    fclose(file);
-    fclose(temp_file);
-
-    // Replace the original file with the updated file
-    remove(filepath);
-    rename(temp_filepath, filepath);
-
-    printf("Budget updated to %.2f for user: %s\n", new_budget, username);
 }
