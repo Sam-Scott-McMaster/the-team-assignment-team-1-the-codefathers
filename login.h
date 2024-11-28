@@ -9,6 +9,6 @@ int login(const char *username, const char *password);
 
 //check if the credentials are correct
 // int check_credentials(const char *username, const char *password);
-int check_credentials(const char *username, const char *stored_username, const char *stored_password);
+int check_credentials(const char *username, char *stored_username, char *stored_password);
 
 #endif
