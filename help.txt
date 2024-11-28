@@ -1,0 +1,42 @@
+Usage: budgeting_system [OPTIONS]
+
+Welcome to the Codefathers Budgeting System, a tool for managing your finances
+and tracking your debit and credit transactions.
+
+OPTIONS:
+    --help                  Display this help message and exit.
+    --version               Show the program version and exit.
+
+FEATURES:
+    This program offers the following capabilities:
+        - Create a new account with username, password, and personal details.
+        - Set and monitor your monthly spending budget.
+        - Manage debit and credit accounts efficiently.
+        - Perform a variety of transactions, such as:
+            1. Add funds to your debit account.
+            2. Spend money from your debit account.
+            3. Check your debit account balance.
+            4. Spend money from your credit account.
+            5. Pay off credit debt.
+            6. View your credit account balance.
+
+USAGE DETAILS:
+    On program launch:
+        - Existing users can log in using their username and password.
+        - New users will be prompted to create an account with the required details.
+
+EXAMPLES:
+    To start the program:
+        ./budgeting_system
+
+    To display the help message:
+        ./budgeting_system --help
+
+    To view the version information:
+        ./budgeting_system --version
+
+NOTES:
+    - Input data, such as transaction dates, must follow the format 'YYYY-MM-DD'.
+    - If login issues occur, recheck your username and password, or create a new account.
+
+For additional support, refer to the documentation or contact the Codefathers development team.

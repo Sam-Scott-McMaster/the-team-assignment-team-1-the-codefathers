@@ -1,0 +1,16 @@
+Welcome to the Budgeting System
+Enter your username: Enter your password: Login successful
+Your Current Debit Balance: 100.00
+Your Current Credit Balance: 0.00
+Credit debt: 0.00
+Please Enter The Transaction Date (YYYY-MM-DD): 
+Please select a transaction type:
+    1. Add Money To Debit Account
+    2. Spend Money From Debit Account
+    3. Check Debit Account Balance
+    4. Spend Money From Credit Account
+    5. Check Credit Account Balance
+    6. Exit
+Please Enter The Amount You Want To Add: Transaction Date: 2024-11-28
+You Added 100.00.
+Your New Debit Balance is 200.00.
