@@ -82,9 +82,9 @@ int main() {
     printf("    2. Spend Money From Debit Account\n");
     printf("    3. Check Debit Account Balance\n");
     printf("    4. Spend Money From Credit Account\n");
-    printf("    5. Pay Off Credit Debt\n");
-    printf("    6. Check Credit Account Balance\n");
-    printf("    7. Exit\n");
+    //printf("    5. Pay Off Credit Debt\n");
+    printf("    5. Check Credit Account Balance\n");
+    printf("    6. Exit\n");
     scanf("%d", &choice);
 
     switch (choice) {
@@ -106,16 +106,16 @@ int main() {
             scanf("%lf", &amount);
             spend_money_credit(&credit_balance, amount, "transaction_logs", username, date, &credit_debt);
             break;
-        case 5:
+/*        case 5:
             printf("Please Enter The Amount You Want To Pay Off: ");
             scanf("%lf", &amount);
             // pay_off_credit(&debit_balance, &credit_debt, amount, "transaction_logs", username, date);
-            break;
-        case 6:
+            break; */
+        case 5:
             check_balance_credit(credit_balance, credit_debt);
             break;
 
-        case 7:
+        case 6:
             printf("Thank You For Using The Codefathers Budgeting System\n");
             break;
         default:
