@@ -49,6 +49,7 @@ int check_credentials(const char *username, char *stored_username, char *stored_
     fclose(file);
     return 1;
 }
+}
 
 //log in the user (takes username and password as input)
 int login(const char *username, const char *password) {
