@@ -7,9 +7,9 @@
 
 int main() { 
     //char username[50];
-    double debit_balance = 1000.00;
-    double credit_balance = 200.00;
-    double credit_debt = 0.00;
+    //double debit_balance;
+    //double credit_balance;
+    //double credit_debt;
     double amount;
     char date[11]; 
 
