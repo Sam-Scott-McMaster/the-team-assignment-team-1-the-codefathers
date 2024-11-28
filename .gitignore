@@ -2,3 +2,5 @@ user_account
 app
 trial
 budget_system
+*.gcda
+*.gcno
