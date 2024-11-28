@@ -80,9 +80,9 @@ int main(int argc, char *argv[]) {
     printf("Please Enter The Transaction Date (YYYY-MM-DD): ");
     scanf("%10s", date);
 
-    int choice = 0;
+    int choice;
 
-    while (choice != 6) {
+    //while (choice != 6) {
 
         printf("\nPlease select a transaction type:\n");
         printf("    1. Add Money To Debit Account\n");
@@ -129,7 +129,7 @@ int main(int argc, char *argv[]) {
                 printf("Invalid Option.\n");
         }
 
-    }
+    //}
 
     return 0;
 }
