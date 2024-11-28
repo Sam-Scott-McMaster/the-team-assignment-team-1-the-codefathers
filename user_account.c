@@ -8,7 +8,7 @@ void create_user_history_file(const char *username){
     char command[256]; 
     snprintf(command, sizeof(command), "./create_history.sh %s", username);
     int ret = system(command); 
-    printf("History & Transaction file created for user: %s\n", username);
+    //printf("History & Transaction file created for user: %s\n", username);
 } 
 
 // Function to find if a user exists in a given folder
@@ -51,11 +51,11 @@ void add_user_info_to_history_log(const char *folder_name, const char *username,
 
     // Execute the command
     int ret = system(command);
-    if (ret == 0) {
+    /*if (ret == 0) {
         printf("User information added successfully to the history log for user: %s\n", username);
     } else {
         printf("Error: Could not add user information to history log.\n");
-    }
+    } */ 
 }
 
 
