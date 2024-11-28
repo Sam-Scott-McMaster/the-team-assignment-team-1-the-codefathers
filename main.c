@@ -52,13 +52,13 @@ int main(int argc, char *argv[]) {
 
         char *email = check_email();
         char *password = password_processing(name);
-        char *username = scan_username();
+        char *user = scan_username();
         char *birthday = scan_birthday();
         char *phone_num = scan_phone();
         
         printf("What is your monthly spending budget?: ");
         scanf("%f", &budget);
-        add_user_info_to_history_log("transaction_logs", username, name, password, birthday, email, phone_num, budget);
+        add_user_info_to_history_log("transaction_logs", user, name, password, birthday, email, phone_num, budget);
     }
 
     if (result == 1){
