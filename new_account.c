@@ -119,16 +119,11 @@ char *password_hashing(char *name, char* password) {
     for (int i=0; i<sizeof(name); i++){
         key += name[i];
     }
-    password = realloc(password, sizeof(char) * (strlen(password)+1));
-
     char *hashed_password = malloc(sizeof(char) * (strlen(password) + 1));
 
     for (int i=0; i<strlen(password); i++){
         hashed_password[i] = password[i] ^ key;
-    }     
-
-    free(password);
-    
+    }         
     return hashed_password;
 }
 
