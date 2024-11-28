@@ -1,5 +1,6 @@
 #include <stdio.h> 
 #include <stdlib.h> 
+#include <string.h>
 #include "user_account.h"
 #include "new_account.h"
 #include "debit.h"
@@ -18,9 +19,14 @@ int main() {
     //scanf("%49s", username);
 
     //create_user_history_file(username);
+    char *name = check_first_name();
+    strcat(name, " ");
+    strcat(name, check_last_name());
+    //char *password = password_processing(name);
     char *username = scan_username();
-    char *phone_num = scan_phone();
     char *birthday = scan_birthday();
+    char *phone_num = scan_phone();
+
 
     //add options for transaction
     printf("Your Current Debit Balance: %.2f\n", debit_balance);
