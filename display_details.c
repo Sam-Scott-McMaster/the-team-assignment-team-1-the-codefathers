@@ -3,8 +3,9 @@
 #include <string.h>
 #include "display_details.h"
 #include "budget.h"
+#include "user_account.h"
 
-void display_account_balance(const char *account_type, double debit_balance, double credit_balance) {
+void display_account_balance(const char *username) {
 
     double debit_balance = 0.0, credit_balance = 0.0;
 
