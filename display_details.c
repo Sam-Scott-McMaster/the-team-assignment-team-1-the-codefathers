@@ -4,13 +4,6 @@
 #include "display_details.h"
 #include "budget.h"
 
-void display_account_type(const char *account_type) {
-
-    if (strcmp(account_type, "Both") == 0) { //compares account type
-        printf("Account Type: Debit and Credit\n");
-    } 
-}
-
 void display_account_balance(const char *account_type, double debit_balance, double credit_balance) {
 
     double debit_balance = 0.0, credit_balance = 0.0;
@@ -25,7 +18,6 @@ void display_account_balance(const char *account_type, double debit_balance, dou
 
 void display_personal_info(const char *name) {
 
-    //takes user details as input and prints it
     printf("Name: %s\n", name);
 }
 
