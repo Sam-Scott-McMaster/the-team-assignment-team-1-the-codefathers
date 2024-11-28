@@ -31,27 +31,16 @@ int load_user_info(const char *username, char *account_type, double *debit_balan
 }
 
 void display_account_type(const char *account_type) {
+
     if (strcmp(account_type, "Both") == 0) { //compares account type
         printf("Account Type: Debit and Credit\n");
     } 
-    else {
-        printf("Account Type: %s\n", account_type); //print specific account type
-    }
-    //remove just debit
 }
 
 void display_account_balance(const char *account_type, double debit_balance, double credit_balance) {
 
-    if (strcmp(account_type, "Both") == 0) {
         printf("Debit Account Balance: $%.2f\n", debit_balance);
         printf("Credit Account Balance: $%.2f\n", credit_balance);
-    }
-    else if (strcmp(account_type, "Debit") == 0){
-        printf("Debit Account Balance: $%.2f\n", debit_balance);
-    }
-    else if (strcmp(account_type, "Credit") == 0); {
-        printf("Credit Account Balance: $%.2f\n", credit_balance);
-    }
 }
 
 void display_personal_info(const char *name) {
