@@ -20,6 +20,7 @@ int load_user_info(const char *username, char *account_type, double *debit_balan
 
     fscanf(file, "Account Type: %s\n", account_type); //Reads account type from the file and stores it
     fscanf(file, "Debit Balance: %lf\n", debit_balance); //Reads debit balance
+    //gonna change acoridng to if value is string
     fscanf(file, "Credit Balance: %lf\n", credit_balance); //Reads credit balance
 
     fscanf(file, "Budget: %lf\n", returnBudget(username));
@@ -38,6 +39,7 @@ void display_account_type(const char *account_type) {
     else {
         printf("Account Type: %s\n", account_type); //print specific account type
     }
+    //remove just debit
 }
 
 void display_account_balance(const char *account_type, double debit_balance, double credit_balance) {
