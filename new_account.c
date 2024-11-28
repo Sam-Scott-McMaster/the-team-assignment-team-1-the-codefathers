@@ -128,7 +128,9 @@ char *password_hashing(char *name, char* password) {
 }
 
 char *password_processing(char *name) {
-    char *password = malloc();
+    char *password = malloc(30*sizeof(char));
+    regex_t regex;
+    char *pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&]).{8,}$";
 
     // char *hashed_password = malloc((strlen(password)+1) * sizeof(char));
     // hashed_password =  password_hashing(char *name, password);
