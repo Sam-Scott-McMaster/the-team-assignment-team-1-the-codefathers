@@ -1,6 +1,7 @@
 #include <stdio.h> 
 #include <stdlib.h> 
 #include <string.h>
+#include <math.h>
 #include "user_account.h"
 #include "new_account.h"
 #include "debit.h"
@@ -74,7 +75,7 @@ int main(int argc, char *argv[]) {
     get_recent_debit_balance("transaction_logs", username, &debit_balance);
     get_recent_credit_balance("transaction_logs", username, &credit_balance);
     printf("Your Current Debit Balance: %.2f\n", debit_balance);
-    printf("Your Current Credit Balance: %.2f\n", credit_balance);
+    printf("Your Current Credit Balance: %.2f\n", fabs(credit_balance));
     printf("Credit debt: %.2f\n", credit_debt);
 
     printf("Please Enter The Transaction Date (YYYY-MM-DD): ");
