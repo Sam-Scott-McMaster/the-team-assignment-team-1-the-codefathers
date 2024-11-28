@@ -31,25 +31,26 @@ int check_username(const char *username) {
 }
 
 int check_credentials(const char *username, char *stored_username, char *stored_password) {
-
-    if (find_user_file(username, "credentials") != 0) {
+    //checks if file is in the files
+    if (find_user_file(username, "history_logs") != 0) {
         printf("Error: Credentials file for user '%s' not found.\n", username);
-        return 0;
+        return 0; 
     }
 
     char filename[100];
-    sprintf(filename, "%s_credentials.txt", username);
+    sprintf(filename, "%s_credentials.txt", username); //creates a filename for the user’s credentials by appending _credentials.txt to their username
 
-    FILE *file = fopen(filename, "r");
+    FILE *file = fopen(filename, "r"); //open the file
     if (!file) {
         printf("Error: User credentials not found for %s.\n", username);
         return 0;
     }
 
+    //reads the stored username and password from the file and saves them
     fscanf(file, "Username: %s\n", stored_username);
     fscanf(file, "Password: %s\n", stored_password);
 
-    fclose(file);
+    fclose(file); //closes the file
     return 1;
 }
 
