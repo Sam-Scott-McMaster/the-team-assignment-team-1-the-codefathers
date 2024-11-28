@@ -36,14 +36,14 @@ void add_user_info_to_history_log(const char *folder_name, const char *username,
 }
 
 // Function to format and add a transaction entry to the user's file without category
-void add_transaction_to_user_file(const char *folder_name, const char *username, const char *type, float amount, const char *date, const char *description) {
+void add_transaction_to_user_file(const char *folder_name, const char *username, const char *type, double amount, const char *date, const char *description) {
     char command[512];
     snprintf(command, sizeof(command), "./add_transaction.sh %s %s %s %.2f %s \"%s\"", folder_name, username, type, amount, date, description);
     system(command);
 }
 
 // Function to get the most recent credit balance from the user's file
-void get_recent_credit_balance(const char *folder_name, const char *username, float *credit_balance) {
+void get_recent_credit_balance(const char *folder_name, const char *username, double *credit_balance) {
     char command[256];
     snprintf(command, sizeof(command), "./get_recent_credit.sh %s %s", folder_name, username);
 
@@ -53,13 +53,13 @@ void get_recent_credit_balance(const char *folder_name, const char *username, fl
         return;
     }
 
-    fscanf(pipe, "%f", credit_balance);  // Read the balance
+    fscanf(pipe, "%lf", credit_balance);  // Read the balance
     pclose(pipe);
 }
 
 
 // Function to get the most recent debit balance from the user's file
-void get_recent_debit_balance(const char *folder_name, const char *username, float *debit_balance) {
+void get_recent_debit_balance(const char *folder_name, const char *username, double *debit_balance) {
     char command[256];
     snprintf(command, sizeof(command), "./get_recent_debit.sh %s %s", folder_name, username);
 
@@ -69,7 +69,7 @@ void get_recent_debit_balance(const char *folder_name, const char *username, flo
         return;
     }
 
-    fscanf(pipe, "%f", debit_balance);  // Read the balance
+    fscanf(pipe, "%lf", debit_balance);  // Read the balance
     pclose(pipe);
 }
 

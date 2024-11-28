@@ -7,7 +7,7 @@
 //function to add money to debit account
 void add_to_debit(double *debit_balance, double amount, const char *folder_name, const char *username, const char *date) {
     *debit_balance += amount;
-    add_transaction_to_user_file(folder_name, username, "Debit", amount, *debit_balance, date, "Money deposited to debit account.");
+    add_transaction_to_user_file(folder_name, username, "Debit", amount, date, *debit_balance, "Money deposited to debit account.");
     printf("Transaction Date: %s\n", date);
     printf("You Added %.2f.\nYour New Debit Balance is %.2f.\n", amount, *debit_balance);
 }
@@ -16,7 +16,7 @@ void add_to_debit(double *debit_balance, double amount, const char *folder_name,
 void spend_money_debit(double *debit_balance, double amount, const char *folder_name, const char *username, const char *date) {
     if (amount <= *debit_balance) {
         *debit_balance -= amount;
-        add_transaction_to_user_file(folder_name, username, "Debit", amount, *debit_balance, date, "Money spent using debit.");
+        add_transaction_to_user_file(folder_name, username, "Debit", amount, date, *debit_balance, "Money spent using debit.");
         printf("Transaction Date: %s\n", date);
         printf("You Spent %.2f.\nYour New Debit Balance is %.2f.\n", amount, *debit_balance);
     } else {
@@ -28,5 +28,3 @@ void spend_money_debit(double *debit_balance, double amount, const char *folder_
 void check_balance_debit(double debit_balance) {
     printf("Your Current Debit Balance is %.2f.\n", debit_balance);
 }
-
-//in main.c add options to spend money or add money and ask the user to input the amount of money they would like to add or spend
