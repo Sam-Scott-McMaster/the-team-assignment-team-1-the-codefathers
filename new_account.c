@@ -38,7 +38,7 @@ char *check_last_name() {
     return last_name;
 }
 
-void check_email() {
+char *check_email() {
     const char *pattern = "^[A-Za-z0-9]+[@][a-z]+[\\.][ca|com]$";
     regex_t regex;
     regcomp(&regex, pattern, REG_EXTENDED);
@@ -51,6 +51,8 @@ void check_email() {
         while(getchar()!='n');
 
     }
+
+    return email;
 	
 } 
 
