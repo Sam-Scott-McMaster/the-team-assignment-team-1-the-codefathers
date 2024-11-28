@@ -14,7 +14,7 @@ int load_user_info(const char *username, char *account_type, double *debit_balan
 
     if (!file) {
         //checks if file pointer is NULL
-        printf("Error: Could not find user data for %s.\n", username);
+        printf("Error: Could not find user data for '%s'.\n", username);
         return 0;
     }
 
@@ -22,8 +22,6 @@ int load_user_info(const char *username, char *account_type, double *debit_balan
     fscanf(file, "Debit Balance: %lf\n", debit_balance); //Reads debit balance
     //gonna change acoridng to if value is string
     fscanf(file, "Credit Balance: %lf\n", credit_balance); //Reads credit balance
-
-    fscanf(file, "Budget: %lf\n", returnBudget(username));
 
     fgets(name, 100, file); //Read name from the file using fgets, removing the newline char at the end
     name[strcspn(name, "\n")] = '\0'; //Removes the newline char if it's there
@@ -63,5 +61,7 @@ void display_personal_info(const char *name) {
 }
 
 void display_budget(double budget) {
+    
+    double budget = returnBudget(username);
     printf("Budget: $%.2f\n", budget);
 }
