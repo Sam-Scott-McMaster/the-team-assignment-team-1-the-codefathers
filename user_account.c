@@ -19,12 +19,20 @@ int find_user_file(const char *username, const char *folder_name) {
     return WEXITSTATUS(ret);  // Returns 0 if found, 1 if not
 }
 
+// Function to add user information to the history log using a Bash script
+void add_user_info_to_history_log(const char *folder_name, const char *username, const char *name, const char *password, const char *birthday, const char *email, const char *phone_number, double budget) {
+    // Prepare the command string to pass all the arguments to the Bash script
+    char command[1024];
+    snprintf(command, sizeof(command), "./add_user_info.sh %s %s %s %s %s %s %.2f", 
+             username, name, password, birthday, email, phone_number, budget);
 
-// Function to append a string to the user's file
-void add_info_to_user_file(const char *folder_name, const char *username, const char *info) {
-    char command[256];
-    snprintf(command, sizeof(command), "./add_info.sh %s %s \"%s\"", folder_name, username, info);
-    system(command);
+    // Execute the command
+    int ret = system(command);
+    if (ret == 0) {
+        printf("User information added successfully to the history log for user: %s\n", username);
+    } else {
+        printf("Error: Could not add user information to history log.\n");
+    }
 }
 
 // Function to format and add a transaction entry to the user's file without category
@@ -63,14 +71,6 @@ void get_recent_debit_balance(const char *folder_name, const char *username, flo
 
     fscanf(pipe, "%f", debit_balance);  // Read the balance
     pclose(pipe);
-}
-
-
-// Function to set a budget in the user's history log
-void set_budget_to_user_file(const char *username, double budget) {
-    char command[256];
-    snprintf(command, sizeof(command), "./set_budget.sh %s %.2f", username, budget);
-    system(command);
 }
 
 // Function to retrieve the most recent budget from the user's history log
