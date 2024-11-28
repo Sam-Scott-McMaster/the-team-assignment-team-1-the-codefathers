@@ -25,5 +25,7 @@ Please select a transaction type:
     3. Check Debit Account Balance
     4. Spend Money From Credit Account
     5. Check Credit Account Balance
-    6. Exit
 Your Current Debit Balance is 0.00.
+
+Would You Like To Select Another Transaction? (Y/N)
+Thank You For Using The Codefathers Budgeting System!

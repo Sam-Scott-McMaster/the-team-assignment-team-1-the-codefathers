@@ -3,6 +3,7 @@ aPass
 2
 User
 Name
+wrongemailformat
 username@email.com
 StrongPassword@123
 auser
@@ -10,6 +11,4 @@ auser
 1234567890
 1000
 2024-11-28
-4
-20
-N
+6

@@ -25,8 +25,10 @@ Please select a transaction type:
     3. Check Debit Account Balance
     4. Spend Money From Credit Account
     5. Check Credit Account Balance
-    6. Exit
 Please Enter The Amount You Want To Spend: Transaction Date: 2024-11-28
 You Spent 20.00.
 You Exceeded Your Credit Balance by 20.00.
  Your New Credit Debt is 20.00.
+
+Would You Like To Select Another Transaction? (Y/N)
+Thank You For Using The Codefathers Budgeting System!
