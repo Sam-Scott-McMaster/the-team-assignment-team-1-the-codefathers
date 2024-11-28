@@ -13,3 +13,8 @@ Amount: 100.00
 Date: 2024-11-28
 Description: Credit balance exceeded/Credit debt increased.
 
+Transaction Type: Debit
+Amount: 40.00
+Date: 2024-11-28
+Description: Money deposited to debit account.
+
