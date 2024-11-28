@@ -1,2 +1,2 @@
-app: main.c user_account.c user_account.h login.c login.h new_account.c new_account.h
-	gcc -o app main.c user_account.c
+budget_system: main.c credit.c debit.c help.c login.c new_account.c user_account.c credit.h debit.h help.h login.h new_account.h user_account.h 
+	gcc -o budget_system main.c credit.c debit.c help.c login.c new_account.c user_account.c 
