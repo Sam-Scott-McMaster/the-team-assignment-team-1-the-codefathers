@@ -86,8 +86,8 @@ char *scan_username(){
     puts("Enter a username between 6-18 characters: ");
 
 
-    while(scanf("%s", username) != 1 || regexec(&regex, username, 0, NULL, 0 != 0) || find_user_file(username) == 0){
-        if (find_user_file(username) == 0){
+    while(scanf("%s", username) != 1 || regexec(&regex, username, 0, NULL, 0 != 0) || find_user_file(username, "history_logs") == 0){
+        if (find_user_file(username, "history_logs") == 0){
             puts("This username already exists. Please choose a unique username.");
         } else {
             puts("Username invalid. Kindly enter one in the correct format:");
