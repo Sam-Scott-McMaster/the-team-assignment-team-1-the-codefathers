@@ -44,7 +44,9 @@ void get_user_password(const char *username, char *password_buffer, size_t buffe
 void add_user_info_to_history_log(const char *folder_name, const char *username, const char *name, const char *password, const char *birthday, const char *email, const char *phone_number, double budget) {
     // Prepare the command string to pass all the arguments to the Bash script
     char command[1024];
-    snprintf(command, sizeof(command), "./add_user_info.sh %s %s %s %s %s %s %.2f", 
+    
+    snprintf(command, sizeof(command), 
+             "sh -c './add_user_info.sh \"%s\" \"%s\" \"%s\" \"%s\" \"%s\" \"%s\" \"%.2f\"'", 
              username, name, password, birthday, email, phone_number, budget);
 
     // Execute the command
@@ -53,8 +55,9 @@ void add_user_info_to_history_log(const char *folder_name, const char *username,
         printf("User information added successfully to the history log for user: %s\n", username);
     } else {
         printf("Error: Could not add user information to history log.\n");
-    } 
+    }
 }
+
 
 // Function to format and add a transaction entry to the user's file without category
 void add_transaction_to_user_file(const char *folder_name, const char *username, const char *type, double amount, const char *date, const char *description) {
