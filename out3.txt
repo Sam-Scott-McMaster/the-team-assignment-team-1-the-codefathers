@@ -1,7 +1,7 @@
 Welcome to the Budgeting System
 Enter your username: Enter your password: Login successful
 Your Current Debit Balance: 100.00
-Your Current Credit Balance: 20.00
+Your Current Credit Balance: 0.00
 Credit debt: 0.00
 Please Enter The Transaction Date (YYYY-MM-DD): 
 Please select a transaction type:
