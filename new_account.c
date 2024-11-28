@@ -130,10 +130,25 @@ char *password_hashing(char *name, char* password) {
 char *password_processing(char *name) {
     char *password = malloc(30*sizeof(char));
     regex_t regex;
-    char *pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&]).{8,}$";
+    char *pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[.@#$!*?&():;]).{8,32}$";
 
-    // char *hashed_password = malloc((strlen(password)+1) * sizeof(char));
-    // hashed_password =  password_hashing(char *name, password);
+    regcomp(&regex, pattern, REG_EXTENDED);
+
+    puts("Password format:");
+    puts("- At least 1 upper case letter");
+    puts("- At least 1 lower case letter");
+    puts("- At least 1 numerical character");
+    puts("- At least 1 special character from this selection: .@#$!*?&():;");
+    puts("");
+    puts("Create a password containing 8-32 letters: ");
+
+    while(scanf("%10s", password) != 1 || regexec(&regex, password, 0, NULL, 0) != 0){
+        puts("Password too weak. Your password must fulfill the requirements above.");
+        while(getchar()!='\n');
+    }
+
+    char *hashed_password = malloc((strlen(password)+1) * sizeof(char));
+    hashed_password =  password_hashing(name, password);
 
     return "hashed_password"; //remove quotations;
 }
