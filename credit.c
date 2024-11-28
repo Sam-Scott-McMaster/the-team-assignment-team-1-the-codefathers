@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include "credit.h"
 #include "debit.h"
 #include "user_account.h"
@@ -42,6 +43,6 @@ void pay_off_credit(double *debit_balance, double *credit_balance, double *credi
 
 //function to check balance for credit card
 void check_balance_credit(double credit_balance, double credit_debt) {
-    printf("Your Current Credit Balance is %.2f.\n", credit_balance);
+    printf("Your Current Credit Balance is %.2f.\n", fabs(credit_balance));
     printf("Your Remaining Credit Debt is %.2f.\n", credit_debt);
 }

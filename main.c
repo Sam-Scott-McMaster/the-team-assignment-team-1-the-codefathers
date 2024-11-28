@@ -84,6 +84,7 @@ int main(int argc, char *argv[]) {
     printf("Please Enter The Transaction Date (YYYY-MM-DD): ");
     scanf("%10s", date);
 
+
     int choice;
 
     //while (choice != 6) {
