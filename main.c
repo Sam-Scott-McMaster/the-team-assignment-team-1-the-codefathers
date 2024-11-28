@@ -86,8 +86,9 @@ int main(int argc, char *argv[]) {
 
 
     int choice;
+    char check;
 
-    //while (choice != 6) {
+    while (1) {
 
         printf("\nPlease select a transaction type:\n");
         printf("    1. Add Money To Debit Account\n");
@@ -96,14 +97,15 @@ int main(int argc, char *argv[]) {
         printf("    4. Spend Money From Credit Account\n");
         //printf("    5. Pay Off Credit Debt\n");
         printf("    5. Check Credit Account Balance\n");
-        printf("    6. Exit\n");
         scanf("%d", &choice);
 
         switch (choice) {
             case 1:
                 printf("Please Enter The Amount You Want To Add: ");
                 scanf("%lf", &amount);
-                add_to_debit(&debit_balance, amount, "transaction_logs", username, date);
+                add_to_debit(&debit_balance, amount, "transaction_logs", username, date);    
+                printf("Your Current Debit Balance: %.2f\n", debit_balance);
+                printf("Your Current Credit Balance: %.2f\n", fabs(credit_balance));
                 break;
             case 2:
                 printf("Please Enter The Amount You Want To Spend: ");
@@ -126,15 +128,19 @@ int main(int argc, char *argv[]) {
             case 5:
                 check_balance_credit(credit_balance, credit_debt);
                 break;
-
-            case 6:
-                printf("Thank You For Using The Codefathers Budgeting System\n");
-                break;
-            default:
-                printf("Invalid Option.\n");
         }
 
-    //}
+        while(getchar() != '\n');
 
+        printf("\nWould You Like To Select Another Transaction? (Y/N)\n");
+        scanf("%c", &check);
+
+        if (check != 'Y' && check != 'y') {
+            break;
+        }
+
+    } 
+
+    printf("Thank You For Using The Codefathers Budgeting System!\n");
     return 0;
 }
