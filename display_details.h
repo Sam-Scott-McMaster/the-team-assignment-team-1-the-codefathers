@@ -1,9 +1,6 @@
 #ifndef DISPLAY_DETAILS_H
 #define DISPLAY_DETAILS_H
 
-//helper function to read user data from a file
-int load_user_info(const char *username, char *account_type, double *balance, char *name, char *card_number);
-
 //display account type
 void display_account_type(const char *account_type);
 
