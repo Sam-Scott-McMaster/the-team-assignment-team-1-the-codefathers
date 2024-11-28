@@ -2,6 +2,7 @@
 #include <string.h>
 #include "login.h"
 #include "user_account.h"
+#include "new_account.h"
 
 //ask if the user already has an account
 int check_username(const char *username) {
@@ -61,6 +62,7 @@ int login(const char *username, const char *password) {
         return 0;
     }
     else if (result == 2) {
+        create_new_account();
         return 2;
     }
     else if (result == -1) {
@@ -76,12 +78,11 @@ int login(const char *username, const char *password) {
         else {
             printf("Invalid username or password\n");
             return 0;
-
-            //if username does not exist, refer back to creating an account
         }
     }
     else {
-        printf("Please create an account or ensure your credentials are correct.\n");
-        return 0;
+        printf("Account not found. Please create a new account.\n");
+        create_new_account();
+        return 2;
     }
 }

@@ -2,7 +2,7 @@
 #define LOGIN_H
 
 //ask if the user already has an account
-void ask_if_has_account();
+int check_username(const char *username);
 
 //log in the user
 int login(const char *username, const char *password);
