@@ -58,15 +58,10 @@ int login(const char *username, const char *password) {
     char stored_username[50], stored_password[50];
 
     int result = check_username(username);
-    if (result == 0); {
-        return 0;
+    if (result == 0 || result == 2 || result == -1); {
+        return result;
     }
-    else if (result == 2) {
-        return 2;
-    }
-    else if (result == -1) {
-        return -1;
-    }
+
 
     if (check_credentials(username, stored_username, stored_password)) {
 

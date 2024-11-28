@@ -37,7 +37,7 @@ int main() {
     }
 
     if (result == 2){
-        printf("Creating new account: \n")
+        printf("Creating new account: \n");
         create_user_history_file(username); 
 
         //Get first and last name 
@@ -45,14 +45,15 @@ int main() {
         strcat(name, " ");
         strcat(name, check_last_name());
 
-        char *password = password_processing(name); // FIX THIS 
+        char *email = check_email();
+        char *password = password_processing(name);
         char *username = scan_username();
         char *birthday = scan_birthday();
         char *phone_num = scan_phone();
         
         printf("What is your monthly spending budget?: ");
-        scanf("%f", budget);
-        add_user_info_to_history_log("transaction_logs", username, name, password, birthday, username, phone_num, budget);
+        scanf("%f", &budget);
+        add_user_info_to_history_log("transaction_logs", username, name, password, birthday, email, phone_num, budget);
     }
 
     if (result == 1){
@@ -108,7 +109,7 @@ int main() {
         case 5:
             printf("Please Enter The Amount You Want To Pay Off: ");
             scanf("%lf", &amount);
-            pay_off_credit(&debit_balance, &credit_debt, amount, "transaction_logs", username, date);
+            // pay_off_credit(&debit_balance, &credit_debt, amount, "transaction_logs", username, date);
             break;
         case 6:
             check_balance_credit(credit_balance, credit_debt);
