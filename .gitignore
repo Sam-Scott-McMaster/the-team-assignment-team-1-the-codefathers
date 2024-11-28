@@ -4,3 +4,4 @@ trial
 budget_system
 *.gcda
 *.gcno
+budget_test
