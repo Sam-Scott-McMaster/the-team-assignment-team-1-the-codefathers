@@ -40,7 +40,7 @@ char *check_last_name() {
 }
 
 char *check_email() {
-    const char *pattern = "^[A-Za-z0-9]+[@][a-z]+[\\.][ca|com]$";
+    const char *pattern = "^[A-Za-z0-9]+[@][a-z]+[\\.](ca|com)$";
     regex_t regex;
     regcomp(&regex, pattern, REG_EXTENDED);
 

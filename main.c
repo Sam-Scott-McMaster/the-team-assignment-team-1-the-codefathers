@@ -6,8 +6,13 @@
 #include "debit.h"
 #include "credit.h"
 #include "login.h"
+#include "help.h"
 
-int main() { 
+int main(int argc, char *argv[]) { 
+    if (argc > 1 && strcmp(argv[1], "--help") == 0) {
+        help();
+        return 0;
+    }
     //char username[50];
     double debit_balance;
     double credit_balance;
