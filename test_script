@@ -79,9 +79,15 @@ test() {
 
 test './budget_test --help' 'empty.txt' 'help.txt' 'empty.txt'
 test './budget_test' 'inp1.txt' 'out1.txt' 'empty.txt'
+test './budget_test' 'inp2.txt' 'out2.txt' 'empty.txt'
+test './budget_test' 'inp3.txt' 'out3.txt' 'empty.txt'
+test './budget_test' 'inp4.txt' 'out4.txt' 'empty.txt'
+test './budget_test' 'inp5.txt' 'out5.txt' 'empty.txt'
+test './budget_test' 'inp6.txt' 'out6.txt' 'empty.txt'
 
 # clean up
 rm test_err.txt test_out.txt
+echo -n > transaction_logs/rachel.txt
 
 # return code
 exit $fails
