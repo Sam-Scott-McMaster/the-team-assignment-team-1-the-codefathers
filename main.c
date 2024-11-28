@@ -5,6 +5,7 @@
 #include "new_account.h"
 #include "debit.h"
 #include "credit.h"
+#include "login.h"
 
 int main() { 
     //char username[50];
@@ -13,23 +14,51 @@ int main() {
     double credit_debt;
     double amount;
     char date[11]; 
+    char username[50], password[50]; 
+    float budget; 
 
+    printf("Welcome to the Budgeting System\n");
 
+    // Get username and password from user
     printf("Enter your username: ");
-    scanf("%49s", username);
+    scanf("%s", username);
+    printf("Enter your password: ");
+    scanf("%s", password);
 
-    create_user_history_file(username);
-    char *name = check_first_name();
-    strcat(name, " ");
-    strcat(name, check_last_name());
-    char *password = password_processing(name);
-    char *username = scan_username();
-    char *birthday = scan_birthday();
-    char *phone_num = scan_phone();
+    int result = login(username, password); 
+
+    while (result == 0){
+        printf("Enter your username again: ");
+        scanf("%s", username);
+        printf("Enter your password again: ");
+        scanf("%s", password);
+            
+        result = login(username, password); 
+    }
+
+    if (result == 2){
+        printf("Creating new account: \n")
+        create_user_history_file(username); 
+
+        //Get first and last name 
+        char *name = check_first_name();
+        strcat(name, " ");
+        strcat(name, check_last_name());
+
+        char *password = password_processing(name); // FIX THIS 
+        char *username = scan_username();
+        char *birthday = scan_birthday();
+        char *phone_num = scan_phone();
+        
+        printf("What is your monthly spending budget?: ");
+        scanf("%f", budget);
+        add_user_info_to_history_log("transaction_logs", username, name, processed_password, user_birthday, username, phone_num, budget);
+    }
+
 
     add_user_info_to_history_log("transaction_logs", username, name, password, birthday, username, phone_num, 0.0);
 
-    printf("Welcome to the Budgeting System\n");
+    
     get_recent_debit_balance("transaction_logs", username, &debit_balance);
     get_recent_credit_balance("transaction_logs", username, &credit_balance);
     printf("Your Current Debit Balance: %.2f\n", debit_balance);

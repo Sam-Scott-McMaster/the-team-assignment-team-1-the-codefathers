@@ -62,7 +62,6 @@ int login(const char *username, const char *password) {
         return 0;
     }
     else if (result == 2) {
-        create_new_account();
         return 2;
     }
     else if (result == -1) {
@@ -82,7 +81,6 @@ int login(const char *username, const char *password) {
     }
     else {
         printf("Account not found. Please create a new account.\n");
-        create_new_account();
         return 2;
     }
 }
