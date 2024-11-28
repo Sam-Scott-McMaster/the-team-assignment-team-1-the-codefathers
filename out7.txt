@@ -1,0 +1,31 @@
+Welcome to the Budgeting System
+Enter your username: Enter your password: Username not found. What would you like to do?
+1. Re-enter the username
+2. Create a new account
+Creating new account: 
+Please enter your first name: 
+Please enter your last name: 
+Please enter your email: 
+Password format:
+- At least 1 upper case letter
+- At least 1 lower case letter
+- At least 1 numerical character
+- At least 1 special character from this selection: .@#$!*?&():;
+
+Create a password containing 8-32 letters: 
+Enter a username between 6-18 characters: 
+Enter your birthday (DD/MM/YYYY): Enter phone number in the format "DDDDDDDDDD": 
+What is your monthly spending budget?: Your Current Debit Balance: 0.00
+Your Current Credit Balance: 0.00
+Credit debt: 0.00
+Please Enter The Transaction Date (YYYY-MM-DD): 
+Please select a transaction type:
+    1. Add Money To Debit Account
+    2. Spend Money From Debit Account
+    3. Check Debit Account Balance
+    4. Spend Money From Credit Account
+    5. Check Credit Account Balance
+    6. Exit
+Please Enter The Amount You Want To Add: Transaction Date: 2024-11-28
+You Added 100.00.
+Your New Debit Balance is 100.00.

@@ -1,0 +1,14 @@
+auser
+aPass
+2
+User
+Name
+username@email.com
+StrongPassword@123
+auser
+01/01/2001
+1234567890
+1000
+2024-11-28
+1
+100
