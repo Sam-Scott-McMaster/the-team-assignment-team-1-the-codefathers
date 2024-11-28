@@ -1,0 +1,23 @@
+name: Budget System - Test App Utility
+on:
+  push:
+    branches: [ "main" ]
+    
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Build App
+      run: gcc -o trial budget.c credit.c debit.c display_details.c help.c login.c new_account.c user_account.c
+    
+    - name: Run Tests
+      run: make; ./budget_system > test_results.txt
+      
+    - name: Upload Test Results
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: Test Results
+        path: ./test_results.txt
