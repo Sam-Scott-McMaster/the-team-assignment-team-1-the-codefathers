@@ -71,8 +71,7 @@ int login(const char *username, const char *password) {
     if (check_credentials(username, stored_username, stored_password)) {
 
         if (strcmp(username, stored_username) == 0 && strcmp(password, stored_password) == 0) {
-            printf("Login successful\n");
-            return 1;
+            return 1; // successful login 
         }
         else {
             printf("Invalid username or password\n");

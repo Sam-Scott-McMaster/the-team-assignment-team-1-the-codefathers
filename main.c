@@ -27,7 +27,7 @@ int main() {
 
     int result = login(username, password); 
 
-    while (result == 0){
+    while (result == 0){ 
         printf("Enter your username again: ");
         scanf("%s", username);
         printf("Enter your password again: ");
@@ -52,13 +52,17 @@ int main() {
         
         printf("What is your monthly spending budget?: ");
         scanf("%f", budget);
-        add_user_info_to_history_log("transaction_logs", username, name, processed_password, user_birthday, username, phone_num, budget);
+        add_user_info_to_history_log("transaction_logs", username, name, password, birthday, username, phone_num, budget);
     }
 
+    if (result == 1){
+        printf("Login successful\n");
+    } else if (result == -1){
+        fprintf(stderr, "Error: Something went wrong!\n");
+        exit(1); 
+    }
 
-    add_user_info_to_history_log("transaction_logs", username, name, password, birthday, username, phone_num, 0.0);
-
-    
+    //Display account information
     get_recent_debit_balance("transaction_logs", username, &debit_balance);
     get_recent_credit_balance("transaction_logs", username, &credit_balance);
     printf("Your Current Debit Balance: %.2f\n", debit_balance);
