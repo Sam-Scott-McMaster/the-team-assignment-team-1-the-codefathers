@@ -9,14 +9,14 @@ void spend_money_credit(double *credit_balance, double amount, const char *folde
     if (amount <= *credit_balance) {
         *credit_balance -= amount;
         *credit_debt += amount;
-        //add_transaction_to_user_file(folder_name, user_name, "Credit", amount, *credit_balance, date, "Money spent with credit.");
+        add_transaction_to_user_file(folder_name, username, "Credit", amount, *credit_balance, date, "Money spent with credit.");
         printf("Transaction Date: %s\n", date);
         printf("You Spent %.2f.\nYour New Credit Balance is %.2f.\nYour New Credit Debt is %.2f.\n", amount, *credit_balance, *credit_debt);
     } else {
         double exceed_credit_balance = amount - *credit_balance;
         *credit_debt += exceed_credit_balance;
         *credit_balance = 0;
-        //add_transaction_to_user_file(folder_name, user_name, "Credit", amount, *credit_balance, date, "Credit balance exceeded/Credit debt increased.");
+        add_transaction_to_user_file(folder_name, username, "Credit", amount, *credit_balance, date, "Credit balance exceeded/Credit debt increased.");
         printf("Transaction Date: %s\n", date);
         printf("You Spent %.2f.\nYou Exceeded Your Credit Balance by %.2f.\n Your New Credit Debt is %.2f.\n", amount, exceed_credit_balance, *credit_debt);
     }
@@ -30,7 +30,7 @@ void pay_off_credit(double *debit_balance, double *credit_debt, double amount, c
         if (*credit_debt < 0) {
             *credit_debt = 0;
         }
-        //add_transaction_to_user_file(folder_name, user_name, "Credit", amount, *credit_balance, date, "Paid off credit debt.");
+        add_transaction_to_user_file(folder_name, username, "Credit", amount, *credit_balance, date, "Paid off credit debt.");
         printf("Transaction Date: %s\n", date);
         printf("Credit Debt Paid Off is %.2f.\nYour New Debit Balance is %.2f.\nYour Remaining Credit Debt is %.2f.\n", amount, *debit_balance, *credit_debt);
     } else {
