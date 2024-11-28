@@ -13,13 +13,13 @@ jobs:
         run: make budget_system
 
       - name: Build test
-        run: make test
+        run: make budget_test
 
       - name: Run test script
         run: ./test_script > test_results.txt
 
       - name: Generate main code coverage
-        run: gcov test-main.c > main_coverage.txt
+        run: gcov budget_test-main.c > main_coverage.txt
 
       - name: Upload Test Results
         if: ${{ always() }}
