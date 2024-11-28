@@ -1,28 +1,15 @@
-#include <stdio.h> 
-#include <stdlib.h> 
-#include "user_account.h"
-#include "new_account.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include "debit.h"
 #include "credit.h"
 
-int main() { 
-    //char username[50];
+int main() {
     double debit_balance = 1000.00;
     double credit_balance = 200.00;
     double credit_debt = 0.00;
     double amount;
     char date[11]; 
 
-
-    //printf("Enter your username: ");
-    //scanf("%49s", username);
-
-    //create_user_history_file(username);
-    char *username = scan_username();
-    char *phone_num = scan_phone();
-    char *birthday = scan_birthday();
-
-    //add options for transaction
     printf("Your Current Debit Balance: %.2f\n", debit_balance);
     printf("Your Current Credit Balance: %.2f\n", credit_balance);
     printf("Credit debt: %.2f\n", credit_debt);
