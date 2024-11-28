@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <regex.h>
+#include <ctype.h>
 #include "new_account.h"
 #include "user_account.h"
 
@@ -129,12 +130,35 @@ char *password_hashing(char *name, char* password) {
     return hashed_password;
 }
 
+int check_valid_password(char *password) {
+    int has_lower = 0, has_upper = 0, has_digit = 0, has_special = 0;
+    char *special_char = ".@#$!*?&():;";
+    
+    for (int i = 0; password[i] != '\0'; i++) {
+        if (islower(password[i])) has_lower = 1;
+        if (isupper(password[i])) has_upper = 1;
+        if (isdigit(password[i])) has_digit = 1;
+        if (strchr(special_char, password[i])) has_special = 1;
+    }
+    
+    int valid = has_lower && has_upper && has_digit && has_special;
+
+    return valid;
+}
+
 char *password_processing(char *name) {
     char *password = malloc(32*sizeof(char));
     regex_t regex;
-    char *pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[.@#$!*?&():;]).{8,32}$";
+    char *pattern = "^[A-Za-z0-9.@#$!*?&():;]{8,32}$";
 
-    regcomp(&regex, pattern, REG_EXTENDED);
+    int ret = regcomp(&regex, pattern, REG_EXTENDED);
+    if (ret) {
+        char errbuf[100];
+        regerror(ret, &regex, errbuf, sizeof(errbuf));
+        fprintf(stderr, "Regex compilation failed: %s\n", errbuf);
+        free(password);  // Free the allocated memory before exiting
+        exit(1);  // Or handle appropriately
+    }
 
     puts("Password format:");
     puts("- At least 1 upper case letter");
@@ -144,7 +168,8 @@ char *password_processing(char *name) {
     puts("");
     puts("Create a password containing 8-32 letters: ");
 
-    while(scanf("%10s", password) != 1 || regexec(&regex, password, 0, NULL, 0) != 0){
+    while(scanf("%s", password) != 1 || regexec(&regex, password, 0, NULL, 0) != 0 || check_valid_password(password) == 0) {
+
         puts("Password too weak. Your password must fulfill the requirements above.");
         while(getchar()!='\n');
     }
