@@ -1,6 +1,6 @@
 #!/bin/bash
-if [ $# -ne 6 ]; then
-    echo "Usage: $0 <folder> <username> <type> <amount> <date> <description>"
+if [ $# -ne 7 ]; then
+    echo "Usage: $0 <folder> <username> <type> <amount> <remaining_budget> <date> <description>"
     exit 1
 fi
 

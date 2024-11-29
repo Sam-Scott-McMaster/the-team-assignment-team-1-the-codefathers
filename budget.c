@@ -12,6 +12,4 @@ void update_budget(const char *username, double new_budget){
     } else {
         printf("Budget cannot be 0 or less.");
     }
-    
 }
-
