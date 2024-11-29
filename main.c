@@ -59,8 +59,8 @@ int main(int argc, char *argv[]) {
         printf("What is your monthly spending budget?: ");
         scanf("%f", &budget);
 
+        strcpy(username, user);
 
-        //username = user; 
         create_user_history_file(user); 
         add_user_info_to_history_log("transaction_logs", user, name, password, birthday, email, phone_num, budget);
     }
