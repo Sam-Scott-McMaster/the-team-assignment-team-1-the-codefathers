@@ -60,7 +60,8 @@ int main(int argc, char *argv[]) {
         scanf("%f", &budget);
 
 
-        //username = user; 
+        strcpy(username, user);
+        
         create_user_history_file(user); 
         add_user_info_to_history_log("transaction_logs", user, name, password, birthday, email, phone_num, budget);
     }
