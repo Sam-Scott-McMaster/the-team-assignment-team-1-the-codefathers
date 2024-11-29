@@ -6,15 +6,14 @@
 // Function to create user history file 
 void create_user_history_file(const char *username){ 
     char command[256]; 
-    snprintf(command, sizeof(command), "./create_history.sh %s", username);
+    snprintf(command, sizeof(command), "./bash_scripts/create_history.sh %s", username);
     int ret = system(command); 
-    
 } 
 
 // Function to find if a user exists in a given folder
 int find_user_file(const char *username, const char *folder_name) {
     char command[256];
-    snprintf(command, sizeof(command), "./find_user.sh %s %s", username, folder_name);
+    snprintf(command, sizeof(command), "./bash_scripts/find_user.sh %s %s", username, folder_name);
     int ret = system(command);
     return WEXITSTATUS(ret);  // Returns 0 if found, 1 if not
 }
@@ -22,7 +21,7 @@ int find_user_file(const char *username, const char *folder_name) {
 // Function to get the stored password for a user
 void get_user_password(const char *username, char *password_buffer, size_t buffer_size) {
     char command[256];
-    snprintf(command, sizeof(command), "./get_password.sh %s", username);
+    snprintf(command, sizeof(command), "./bash_scripts/get_password.sh %s", username);
 
     FILE *pipe = popen(command, "r");  // Open a pipe to read the script output
     if (!pipe) {
@@ -46,7 +45,7 @@ void add_user_info_to_history_log(const char *folder_name, const char *username,
     char command[1024];
     
     snprintf(command, sizeof(command), 
-             "sh -c './add_user_info.sh \"%s\" \"%s\" \"%s\" \"%s\" \"%s\" \"%s\" \"%.2f\"'", 
+             "sh -c './bash_scripts/add_user_info.sh \"%s\" \"%s\" \"%s\" \"%s\" \"%s\" \"%s\" \"%.2f\"'", 
              username, name, password, birthday, email, phone_number, budget);
 
     // Execute the command
@@ -62,14 +61,14 @@ void add_user_info_to_history_log(const char *folder_name, const char *username,
 // Function to format and add a transaction entry to the user's file without category
 void add_transaction_to_user_file(const char *folder_name, const char *username, const char *type, double amount, const char *date, const char *description) {
     char command[512];
-    snprintf(command, sizeof(command), "./add_transaction.sh %s %s %s %.2f %s \"%s\"", folder_name, username, type, amount, date, description);
+    snprintf(command, sizeof(command), "./bash_scripts/add_transaction.sh %s %s %s %.2f %s \"%s\"", folder_name, username, type, amount, date, description);
     system(command);
 }
 
 // Function to get the most recent credit balance from the user's file
 void get_recent_credit_balance(const char *folder_name, const char *username, double *credit_balance) {
     char command[256];
-    snprintf(command, sizeof(command), "./get_recent_credit.sh %s %s", folder_name, username);
+    snprintf(command, sizeof(command), "./bash_scripts/get_recent_credit.sh %s %s", folder_name, username);
 
     FILE *pipe = popen(command, "r");  // Open a pipe to read the script output
     if (!pipe) {
@@ -84,7 +83,7 @@ void get_recent_credit_balance(const char *folder_name, const char *username, do
 // Function to get the most recent debit balance from the user's file
 void get_recent_debit_balance(const char *folder_name, const char *username, double *debit_balance) {
     char command[256];
-    snprintf(command, sizeof(command), "./get_recent_debit.sh %s %s", folder_name, username);
+    snprintf(command, sizeof(command), "./bash_scripts/get_recent_debit.sh %s %s", folder_name, username);
 
     FILE *pipe = popen(command, "r");  // Open a pipe to read the script output
     if (!pipe) {
@@ -99,7 +98,7 @@ void get_recent_debit_balance(const char *folder_name, const char *username, dou
 // Function to retrieve the most recent budget from the user's history log
 double get_budget_from_user_file(const char *username) {
     char command[256];
-    snprintf(command, sizeof(command), "./get_budget.sh %s", username);
+    snprintf(command, sizeof(command), "./bash_scripts/get_budget.sh %s", username);
 
     double budget = 0.0;
     FILE *pipe = popen(command, "r");  // Open a pipe to read the script output
@@ -117,7 +116,7 @@ double get_budget_from_user_file(const char *username) {
 // Function to update the budget in the user's history log
 void update_budget(const char *username, double new_budget) {
     char command[256];
-    snprintf(command, sizeof(command), "./update_budget.sh %s %.2lf", username, new_budget);
+    snprintf(command, sizeof(command), "./bash_scripts/update_budget.sh %s %.2lf", username, new_budget);
 
     int ret = system(command);
     if (ret == -1) {
