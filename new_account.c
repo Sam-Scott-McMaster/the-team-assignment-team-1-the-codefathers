@@ -4,7 +4,7 @@
 #include <regex.h>
 #include <ctype.h>
 #include "new_account.h"
-#include "user_account.h"
+#include "file_management.h"
 
 char *check_first_name() {
     const char *pattern = "^[A-Za-z]+$";
@@ -116,11 +116,11 @@ char *scan_phone(){
     return phone_num;
 }
 
-char *password_hashing(char *username, char* password) {
+char *password_hashing(char *name, char* password) {
     int key = 0;    
 
-    for (int i=0; i<sizeof(username); i++){
-        key += username[i];
+    for (int i=0; i<sizeof(name); i++){
+        key += name[i];
     }
     char *hashed_password = malloc(sizeof(char) * (strlen(password) + 1));
 
@@ -146,7 +146,7 @@ int check_valid_password(char *password) {
     return valid;
 }
 
-char *password_processing(char *username) {
+char *password_processing(char *name) {
     char *password = malloc(32*sizeof(char));
     regex_t regex;
     char *pattern = "^[A-Za-z0-9.@#$!*?&():;]{8,32}$";
@@ -177,7 +177,7 @@ char *password_processing(char *username) {
     password = realloc(password, strlen(password)+1 * sizeof(char));
 
     char *hashed_password = malloc((strlen(password)+1) * sizeof(char));
-    hashed_password =  password_hashing(username, password);
+    hashed_password =  password_hashing(name, password);
 
     return hashed_password;
 }

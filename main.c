@@ -2,8 +2,8 @@
 #include <stdlib.h> 
 #include <string.h>
 #include <math.h>
-#include "user_account.h"
 #include "file_management.h"
+#include "new_account.h"
 #include "debit.h"
 #include "credit.h"
 #include "login.h"
@@ -51,16 +51,16 @@ int main(int argc, char *argv[]) {
         strcat(name, check_last_name());
 
         char *email = check_email();
+        char *password = password_processing(name);
         char *user = scan_username();
-        char *password = password_processing(user);
         char *birthday = scan_birthday();
         char *phone_num = scan_phone();
         
         printf("What is your monthly spending budget?: ");
         scanf("%f", &budget);
 
-        strcpy(username, user);
 
+        //username = user; 
         create_user_history_file(user); 
         add_user_info_to_history_log("transaction_logs", user, name, password, birthday, email, phone_num, budget);
     }
@@ -80,15 +80,13 @@ int main(int argc, char *argv[]) {
     printf("Your Current Debit Balance: %.2f\n", debit_balance);
     printf("Your Current Credit Balance: %.2f\n", fabs(credit_balance));
     printf("Credit debt: %.2f\n", credit_debt);
-    printf("%d", result);
+
     printf("Please Enter The Transaction Date (YYYY-MM-DD): ");
     scanf("%10s", date);
 
-
     int choice;
-    char check;
 
-    while (1) {
+    //while (choice != 6) {
 
         printf("\nPlease select a transaction type:\n");
         printf("    1. Add Money To Debit Account\n");
@@ -97,15 +95,14 @@ int main(int argc, char *argv[]) {
         printf("    4. Spend Money From Credit Account\n");
         //printf("    5. Pay Off Credit Debt\n");
         printf("    5. Check Credit Account Balance\n");
+        printf("    6. Exit\n");
         scanf("%d", &choice);
 
         switch (choice) {
             case 1:
                 printf("Please Enter The Amount You Want To Add: ");
                 scanf("%lf", &amount);
-                add_to_debit(&debit_balance, amount, "transaction_logs", username, date);    
-                printf("Your Current Debit Balance: %.2f\n", debit_balance);
-                printf("Your Current Credit Balance: %.2f\n", fabs(credit_balance));
+                add_to_debit(&debit_balance, amount, "transaction_logs", username, date);
                 break;
             case 2:
                 printf("Please Enter The Amount You Want To Spend: ");
@@ -128,19 +125,15 @@ int main(int argc, char *argv[]) {
             case 5:
                 check_balance_credit(credit_balance, credit_debt);
                 break;
+
+            case 6:
+                printf("Thank You For Using The Codefathers Budgeting System\n");
+                break;
+            default:
+                printf("Invalid Option.\n");
         }
 
-        while(getchar() != '\n');
+    //}
 
-        printf("\nWould You Like To Select Another Transaction? (Y/N)\n");
-        scanf("%c", &check);
-
-        if (check != 'Y' && check != 'y') {
-            break;
-        }
-
-    } 
-
-    printf("Thank You For Using The Codefathers Budgeting System!\n");
     return 0;
 }
