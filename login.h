@@ -5,10 +5,10 @@
 int check_username(const char *username);
 
 //log in the user
-int login(const char *username, const char *password);
+int login(char *username, const char *password);
 
 //check if the credentials are correct
 // int check_credentials(const char *username, const char *password);
-int check_credentials(const char *username, char *stored_username, char *stored_password);
+int check_credentials(const char *username);
 
 #endif

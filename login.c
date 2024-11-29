@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include "login.h"
 #include "user_account.h"
 #include "new_account.h"
@@ -30,46 +31,52 @@ int check_username(const char *username) {
 
 }
 
-int check_credentials(const char *username, char *stored_username, char *stored_password) {
+int check_credentials(const char *username) {
     //checks if file is in the files
     if (find_user_file(username, "history_logs") != 0) {
         printf("Error: Credentials file for user '%s' not found.\n", username);
         return 0; 
     }
+    return 1;
 
-    char filename[100];
-    sprintf(filename, "%s_credentials.txt", username); //creates a filename for the user’s credentials by appending _credentials.txt to their username
+    // char filename[100];
+    // sprintf(filename, "%s_credentials.txt", username); //creates a filename for the user’s credentials by appending _credentials.txt to their username
 
-    FILE *file = fopen(filename, "r"); //open the file
-    if (!file) {
-        printf("Error: User credentials not found for %s.\n", username);
-        return 0;
-    }
+    // FILE *file = fopen(find_user_file(username, "credentials"), "r");
+    // if (!file) {
+    //     printf("Error: User credentials not found for %s.\n", username);
+    //     return 0;
+    // }
 
     //reads the stored username and password from the file and saves them
-    fscanf(file, "Username: %s\n", stored_username);
-    fscanf(file, "Password: %s\n", stored_password);
+    // fscanf(file, "Username: %s\n", stored_username);
+    // fscanf(file, "Password: %s\n", stored_password);
 
-    fclose(file); //closes the file
-    return 1;
+    // fclose(file); //closes the file
+    // return 1;
 }
 
 
 //log in the user (takes username and password as input)
-int login(const char *username, const char *password) {
+int login(char *username, const char *password) {
 
-    char stored_username[50], stored_password[50];
+   
+    char stored_username[50];
+
 
     int result = check_username(username);
-    if (result == 0 || result == 2 || result == -1); {
+    if (result == 0 || result == 2 || result == -1) {
         return result;
     }
+    puts("we're in!");
+    char *hashed_password = malloc(sizeof(char)*32);
+    get_user_password(username, hashed_password, 100);
+    char *stored_password = password_hashing(username, hashed_password);
 
-
-    if (check_credentials(username, stored_username, stored_password)) {
-
+    if (check_credentials(username)) {
+        
         if (strcmp(username, stored_username) == 0 && strcmp(password, stored_password) == 0) {
-            return 1; // successful login 
+            return 1; // successful login
         }
         else {
             printf("Invalid username or password\n");

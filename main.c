@@ -80,7 +80,7 @@ int main(int argc, char *argv[]) {
     printf("Your Current Debit Balance: %.2f\n", debit_balance);
     printf("Your Current Credit Balance: %.2f\n", fabs(credit_balance));
     printf("Credit debt: %.2f\n", credit_debt);
-
+    printf("%d", result);
     printf("Please Enter The Transaction Date (YYYY-MM-DD): ");
     scanf("%10s", date);
 
