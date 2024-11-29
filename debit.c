@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "debit.h"
 #include "credit.h"
-#include "user_account.h"
+#include "file_management.h"
 
 //function to add money to debit account
 void add_to_debit(double *debit_balance, double amount, const char *folder_name, const char *username, const char *date) {

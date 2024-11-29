@@ -3,7 +3,7 @@
 #include <math.h>
 #include "credit.h"
 #include "debit.h"
-#include "user_account.h"
+#include "file_management.h"
 
 //function to spend money with credit account
 void spend_money_credit(double *credit_balance, double amount, const char *folder_name, const char *username, const char *date, double *credit_debt) {

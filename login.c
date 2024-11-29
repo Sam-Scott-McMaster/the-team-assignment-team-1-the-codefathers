@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "login.h"
 #include "user_account.h"
-#include "new_account.h"
+#include "file_management.h"
 
 //ask if the user already has an account
 int check_username(const char *username) {

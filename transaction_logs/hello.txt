@@ -1,0 +1,10 @@
+Transaction Type: Debit
+Amount: 2000.00
+Date: 2004/04/04
+Description: Money deposited to debit account.
+
+Transaction Type: Debit
+Amount: 400.00
+Date: 2005-05-05
+Description: Money deposited to debit account.
+
