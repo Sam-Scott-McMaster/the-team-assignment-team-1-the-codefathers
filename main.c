@@ -51,8 +51,8 @@ int main(int argc, char *argv[]) {
         strcat(name, check_last_name());
 
         char *email = check_email();
-        char *password = password_processing(name);
         char *user = scan_username();
+        char *password = password_processing(user);
         char *birthday = scan_birthday();
         char *phone_num = scan_phone();
         
