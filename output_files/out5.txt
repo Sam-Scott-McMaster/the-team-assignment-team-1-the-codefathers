@@ -1,0 +1,17 @@
+Welcome to the Budgeting System
+Enter your username: Enter your password: Login successful
+Your Current Debit Balance: 100.00
+Your Current Credit Balance: 20.00
+Credit debt: 0.00
+Please Enter The Transaction Date (YYYY-MM-DD): 
+Please select a transaction type:
+    1. Add Money To Debit Account
+    2. Spend Money From Debit Account
+    3. Check Debit Account Balance
+    4. Spend Money From Credit Account
+    5. Check Credit Account Balance
+Your Current Credit Balance is 20.00.
+Your Remaining Credit Debt is 0.00.
+
+Would You Like To Select Another Transaction? (Y/N)
+Thank You For Using The Codefathers Budgeting System!

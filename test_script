@@ -81,6 +81,8 @@ test() {
 
 ##command and flag, stdin, stdout, stderr
 
+#input and output files are stored under directories, the test cases will be modified accordingly
+
 test './budget_test --help' 'empty.txt' 'help.txt' 'empty.txt'
 #test './budget_test' 'inp1.txt' 'out1.txt' 'empty.txt'
 #test './budget_test' 'inp2.txt' 'out2.txt' 'empty.txt'
