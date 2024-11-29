@@ -59,7 +59,6 @@ int main(int argc, char *argv[]) {
         printf("What is your monthly spending budget?: ");
         scanf("%f", &budget);
 
-
         strcpy(username, user);
         
         create_user_history_file(user); 
@@ -86,8 +85,9 @@ int main(int argc, char *argv[]) {
     scanf("%10s", date);
 
     int choice;
+    char check;
 
-    //while (choice != 6) {
+    while (1) {
 
         printf("\nPlease select a transaction type:\n");
         printf("    1. Add Money To Debit Account\n");
@@ -126,15 +126,19 @@ int main(int argc, char *argv[]) {
             case 5:
                 check_balance_credit(credit_balance, credit_debt);
                 break;
-
-            case 6:
-                printf("Thank You For Using The Codefathers Budgeting System\n");
-                break;
             default:
                 printf("Invalid Option.\n");
         }
 
-    //}
+        while(getchar() != '\n');
+        
+        printf("\nWould You Like To Select Another Transaction? (Y/N)\n");
+        scanf("%c", &check);
+        if (check != 'Y' && check != 'y') {
+            break;
+        }
+
+    printf("Thank You For Using The Codefathers Budgeting System!\n");
 
     return 0;
 }
