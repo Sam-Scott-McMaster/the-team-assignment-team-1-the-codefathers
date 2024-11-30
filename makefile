@@ -12,12 +12,12 @@ all: budget_system budget_test
 # Build the budget system executable
 budget_system: main.c credit.c debit.c help.c login.c new_account.c file_management.c \
                 credit.h debit.h help.h login.h new_account.h file_management.h 
-	gcc -o budget_system main.c credit.c debit.c help.c login.c new_account.c file_management.c
+	gcc -o budget_system main.c credit.c debit.c help.c login.c new_account.c file_management.c -lm
 
 # Build the budget test executable with coverage enabled
 budget_test: main.c credit.c debit.c help.c login.c new_account.c file_management.c \
              credit.h debit.h help.h login.h new_account.h file_management.h 
-	gcc -o budget_test $(CFLAGS) main.c credit.c debit.c help.c login.c new_account.c file_management.c $(LDFLAGS)
+	gcc -o budget_test $(CFLAGS) main.c credit.c debit.c help.c login.c new_account.c file_management.c $(LDFLAGS) -lm
 
 # Clean build artifacts and coverage files
 clean:

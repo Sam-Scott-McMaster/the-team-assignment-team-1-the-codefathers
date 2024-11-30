@@ -51,8 +51,8 @@ int main(int argc, char *argv[]) {
         strcat(name, check_last_name());
 
         char *email = check_email();
-        char *password = password_processing(name);
         char *user = scan_username();
+        char *pass = password_processing(user);
         char *birthday = scan_birthday();
         char *phone_num = scan_phone();
         
@@ -60,9 +60,8 @@ int main(int argc, char *argv[]) {
         scanf("%f", &budget);
 
         strcpy(username, user);
-        
         create_user_history_file(user); 
-        add_user_info_to_history_log("transaction_logs", user, name, password, birthday, email, phone_num, budget);
+        add_user_info_to_history_log("history_logs", user, name, pass, birthday, email, phone_num, budget);
     }
 
     if (result == 1){

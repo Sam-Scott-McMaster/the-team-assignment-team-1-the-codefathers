@@ -3,6 +3,7 @@
 #include <string.h>
 #include <regex.h>
 #include <ctype.h>
+#include <math.h>
 #include "new_account.h"
 #include "file_management.h"
 
@@ -100,6 +101,7 @@ char *scan_username(){
 
     return username;
 }
+
 char *scan_phone(){
     char *phone_num = malloc(11*sizeof(char));
     regex_t regex;
@@ -116,16 +118,70 @@ char *scan_phone(){
     return phone_num;
 }
 
-char *password_hashing(char *name, char* password) {
-    int key = 0;    
-
-    for (int i=0; i<sizeof(name); i++){
-        key += name[i];
+char *int_to_char(long num){
+// Function to convert a number between 0-36 into its character representation
+    char c;
+    if (num < 10){ // For 0-9, convert to ASCII digits
+        c = (char) num + 48;
+    } else { // For 10-36, convert to ASCII letters A-Z
+        c = (char) num + 55; 
     }
-    char *hashed_password = malloc(sizeof(char) * (strlen(password) + 1));
+    char *c_str = malloc(sizeof(char)*2);
+    sprintf(c_str, "%c", c);  
+    return c_str;
+}
+
+char *to_hex(long num){ 
+    
+    char *hex_reverse = malloc(sizeof(char) * 100);
+    char *hex = malloc(sizeof(char) * 100);
+    long rem;
+
+    while(num >= 16){
+        rem = num%16;
+        num /= 16;
+        strcat(hex_reverse, int_to_char(rem));
+    }
+    strcat(hex_reverse, int_to_char(num));
+
+    for (int i=strlen(hex_reverse)-1; i >= 0; i--){
+        hex[strlen(hex_reverse)-1-i] = hex_reverse[i];
+    }
+
+    strcat(hex, "|");
+    
+    hex = realloc(hex, sizeof(char)*(strlen(hex)+1));
+
+    return hex;
+} 
+
+int to_int(char *hex){
+    int value = 0;
+    int hex_digit;
+
+    for (int i = strlen(hex)-1; i>=0; i--){
+
+        if (hex[i] <= '9'){
+            hex_digit = hex[i] - 48;
+        } else {
+            hex_digit = hex[i] - 55;
+        }
+        value += hex_digit*pow(16, strlen(hex)-1-i);
+    }
+    return value;
+}
+
+char *password_encryption(const char *username, const char* password) {
+    int key = 0;
+
+    for (int i=0; i<strlen(username); i++){
+        key += username[i];
+    }
+    char *hashed_password = calloc(strlen(password) * 2 + 1, sizeof(char));  // Initialize memory
+
 
     for (int i=0; i<strlen(password); i++){
-        hashed_password[i] = password[i] ^ key;
+        strcat(hashed_password, to_hex(password[i] ^ key));
     }         
     return hashed_password;
 }
@@ -146,7 +202,7 @@ int check_valid_password(char *password) {
     return valid;
 }
 
-char *password_processing(char *name) {
+char *password_processing(char *username) {
     char *password = malloc(32*sizeof(char));
     regex_t regex;
     char *pattern = "^[A-Za-z0-9.@#$!*?&():;]{8,32}$";
@@ -174,10 +230,10 @@ char *password_processing(char *name) {
         while(getchar()!='\n');
     }
 
-    password = realloc(password, strlen(password)+1 * sizeof(char));
+    // password = realloc(password, strlen(password)+1);
 
-    char *hashed_password = malloc((strlen(password)+1) * sizeof(char));
-    hashed_password =  password_hashing(name, password);
+    char *hashed_password = malloc(1000);
+    hashed_password =  password_encryption(username, password);
 
     return hashed_password;
 }
