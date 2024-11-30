@@ -13,5 +13,5 @@ credit_balance="$6"
 date="$7"
 description="$8"
 file_path="$folder/${username}.txt"
-
-echo -e "Transaction Type: $type\nDebit Balance: $debit_balance\nCredit Balace: $credit_balance\nAmount: $amount\nDate: $date\nDescription: $description\n" >> "$file_path"
+ 
+echo -e "Transaction Type: $type\nDebit Balance: $debit_balance\nCredit Balance: $credit_balance\nAmount: $amount\nDate: $date\nDescription: $description\n" >> "$file_path"

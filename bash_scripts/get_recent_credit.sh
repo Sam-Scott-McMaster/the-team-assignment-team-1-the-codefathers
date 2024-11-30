@@ -14,4 +14,4 @@ if [ ! -f "$file_path" ]; then
 fi
 
 # Extract the most recent credit balance
-grep "Credit Balance:" "$file_path" | awk '{print $3}'
+grep "Credit Balance" "$file_path" | tail -n 1 | awk '{print $NF}'

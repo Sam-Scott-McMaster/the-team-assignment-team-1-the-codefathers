@@ -1,28 +1,28 @@
 Transaction Type: Debit
 Debit Balance: 1000.00
-Credit Balace: 0.00
+Credit Balance: 0.00
 Amount: 1000.00
-Date: 2024-11-29
+Date: 2004-05-05
 Description: Money deposited to debit account.
-
-Transaction Type: Debit
-Debit Balance: 980.00
-Credit Balace: 0.00
-Amount: 20.00
-Date: 2024-11-29
-Description: Money spent using debit.
 
 Transaction Type: Credit
 Debit Balance: 1000.00
-Credit Balace: 200.00
-Amount: 200.00
-Date: 2024-11-29
+Credit Balance: 500.00
+Amount: 500.00
+Date: 2004-05-05
 Description: Money spent with credit.
 
+Transaction Type: Debit
+Debit Balance: 1300.00
+Credit Balance: 500.00
+Amount: 300.00
+Date: 2004-05-05
+Description: Money deposited to debit account.
+
 Transaction Type: Credit
-Debit Balance: 900.00
-Credit Balace: 100.00
-Amount: 100.00
-Date: 2024-11-29
-Description: Paid off Credit Balance.
+Debit Balance: 1300.00
+Credit Balance: 505.00
+Amount: 5.00
+Date: 2004-05-05
+Description: Money spent with credit.
 
