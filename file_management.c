@@ -55,7 +55,7 @@ void add_user_info_to_history_log(const char *folder_name, const char *username,
 // Function to format and add a transaction entry to the user's file without category
 void add_transaction_to_user_file(const char *folder_name, const char *username, const char *type, double amount, double *debit_balance, double *credit_balance, const char *date, const char *description) {
     char command[512];
-    snprintf(command, sizeof(command), "./bash_scripts/add_transaction.sh %s %s %s %.2f %.2f %.2f %s \"%s\"", folder_name, username, type, amount, debit_balance, credit_balance, date, description);
+    snprintf(command, sizeof(command), "./bash_scripts/add_transaction.sh %s %s %s %.2f %.2f %.2f %s \"%s\"", folder_name, username, type, amount, *debit_balance, *credit_balance, date, description);
     system(command);
 }
 

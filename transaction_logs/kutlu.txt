@@ -8,3 +8,93 @@ Amount: 30.00
 Date: 2024-11-28
 Description: Money spent using debit.
 
+Transaction Type: Credit
+Amount: 309.00
+Date: 2024-11-29
+Description: Money spent with credit.
+
+Transaction Type: Credit
+Amount: 30.00
+Date: 2024-11-29
+Description: Paid off Credit Balance.
+
+Transaction Type: Credit
+Amount: 300.00
+Date: 2024-11-29
+Description: Money spent with credit.
+
+Transaction Type: Debit
+Amount: 100.00
+Date: 2024-11-29
+Description: Money deposited to debit account.
+
+Transaction Type: Credit
+Amount: 40.00
+Date: 2024-11-29
+Description: Paid off Credit Balance.
+
+Transaction Type: Debit
+Amount: 40.00
+Date: 2024-11-29
+Description: Money spent using debit.
+
+Transaction Type: Credit
+Amount: 40.00
+Date: 2024-11-29
+Description: Money spent with credit.
+
+Transaction Type: Credit
+Amount: 0.00
+Date: 2024-11-29
+Description: Paid off Credit Balance.
+
+Transaction Type: Credit
+Amount: 70.00
+Date: 2024-11-29
+Description: Money spent with credit.
+
+Transaction Type: Debit
+Amount: 50.00
+Date: 2024-11-29
+Description: Money deposited to debit account.
+
+Transaction Type: Credit
+Amount: 70.00
+Date: 2024-11-29
+Description: Paid off Credit Balance.
+
+Transaction Type: Credit
+Amount: 0.00
+Date: 2024-11-29
+Description: Paid off Credit Balance.
+
+Transaction Type: Credit
+Amount: 20.00
+Date: 2024-11-29
+Description: Paid off Credit Balance.
+
+Transaction Type: Debit
+Amount: 200.00
+Date: 2024-11-29
+Description: Money deposited to debit account.
+
+Transaction Type: Credit
+Amount: 70.00
+Date: 2024-11-29
+Description: Money spent with credit.
+
+Transaction Type: Credit
+Amount: 20.00
+Date: 2024-11-29
+Description: Paid off Credit Balance.
+
+Transaction Type: Credit
+Amount: 20.00
+Date: 2024-11-28
+Description: Paid off Credit Balance.
+
+Transaction Type: Credit
+Amount: 30.00
+Date: 2024-11-28
+Description: Paid off Credit Balance.
+

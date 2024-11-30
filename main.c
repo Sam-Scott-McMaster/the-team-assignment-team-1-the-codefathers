@@ -102,12 +102,12 @@ int main(int argc, char *argv[]) {
             case 1:
                 printf("Please Enter The Amount You Want To Add: ");
                 scanf("%lf", &amount);
-                add_to_debit(&debit_balance, amount, "transaction_logs", username, date);
+                add_to_debit(&debit_balance, &credit_balance, amount, "transaction_logs", username, date);
                 break;
             case 2:
                 printf("Please Enter The Amount You Want To Spend: ");
                 scanf("%lf", &amount);
-                spend_money_debit(&debit_balance, amount, "transaction_logs", username, date);
+                spend_money_debit(&debit_balance, &credit_balance, amount, "transaction_logs", username, date);
                 break;
             case 3:
                 check_balance_debit(debit_balance);
@@ -115,7 +115,7 @@ int main(int argc, char *argv[]) {
             case 4:
                 printf("Please Enter The Amount You Want To Spend: ");
                 scanf("%lf", &amount);
-                spend_money_credit(&credit_balance, amount, "transaction_logs", username, date);
+                spend_money_credit(&credit_balance, &debit_balance, amount, "transaction_logs", username, date);
                 break;
             case 5:
                 printf("Please Enter The Amount You Want To Pay Off: ");
