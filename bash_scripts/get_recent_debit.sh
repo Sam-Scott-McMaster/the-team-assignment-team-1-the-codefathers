@@ -14,4 +14,4 @@ if [ ! -f "$file_path" ]; then
 fi
 
 # Extract the most recent debit balance
-grep "Debit Balance" "$file_path" | tail -n 1 | awk '{print $NF}'
+grep "Debit Balance: " "$file_path" | tail -n 1 | awk '{print $NF}'
