@@ -53,9 +53,9 @@ void add_user_info_to_history_log(const char *folder_name, const char *username,
 
 
 // Function to format and add a transaction entry to the user's file without category
-void add_transaction_to_user_file(const char *folder_name, const char *username, const char *type, double amount, double *remaining_budget, const char *date, const char *description) {
+void add_transaction_to_user_file(const char *folder_name, const char *username, const char *type, double amount, const char *date, const char *description) {
     char command[512];
-    snprintf(command, sizeof(command), "./bash_scripts/add_transaction.sh %s %s %s %.2f %.2f %s \"%s\"", folder_name, username, type, amount, remaining_budget ,date, description);
+    snprintf(command, sizeof(command), "./bash_scripts/add_transaction.sh %s %s %s %.2f %s \"%s\"", folder_name, username, type, amount, date, description);
     system(command);
 }
 
@@ -105,23 +105,6 @@ double get_budget_from_user_file(const char *username) {
     pclose(pipe);
 
     return budget;
-}
-
-double get_remaining_budget(const char *username){
-    char command[256];
-    snprintf(command, sizeof(command), "./bash_scripts/get_remaining_budget.sh %s", username);
-
-    double remaining_budget = 0.0;
-    FILE *pipe = popen(command, "r");  // Open a pipe to read the script output
-    if (!pipe) {
-        printf("Error: Could not retrieve budget.\n");
-        return remaining_budget;
-    }
-
-    fscanf(pipe, "%lf", &remaining_budget);  // Read the budget value
-    pclose(pipe);
-
-    return remaining_budget;
 }
 
 // Function to update the budget in the user's history log

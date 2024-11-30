@@ -78,11 +78,11 @@ int main(int argc, char *argv[]) {
     get_recent_debit_balance("transaction_logs", username, &debit_balance);
     get_recent_credit_balance("transaction_logs", username, &credit_balance);
     printf("Your Current Debit Balance: %.2f\n", debit_balance);
-    printf("Your Current Credit Balance: %.2f\n", fabs(credit_balance));
-    printf("Credit debt: %.2f\n", credit_debt);
+    printf("Your Current Credit Balance: %.2f\n", credit_balance);
 
     printf("Please Enter The Transaction Date (YYYY-MM-DD): ");
     scanf("%10s", date);
+
 
     int choice;
     char check;
@@ -94,9 +94,8 @@ int main(int argc, char *argv[]) {
         printf("    2. Spend Money From Debit Account\n");
         printf("    3. Check Debit Account Balance\n");
         printf("    4. Spend Money From Credit Account\n");
-        //printf("    5. Pay Off Credit Debt\n");
-        printf("    5. Check Credit Account Balance\n");
-        printf("    6. Exit\n");
+        printf("    5. Pay Off Credit Debt\n");
+        printf("    6. Check Credit Account Balance\n");
         scanf("%d", &choice);
 
         switch (choice) {
@@ -116,15 +115,15 @@ int main(int argc, char *argv[]) {
             case 4:
                 printf("Please Enter The Amount You Want To Spend: ");
                 scanf("%lf", &amount);
-                spend_money_credit(&credit_balance, amount, "transaction_logs", username, date, &credit_debt);
+                spend_money_credit(&credit_balance, amount, "transaction_logs", username, date);
                 break;
-    /*        case 5:
+            case 5:
                 printf("Please Enter The Amount You Want To Pay Off: ");
                 scanf("%lf", &amount);
-                // pay_off_credit(&debit_balance, &credit_debt, amount, "transaction_logs", username, date);
-                break; */
-            case 5:
-                check_balance_credit(credit_balance, credit_debt);
+                pay_off_credit(&debit_balance, &credit_balance, amount, "transaction_logs", username, date);
+                break;
+            case 6:
+                check_balance_credit(credit_balance);
                 break;
             default:
                 printf("Invalid Option.\n");
@@ -137,6 +136,7 @@ int main(int argc, char *argv[]) {
         if (check != 'Y' && check != 'y') {
             break;
         }
+    }
 
     printf("Thank You For Using The Codefathers Budgeting System!\n");
 
