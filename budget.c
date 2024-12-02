@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include "file_management.h"
 
-double returnBudget(const char *username){ 
-    return get_budget_from_user_file(username); 
+void returnBudget(const char *username){ 
+    get_budget_from_user_file(username); 
 }
 
 void update_budget(const char *username, float *new_budget){

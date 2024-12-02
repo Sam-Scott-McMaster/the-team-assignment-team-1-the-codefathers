@@ -3,5 +3,5 @@ Password: 1BB|192|18E|19B|196|1C6|1C4|1D6|
 Birthday: 30/10/2004
 Email: kutlul1@mcmaster.ca
 Phone Number: 1234567890
-Budget: 2000.00
+Budget: 1500.00
 ------------------------

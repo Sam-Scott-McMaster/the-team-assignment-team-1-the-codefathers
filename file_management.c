@@ -90,21 +90,27 @@ void get_recent_debit_balance(const char *folder_name, const char *username, dou
 }
 
 // Function to retrieve the most recent budget from the user's history log
-double get_budget_from_user_file(const char *username) {
+void get_budget_from_user_file(const char *username) {
     char command[256];
     snprintf(command, sizeof(command), "./bash_scripts/get_budget.sh %s", username);
 
-    double budget = 0.0;
     FILE *pipe = popen(command, "r");  // Open a pipe to read the script output
     if (!pipe) {
         printf("Error: Could not retrieve budget.\n");
-        return budget;
+        return;
     }
 
-    fscanf(pipe, "%lf", &budget);  // Read the budget value
-    pclose(pipe);
+    char buffer[128];
+    double budget = 0.0;
+    if (fgets(buffer, sizeof(buffer), pipe) != NULL) {
+        sscanf(buffer, "%lf", &budget);
+        printf("Budget: %.2lf\n", budget);  // Print the budget
+    } else {
+        printf("Error reading budget.\n");
+    }
 
-    return budget;
+    pclose(pipe);
+    
 }
 
 // Function to update the budget in the user's history log

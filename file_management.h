@@ -6,6 +6,6 @@ void add_user_info_to_history_log(const char *folder_name, const char *username,
 void add_transaction_to_user_file(const char *folder_name, const char *username, const char *type, double amount, double *debit_balance, double *credit_balance, const char *date, const char *description); 
 void get_recent_credit_balance(const char *folder_name, const char *username, double *credit_balance);
 void get_recent_debit_balance(const char *folder_name, const char *username, double *debit_balance);
-double get_budget_from_user_file(const char *username); 
+void get_budget_from_user_file(const char *username); 
 void update_budget_file(const char *username, float *new_budget);
 void display_transactions(const char *username);
