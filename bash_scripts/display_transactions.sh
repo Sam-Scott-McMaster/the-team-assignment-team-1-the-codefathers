@@ -7,5 +7,5 @@ fi
 folder="$1"
 username="$2"
 file_path="$folder/${username}.txt"
-
+ 
 cat "$file_path"

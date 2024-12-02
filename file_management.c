@@ -124,4 +124,4 @@ void display_transactions(const char *username){
     char command[256]; 
     snprintf(command, sizeof(command), "./bash_scripts/display_transactions.sh %s %s", "transaction_logs", username)
     system(command); 
-} 
+}
