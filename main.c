@@ -8,6 +8,7 @@
 #include "credit.h"
 #include "login.h"
 #include "help.h"
+#include "budget.h"
 
 int main(int argc, char *argv[]) { 
     if (argc > 1 && strcmp(argv[1], "--help") == 0) {
@@ -21,6 +22,7 @@ int main(int argc, char *argv[]) {
     double amount;
     char date[11]; 
     char username[50], password[50]; 
+    float new_budget;
     float budget; 
 
     printf("\nWelcome To The Budgeting System\n");
@@ -96,7 +98,9 @@ int main(int argc, char *argv[]) {
         printf("    4. Spend Money From Credit Account\n");
         printf("    5. Pay Off Credit Debt\n");
         printf("    6. Check Credit Account Balance\n");
-        //printf("    7. Display Transaction History\n");
+        printf("    7. Display Transaction History\n");
+        printf("    8. Set New Budget\n");
+        printf("    9. Display Budget\n");
         scanf("%d", &choice);
 
         switch (choice) {
@@ -126,9 +130,17 @@ int main(int argc, char *argv[]) {
             case 6:
                 check_balance_credit(credit_balance);
                 break;
-            //case 7:
-                //display_transaction();
-                //break;
+            case 7:
+                display_transactions(username);
+                break;
+            case 8:
+                printf("Please Enter The New Budget: ");
+                scanf("%f", &new_budget);
+                update_budget(username, &new_budget);
+                break;
+            case 9:
+                returnBudget(username);
+                break;
             default:
                 printf("Invalid Option.\n");
         }

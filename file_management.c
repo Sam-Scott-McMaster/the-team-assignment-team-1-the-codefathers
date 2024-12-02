@@ -108,20 +108,14 @@ double get_budget_from_user_file(const char *username) {
 }
 
 // Function to update the budget in the user's history log
-void update_budget(const char *username, double new_budget) {
+void update_budget_file(const char *username, float *new_budget) {
     char command[256];
-    snprintf(command, sizeof(command), "./bash_scripts/update_budget.sh %s %.2lf", username, new_budget);
-
-    int ret = system(command);
-    if (ret == -1) {
-        printf("Error: Could not update budget.\n");
-    } else {
-        printf("Budget updated successfully for user: %s.\n", username);
-    }
+    snprintf(command, sizeof(command), "./bash_scripts/update_budget.sh %s %.2lf", username, *new_budget);
+    system(command); 
 }
 
 void display_transactions(const char *username){ 
     char command[256]; 
-    snprintf(command, sizeof(command), "./bash_scripts/display_transactions.sh %s %s", "transaction_logs", username)
+    snprintf(command, sizeof(command), "./bash_scripts/display_transactions.sh %s %s", "transaction_logs", username);
     system(command); 
 }
