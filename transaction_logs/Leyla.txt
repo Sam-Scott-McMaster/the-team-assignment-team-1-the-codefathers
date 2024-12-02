@@ -1,0 +1,21 @@
+Transaction Type: Debit
+Debit Balance: 200.00
+Credit Balance: 0.00
+Amount: 200.00
+Date: 01/12/2024
+Description: Money deposited to debit account.
+
+Transaction Type: Debit
+Debit Balance: 100.00
+Credit Balance: 0.00
+Amount: 100.00
+Date: 01/12/2024
+Description: Money spent using debit.
+
+Transaction Type: Debit
+Debit Balance: 0.00
+Credit Balance: 0.00
+Amount: 100.00
+Date: 01/12/2024
+Description: Money spent using debit.
+
