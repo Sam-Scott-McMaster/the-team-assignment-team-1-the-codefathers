@@ -23,27 +23,27 @@ int main(int argc, char *argv[]) {
     char username[50], password[50]; 
     float budget; 
 
-    printf("Welcome to the Budgeting System\n");
+    printf("\nWelcome To The Budgeting System\n");
 
     // Get username and password from user
-    printf("Enter your username: ");
+    printf("\nEnter Your Username: ");
     scanf("%s", username);
-    printf("Enter your password: ");
+    printf("Enter Your Password: ");
     scanf("%s", password);
 
     int result = login(username, password); 
 
     while (result == 0){ 
-        printf("Enter your username again: ");
+        printf("\nEnter Your Username Again: ");
         scanf("%s", username);
-        printf("Enter your password again: ");
+        printf("Enter Your Password Again: ");
         scanf("%s", password);
             
         result = login(username, password); 
     }
 
     if (result == 2){
-        printf("Creating new account: \n");
+        printf("\nCreating New Account: \n");
 
         //Get first and last name 
         char *name = check_first_name();
@@ -56,7 +56,7 @@ int main(int argc, char *argv[]) {
         char *birthday = scan_birthday();
         char *phone_num = scan_phone();
         
-        printf("What is your monthly spending budget?: ");
+        printf("What Is Your Monthly Spending Budget?: \n");
         scanf("%f", &budget);
 
         strcpy(username, user);
@@ -65,9 +65,9 @@ int main(int argc, char *argv[]) {
     }
 
     if (result == 1){
-        printf("Login successful\n");
+        printf("Login Successful\n");
     } else if (result == -1){
-        fprintf(stderr, "Error: Something went wrong!\n");
+        fprintf(stderr, "Error: Something Went Wrong!\n");
         exit(1); 
     }
 
@@ -76,10 +76,11 @@ int main(int argc, char *argv[]) {
 
     get_recent_debit_balance("transaction_logs", username, &debit_balance);
     get_recent_credit_balance("transaction_logs", username, &credit_balance);
-    printf("Your Current Debit Balance: %.2f\n", debit_balance);
+    printf("Your Current Debit Balance: %.2f\n", fabs(debit_balance));
     printf("Your Current Credit Balance: %.2f\n", credit_balance);
 
-    printf("Please Enter The Transaction Date (YYYY-MM-DD): ");
+//
+    printf("Please Enter The Transaction Date (DD/MM/YYYY): ");
     scanf("%10s", date);
 
 
@@ -88,13 +89,14 @@ int main(int argc, char *argv[]) {
 
     while (1) {
 
-        printf("\nPlease select a transaction type:\n");
+        printf("\nPlease Select a Transaction Type:\n");
         printf("    1. Add Money To Debit Account\n");
         printf("    2. Spend Money From Debit Account\n");
         printf("    3. Check Debit Account Balance\n");
         printf("    4. Spend Money From Credit Account\n");
         printf("    5. Pay Off Credit Debt\n");
         printf("    6. Check Credit Account Balance\n");
+        //printf("    7. Display Transaction History\n");
         scanf("%d", &choice);
 
         switch (choice) {
@@ -124,6 +126,9 @@ int main(int argc, char *argv[]) {
             case 6:
                 check_balance_credit(credit_balance);
                 break;
+            //case 7:
+                //display_transaction();
+                //break;
             default:
                 printf("Invalid Option.\n");
         }
@@ -137,7 +142,7 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    printf("Thank You For Using The Codefathers Budgeting System!\n");
+    printf("\nThank You For Using The Codefathers Budgeting System!\n");
 
     return 0;
 }
