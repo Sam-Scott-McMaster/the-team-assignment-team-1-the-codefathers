@@ -2,6 +2,7 @@
 #include <stdlib.h> 
 #include <string.h>
 #include <math.h>
+#include <time.h>
 #include "file_management.h"
 #include "new_account.h"
 #include "debit.h"
@@ -20,6 +21,8 @@ int main(int argc, char *argv[]) {
     double credit_balance;
     double credit_debt;
     double amount;
+    time_t t = time(NULL);
+    struct tm current_date = *localtime(&t);
     char date[11]; 
     char username[50], password[50]; 
     float new_budget;
@@ -88,9 +91,8 @@ int main(int argc, char *argv[]) {
     printf("Your Current Debit Balance: %.2f\n", fabs(debit_balance));
     printf("Your Current Credit Balance: %.2f\n", credit_balance);
 
-//
     printf("Please Enter The Transaction Date (DD/MM/YYYY): ");
-    scanf("%10s", date);
+    sprintf(date, "%02d/%02d/%d", current_date.tm_mday, current_date.tm_mon + 1, current_date.tm_year + 1900);
 
 
     int choice;
