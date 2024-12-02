@@ -119,3 +119,9 @@ void update_budget(const char *username, double new_budget) {
         printf("Budget updated successfully for user: %s.\n", username);
     }
 }
+
+void display_transactions(const char *username){ 
+    char command[256]; 
+    snprintf(command, sizeof(command), "./bash_scripts/display_transactions.sh %s %s", "transaction_logs", username)
+    system(command); 
+} 

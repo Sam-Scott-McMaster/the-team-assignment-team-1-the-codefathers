@@ -8,10 +8,10 @@ folder="$1"
 username="$2"
 file_path="$folder/${username}.txt"
 
-if [ ! -f "$file_path" ]; then
-    echo "0.00"  # Default value if file doesn't exist
-    exit 0
-fi
+#if [ ! -f "$file_path" ]; then
+#    echo "0.00"  # Default value if file doesn't exist
+#    exit 0
+#fi
 
 # Extract the most recent credit balance
 grep "Credit Balance: " "$file_path" | tail -n 1 | awk '{print $NF}'
