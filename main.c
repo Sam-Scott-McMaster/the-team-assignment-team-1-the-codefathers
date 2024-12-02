@@ -24,6 +24,7 @@ int main(int argc, char *argv[]) {
     char username[50], password[50]; 
     float new_budget;
     float budget; 
+    int login_attempts = 0;
 
     printf("\nWelcome To The Budgeting System\n");
 
@@ -35,13 +36,19 @@ int main(int argc, char *argv[]) {
 
     int result = login(username, password); 
 
-    while (result == 0){ 
+    while (result == 0 && login_attempts < 2){ 
         printf("\nEnter Your Username Again: ");
         scanf("%s", username);
         printf("Enter Your Password Again: ");
         scanf("%s", password);
             
         result = login(username, password); 
+        login_attempts++;
+    }
+
+    if (login_attempts == 2 && result == 0){
+        puts("\nYou have reached the maximum number of login attempts. \nThank You For Using The Codefathers Budgeting System!");
+        exit(1);
     }
 
     if (result == 2){

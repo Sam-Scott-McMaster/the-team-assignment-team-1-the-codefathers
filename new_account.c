@@ -1,3 +1,9 @@
+/** 
+ * Contains functions for input validation and processing related to user account
+ * creation, including checking names, email, birthday, username, phone number, password strength, and
+ * password encryption.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -82,12 +88,15 @@ char *scan_birthday() {
 }
 
 char *scan_username(){
-    const char *pattern = "^[a-zA-Z][_0-9a-zA-z]{2,18}[a-zA-Z]$";
+    const char *pattern = "^[a-zA-Z][_0-9a-zA-z]{2,18}[a-zA-Z0-9]$";
     regex_t regex;
     regcomp(&regex, pattern, REG_EXTENDED);
 
     char *username = malloc(20 * sizeof(char));
-    puts("Enter a username between 6-18 characters: ");
+    puts("Enter a username that fit the following criteria: ");
+    puts("    -Between 4-18 characters.");
+    puts("    -Contains only alphabetical, numerical and underscore characters.");
+    puts("    -Does not begin or end with an underscore character.\n");
 
 
     while(scanf("%s", username) != 1 || regexec(&regex, username, 0, NULL, 0 != 0) || find_user_file(username, "history_logs") == 0){
@@ -147,8 +156,6 @@ char *to_hex(long num){
     for (int i=strlen(hex_reverse)-1; i >= 0; i--){
         hex[strlen(hex_reverse)-1-i] = hex_reverse[i];
     }
-
-    strcat(hex, "|");
     
     hex = realloc(hex, sizeof(char)*(strlen(hex)+1));
 
@@ -229,8 +236,6 @@ char *password_processing(char *username) {
         puts("Password too weak. Your password must fulfill the requirements above.");
         while(getchar()!='\n');
     }
-
-    // password = realloc(password, strlen(password)+1);
 
     char *hashed_password = malloc(1000);
     hashed_password =  password_encryption(username, password);
