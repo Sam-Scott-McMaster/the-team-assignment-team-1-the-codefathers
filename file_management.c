@@ -24,15 +24,22 @@ void get_user_password(const char *username, char *password_buffer, size_t buffe
     snprintf(command, sizeof(command), "./bash_scripts/get_password.sh %s", username);
 
     FILE *pipe = popen(command, "r");  // Open a pipe to read the script output
-    password_buffer[strcspn(password_buffer, "\n")] = '\0';
+
+    if (fgets(password_buffer, buffer_size, pipe) != NULL) {
+        // Remove trailing newline character, if any
+        password_buffer[strcspn(password_buffer, "\n")] = '\0';
+    }
 
     pclose(pipe);
 }
 
 // Function to add user information to the history log using a Bash script
 void add_user_info_to_history_log(const char *folder_name, const char *username, const char *name, const char *password, const char *birthday, const char *email, const char *phone_number, double budget) {
+    // Prepare the command string to pass all the arguments to the Bash script
     char command[1024];
+    
     snprintf(command, sizeof(command), "sh -c './bash_scripts/add_user_info.sh \"%s\" \"%s\" \"%s\" \"%s\" \"%s\" \"%s\" \"%.2f\"'", username, name, password, birthday, email, phone_number, budget);
+
     system(command); 
 }
 
@@ -50,7 +57,6 @@ void get_recent_credit_balance(const char *folder_name, const char *username, do
     snprintf(command, sizeof(command), "./bash_scripts/get_recent_credit.sh %s %s", folder_name, username);
 
     FILE *pipe = popen(command, "r");  // Open a pipe to read the script output
-
     fscanf(pipe, "%lf", credit_balance);  // Read the balance
     pclose(pipe);
 }
@@ -75,11 +81,13 @@ void get_budget_from_user_file(const char *username) {
 
     char buffer[128];
     double budget = 0.0;
-    
-    sscanf(buffer, "%lf", &budget);
-    printf("Budget: %.2lf\n", budget);  // Print the budget
+    if (fgets(buffer, sizeof(buffer), pipe) != NULL) {
+        sscanf(buffer, "%lf", &budget);
+        printf("Budget: %.2lf\n", budget);  // Print the budget
+    }
 
-    pclose(pipe); 
+    pclose(pipe);
+    
 }
 
 // Function to update the budget in the user's history log
@@ -89,7 +97,6 @@ void update_budget_file(const char *username, float *new_budget) {
     system(command); 
 }
 
-// Function to display 
 void display_transactions(const char *username){ 
     char command[256]; 
     snprintf(command, sizeof(command), "./bash_scripts/display_transactions.sh %s %s", "transaction_logs", username);
