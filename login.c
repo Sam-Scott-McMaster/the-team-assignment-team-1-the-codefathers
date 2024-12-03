@@ -58,7 +58,7 @@ int login(char *username, const char *password) {
             return 1; // successful login
         }
         else {
-            printf("Invalid username or password\n");
+            printf("Invalid password, try again.\n");
             return 0;
         }
     }
