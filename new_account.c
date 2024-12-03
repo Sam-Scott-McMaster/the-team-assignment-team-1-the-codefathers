@@ -142,8 +142,8 @@ char *int_to_char(long num){
 
 char *to_hex(long num){ 
     
-    char *hex_reverse = malloc(sizeof(char) * 100);
-    char *hex = malloc(sizeof(char) * 100);
+    char *hex_reverse = malloc(sizeof(char) * 1000);
+    char *hex = malloc(sizeof(char) * 1000);
     long rem;
 
     while(num >= 16){

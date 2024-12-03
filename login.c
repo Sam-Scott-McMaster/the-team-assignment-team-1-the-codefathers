@@ -50,8 +50,7 @@ int login(char *username, const char *password) {
     if (result == 0 || result == 2 || result == -1) {
         return result;
     }
-    char *hashed_password = malloc(1000);
-    hashed_password = password_encryption(username, password);
+    char *hashed_password = password_encryption(username, password);
     get_user_password(username, stored_password, 1000);
 
     if (check_credentials(username)) {
