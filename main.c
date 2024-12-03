@@ -29,7 +29,9 @@ int main(int argc, char *argv[]) {
     float budget; 
     int login_attempts = 0;
 
-    printf("\nWelcome To The Budgeting System\n");
+    printf("\n---------------------------------------\n");
+    printf("\nWelcome To The Codefathers Budgeting System!\n");
+    printf("\n---------------------------------------\n");
 
     // Get username and password from user
     printf("\nEnter Your Username: ");
@@ -40,6 +42,7 @@ int main(int argc, char *argv[]) {
     int result = login(username, password); 
 
     while (result == 0 && login_attempts < 2){ 
+        printf("\n---------------------------------------\n");
         printf("\nEnter Your Username Again: ");
         scanf("%s", username);
         printf("Enter Your Password Again: ");
@@ -55,7 +58,8 @@ int main(int argc, char *argv[]) {
     }
 
     if (result == 2){
-        printf("\nCreating New Account: \n");
+        printf("\n---------------------------------------\n");
+        printf("\nCreating New Account: \n\n");
 
         //Get first and last name 
         char *name = check_first_name();
@@ -68,7 +72,8 @@ int main(int argc, char *argv[]) {
         char *birthday = scan_birthday();
         char *phone_num = scan_phone();
         
-        printf("What Is Your Monthly Spending Budget?: \n");
+        printf("\n---------------------------------------\n");
+        printf("\nWhat Is Your Monthly Spending Budget?: ");
         scanf("%f", &budget);
 
         strcpy(username, user);
@@ -77,9 +82,10 @@ int main(int argc, char *argv[]) {
     }
 
     if (result == 1){
-        printf("Login Successful\n");
+        printf("\n---------------------------------------\n");
+        printf("\nLogin Successful\n\n");
     } else if (result == -1){
-        fprintf(stderr, "Error: Something Went Wrong!\n");
+        fprintf(stderr, "\nError: Something Went Wrong!\n\n");
         exit(1); 
     }
 
@@ -91,15 +97,15 @@ int main(int argc, char *argv[]) {
     printf("Your Current Debit Balance: %.2f\n", fabs(debit_balance));
     printf("Your Current Credit Balance: %.2f\n", credit_balance);
 
-    printf("Please Enter The Transaction Date (DD/MM/YYYY): ");
+    //printf("Please Enter The Transaction Date (DD/MM/YYYY): ");
     sprintf(date, "%02d/%02d/%d", current_date.tm_mday, current_date.tm_mon + 1, current_date.tm_year + 1900);
-
 
     int choice;
     char check;
 
     while (1) {
 
+        printf("\n---------------------------------------\n");
         printf("\nPlease Select a Transaction Type:\n");
         printf("    1. Add Money To Debit Account\n");
         printf("    2. Spend Money From Debit Account\n");
@@ -114,56 +120,69 @@ int main(int argc, char *argv[]) {
 
         switch (choice) {
             case 1:
-                printf("Please Enter The Amount You Want To Add: ");
+                printf("\n---------------------------------------\n");
+                printf("\nPlease Enter The Amount You Want To Add: ");
                 scanf("%lf", &amount);
                 add_to_debit(&debit_balance, &credit_balance, amount, "transaction_logs", username, date);
                 break;
             case 2:
-                printf("Please Enter The Amount You Want To Spend: ");
+                printf("\n---------------------------------------\n");
+                printf("\nPlease Enter The Amount You Want To Spend: ");
                 scanf("%lf", &amount);
                 spend_money_debit(&debit_balance, &credit_balance, amount, "transaction_logs", username, date);
                 break;
             case 3:
+                printf("\n---------------------------------------\n");
                 check_balance_debit(debit_balance);
                 break;
             case 4:
-                printf("Please Enter The Amount You Want To Spend: ");
+                printf("\n---------------------------------------\n");
+                printf("\nPlease Enter The Amount You Want To Spend: ");
                 scanf("%lf", &amount);
                 spend_money_credit(&credit_balance, &debit_balance, amount, "transaction_logs", username, date);
                 break;
             case 5:
-                printf("Please Enter The Amount You Want To Pay Off: ");
+                printf("\n---------------------------------------\n");
+                printf("\nPlease Enter The Amount You Want To Pay Off: ");
                 scanf("%lf", &amount);
                 pay_off_credit(&debit_balance, &credit_balance, amount, "transaction_logs", username, date);
                 break;
             case 6:
+                printf("\n---------------------------------------\n");
                 check_balance_credit(credit_balance);
                 break;
             case 7:
+                printf("\n---------------------------------------\n\n");
                 display_transactions(username);
                 break;
             case 8:
-                printf("Please Enter The New Budget: ");
+                printf("\n---------------------------------------\n");
+                printf("\nPlease Enter The New Budget: ");
                 scanf("%f", &new_budget);
                 update_budget(username, &new_budget);
                 break;
             case 9:
+                printf("\n---------------------------------------\n\n");
                 returnBudget(username);
                 break;
             default:
-                printf("Invalid Option.\n");
+                printf("\n---------------------------------------\n");
+                printf("\nInvalid Option.\n");
         }
 
         while(getchar() != '\n');
-        
-        printf("\nWould You Like To Select Another Transaction? (Y/N)\n");
+
+        printf("\n---------------------------------------\n");        
+        printf("\nEnter Y To Select Another Transaction or Press Any Other Key To Exit: ");
         scanf("%c", &check);
         if (check != 'Y' && check != 'y') {
             break;
         }
     }
 
+    printf("\n---------------------------------------\n");
     printf("\nThank You For Using The Codefathers Budgeting System!\n");
+    printf("\n---------------------------------------\n");
 
     return 0;
 }

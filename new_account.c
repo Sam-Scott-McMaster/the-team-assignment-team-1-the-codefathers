@@ -19,10 +19,10 @@ char *check_first_name() {
     regcomp(&regex, pattern, REG_EXTENDED);
 
     char *first_name = malloc(20 * sizeof(char));
-    puts("Please enter your first name: ");
+    printf("Please Enter Your First Name: ");
 
     while (scanf("%20s", first_name) !=1 || regexec(&regex, first_name, 0, NULL, 0) != 0) {
-        puts("Your first name cannot contain non-alphabetical characters");
+        puts("Your First Name Cannot Contain Non-alphabetical Characters");
         while(getchar()!='\n');
     }
 
@@ -36,10 +36,10 @@ char *check_last_name() {
     regcomp(&regex, pattern, REG_EXTENDED);
 
     char *last_name = malloc(20 * sizeof(char));
-    puts("Please enter your last name: ");
+    printf("Please Enter Your Last Name: ");
 
     while (scanf("%20s", last_name) != 1 || regexec(&regex, last_name, 0, NULL, 0) != 0) {
-        puts("Your last name cannot contain non-alphabetical characters");
+        puts("Your Last Name Cannot Contain Non-alphabetical Characters");
         while(getchar()!='\n');
     }
 
@@ -52,12 +52,10 @@ char *check_email() {
     regcomp(&regex, pattern, REG_EXTENDED);
 
     char *email = malloc(50 * sizeof(char));
-    puts("Please enter your email: ");
+    printf("Please Enter Your Email: ");
 
     while (scanf("%50s", email) !=1 || regexec(&regex, email, 0, NULL, 0) != 0) {
-        puts("Please enter a valid email.");
-        while(getchar()!='n');
-
+        printf("Please Enter a Valid Email: ");
     }
 
     return email;
@@ -74,10 +72,10 @@ char *scan_birthday() {
     Date date;
     char *birthday = malloc(11*sizeof(char));
 
-    printf("Enter your birthday (DD/MM/YYYY): ");
+    printf("Enter Your Birthday (DD/MM/YYYY): ");
 
     while (scanf("%d/%d/%d", &date.day, &date.month, &date.year) != 3 || date.day < 1 || date.day > 31 || date.month < 1 || date.month > 12 || date.year < 1900 || date.month > 2100) {
-        printf("Invalid input. Please enter your birthday in the format DD/MM/YYYY: ");
+        printf("Invalid Input. Please Enter Your Birthday In The Format DD/MM/YYYY: ");
         // Clearing input buffer
         while (getchar() != '\n');
     }
@@ -93,17 +91,17 @@ char *scan_username(){
     regcomp(&regex, pattern, REG_EXTENDED);
 
     char *username = malloc(20 * sizeof(char));
-    puts("Enter a username that fit the following criteria: ");
-    puts("    -Between 4-18 characters.");
-    puts("    -Contains only alphabetical, numerical and underscore characters.");
-    puts("    -Does not begin or end with an underscore character.\n");
+    puts("\nEnter a Username That Fits The Following Criteria: ");
+    puts("    -Between 4-18 Characters.");
+    puts("    -Contains Only Alphabetical, Numerical And Underscore Characters.");
+    puts("    -Does Not Begin or End With an Underscore Character.\n");
 
 
     while(scanf("%s", username) != 1 || regexec(&regex, username, 0, NULL, 0 != 0) || find_user_file(username, "history_logs") == 0){
         if (find_user_file(username, "history_logs") == 0){
-            puts("This username already exists. Please choose a unique username.");
+            printf("This Username Already Exists. Please Choose a Unique Username: ");
         } else {
-            puts("Username invalid. Kindly enter one in the correct format:");
+            printf("\nUsername Invalid. Kindly Enter One In The Correct Format: ");
         }
         while(getchar()!='\n');
     }
@@ -117,10 +115,10 @@ char *scan_phone(){
     char *pattern = "[0-9]{10}";
     regcomp(&regex, pattern, REG_EXTENDED);
 
-    puts("Enter phone number in the format \"DDDDDDDDDD\": ");
+    printf("Enter Phone Number in The Format \"DDDDDDDDDD\": ");
 
     while(scanf("%10s", phone_num) != 1 || regexec(&regex, phone_num, 0, NULL, 0) != 0){
-        puts("Invalid phone number. Please enter in the format \"DDDDDDDDDD\" where D is a digit: ");
+        printf("Invalid Phone Number. Please Enter In The Format \"DDDDDDDDDD\" Where D Is a Digit: ");
         while(getchar()!='\n');
     }
 
@@ -218,22 +216,22 @@ char *password_processing(char *username) {
     if (ret) {
         char errbuf[100];
         regerror(ret, &regex, errbuf, sizeof(errbuf));
-        fprintf(stderr, "Regex compilation failed: %s\n", errbuf);
+        fprintf(stderr, "Regex Compilation Failed: %s\n", errbuf);
         free(password);  // Free the allocated memory before exiting
         exit(1);  // Or handle appropriately
     }
 
-    puts("Password format:");
-    puts("- At least 1 upper case letter");
-    puts("- At least 1 lower case letter");
-    puts("- At least 1 numerical character");
-    puts("- At least 1 special character from this selection: .@#$!*?&():;");
+    puts("\nPassword Format:");
+    puts("- At Least 1 Upper Case Letter");
+    puts("- At Least 1 Lower Case Letter");
+    puts("- At Least 1 Numerical Character");
+    puts("- At Least 1 Special Character From This Selection: .@#$!*?&():;");
     puts("");
-    puts("Create a password containing 8-32 letters: ");
+    printf("Create a password containing 8-32 letters: ");
 
     while(scanf("%s", password) != 1 || regexec(&regex, password, 0, NULL, 0) != 0 || check_valid_password(password) == 0) {
 
-        puts("Password too weak. Your password must fulfill the requirements above.");
+        printf("Password Too weak. Your Password Must Fulfill The Requirements Above: ");
         while(getchar()!='\n');
     }
 

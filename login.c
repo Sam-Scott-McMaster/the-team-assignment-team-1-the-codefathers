@@ -10,9 +10,10 @@ int check_username(const char *username) {
     
     if (find_user_file(username, "history_logs") != 0) {
         int choice;
-        printf("Username not found. What would you like to do?\n");
-        printf("1. Re-enter the username\n");
-        printf("2. Create a new account\n");
+        printf("\n---------------------------------------\n\n");
+        printf("Username Not Found. What Would You Like To Do?\n");
+        printf("1. Re-enter The Username\n");
+        printf("2. Create a New Account\n");
         scanf("%d", &choice);
 
         if (choice == 1) {
@@ -22,7 +23,7 @@ int check_username(const char *username) {
             return 2; //indicates that user wants to create a new account
         }
         else {
-            printf("Invalid choice. Please try again.\n");
+            printf("Invalid Choice. Please Try Again.\n");
             return -1; //invalid choice; retry
         }
     }
@@ -34,7 +35,7 @@ int check_username(const char *username) {
 int check_credentials(const char *username) {
     //checks if file is in the files
     if (find_user_file(username, "history_logs") != 0) {
-        printf("Error: Credentials file for user '%s' not found.\n", username);
+        printf("Error: Credentials File For User '%s' Not Found.\n", username);
         return 0; 
     }
     return 1;
@@ -58,12 +59,12 @@ int login(char *username, const char *password) {
             return 1; // successful login
         }
         else {
-            printf("Invalid password, try again.\n");
+            printf("Invalid Password, Try Again.\n");
             return 0;
         }
     }
     else {
-        printf("Account not found. Please create a new account.\n");
+        printf("Account Not Found. Please Create a New Account.\n");
         return 2;
     }
 }

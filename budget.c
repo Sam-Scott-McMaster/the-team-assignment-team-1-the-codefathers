@@ -10,6 +10,6 @@ void update_budget(const char *username, float *new_budget){
     if (*new_budget > 0){ 
         update_budget_file(username, new_budget);
     } else {
-        printf("Budget cannot be 0 or less.");
+        printf("Budget Cannot Be 0 or Less.");
     }
 }

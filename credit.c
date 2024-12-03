@@ -10,7 +10,7 @@ void spend_money_credit(double *credit_balance, double *debit_balance, double am
     printf("Your Credit Limit is 1000.00\n");
     if (*credit_balance <= 1000.00) {
         *credit_balance += amount;
-        add_transaction_to_user_file(folder_name, username, "Credit", amount, debit_balance, credit_balance, date, "Money spent with credit.");
+        add_transaction_to_user_file(folder_name, username, "Credit", amount, debit_balance, credit_balance, date, "Money Spent With Credit.");
         //add budget
         printf("Transaction Date: %s\n", date);
         printf("You Spent %.2f.\nYour New Credit Balance is %.2f.\n", amount, *credit_balance);
@@ -33,7 +33,7 @@ void pay_off_credit(double *debit_balance, double *credit_balance, double amount
             *debit_balance -= amount;
             *credit_balance -= amount;
             printf("Transaction Date: %s\n", date);
-            printf("Credit Debt Paid Off is %.2f.\nYour New Debit Balance is %.2f.\nYour Remaining Credit Balance is %.2f.\n", amount, *debit_balance, *credit_balance);
+            printf("Credit Debt Paid Off is %.2f.\nYour New Debit Balance is %.2f.\nYour Credit Balance is %.2f.\n", amount, *debit_balance, *credit_balance);
         }
         add_transaction_to_user_file(folder_name, username, "Credit", amount, debit_balance, credit_balance, date, "Paid off Credit Balance.");
     } else {
@@ -44,5 +44,5 @@ void pay_off_credit(double *debit_balance, double *credit_balance, double amount
 
 //function to check balance for credit card
 void check_balance_credit(double credit_balance) {
-    printf("Your Current Credit Balance is %.2f.\n", credit_balance);
+    printf("\nYour Current Credit Balance is %.2f.\n", credit_balance);
 }

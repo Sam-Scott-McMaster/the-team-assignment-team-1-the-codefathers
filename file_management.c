@@ -25,7 +25,7 @@ void get_user_password(const char *username, char *password_buffer, size_t buffe
 
     FILE *pipe = popen(command, "r");  // Open a pipe to read the script output
     if (!pipe) {
-        printf("Error: Could not retrieve password for user: %s\n", username);
+        printf("Error: Could Not Retrieve Password For User: %s\n", username);
         return;
     }
 
@@ -33,7 +33,7 @@ void get_user_password(const char *username, char *password_buffer, size_t buffe
         // Remove trailing newline character, if any
         password_buffer[strcspn(password_buffer, "\n")] = '\0';
     } else {
-        printf("Error: No password retrieved for user: %s\n", username);
+        printf("Error: No Password Retrieved For User: %s\n", username);
     }
 
     pclose(pipe);
@@ -66,7 +66,7 @@ void get_recent_credit_balance(const char *folder_name, const char *username, do
 
     FILE *pipe = popen(command, "r");  // Open a pipe to read the script output
     if (!pipe) {
-        printf("Error: Could not retrieve credit balance.\n");
+        printf("Error: Could Not retrieve Credit Balance.\n");
         return;
     }
 
@@ -81,7 +81,7 @@ void get_recent_debit_balance(const char *folder_name, const char *username, dou
 
     FILE *pipe = popen(command, "r");  // Open a pipe to read the script output
     if (!pipe) {
-        printf("Error: Could not retrieve debit balance.\n");
+        printf("Error: Could Not Retrieve Debit Balance.\n");
         return;
     }
 
@@ -96,7 +96,7 @@ void get_budget_from_user_file(const char *username) {
 
     FILE *pipe = popen(command, "r");  // Open a pipe to read the script output
     if (!pipe) {
-        printf("Error: Could not retrieve budget.\n");
+        printf("Error: Could Not Retrieve Budget.\n");
         return;
     }
 
@@ -106,7 +106,7 @@ void get_budget_from_user_file(const char *username) {
         sscanf(buffer, "%lf", &budget);
         printf("Budget: %.2lf\n", budget);  // Print the budget
     } else {
-        printf("Error reading budget.\n");
+        printf("Error Reading Budget.\n");
     }
 
     pclose(pipe);
