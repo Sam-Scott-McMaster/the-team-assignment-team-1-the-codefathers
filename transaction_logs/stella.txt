@@ -1,0 +1,7 @@
+Transaction Type: Debit
+Debit Balance: 10000.00
+Credit Balance: 0.00
+Amount: 10000.00
+Date: 2034
+Description: Money deposited to debit account.
+
