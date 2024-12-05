@@ -21,9 +21,13 @@ int main(int argc, char *argv[]) {
     double credit_balance;
     double credit_debt;
     double amount;
-    time_t t = time(NULL);
-    struct tm current_date = *localtime(&t);
-    char date[11]; 
+    typedef struct {
+        int day;
+        int month;
+        int year;
+    } Date;
+    Date date;
+    char transactionDate[11];
     char username[50], password[50]; 
     float new_budget;
     float budget; 
@@ -97,8 +101,14 @@ int main(int argc, char *argv[]) {
     printf("Your Current Debit Balance: %.2f\n", fabs(debit_balance));
     printf("Your Current Credit Balance: %.2f\n", credit_balance);
 
-    //printf("Please Enter The Transaction Date (DD/MM/YYYY): ");
-    sprintf(date, "%02d/%02d/%d", current_date.tm_mday, current_date.tm_mon + 1, current_date.tm_year + 1900);
+    printf("Please Enter The Transaction Date (DD/MM/YYYY): ");
+    while (scanf("%d/%d/%d", &date.day, &date.month, &date.year) != 3 || date.day < 1 || date.day > 31 || date.month < 1 || date.month > 12 || date.year < 1900 || date.month > 2100) {
+        printf("Invalid Input. Please Enter Your Transaction Date In The Format DD/MM/YYYY: ");
+        // Clearing input buffer
+        while (getchar() != '\n');
+    }
+
+    sprintf(transactionDate, "%02d/%02d/%d", date.day, date.month, date.year);
 
     int choice;
     char check;
@@ -123,13 +133,13 @@ int main(int argc, char *argv[]) {
                 printf("\n---------------------------------------\n");
                 printf("\nPlease Enter The Amount You Want To Add: ");
                 scanf("%lf", &amount);
-                add_to_debit(&debit_balance, &credit_balance, amount, "transaction_logs", username, date);
+                add_to_debit(&debit_balance, &credit_balance, amount, "transaction_logs", username, transactionDate);
                 break;
             case 2:
                 printf("\n---------------------------------------\n");
                 printf("\nPlease Enter The Amount You Want To Spend: ");
                 scanf("%lf", &amount);
-                spend_money_debit(&debit_balance, &credit_balance, amount, "transaction_logs", username, date);
+                spend_money_debit(&debit_balance, &credit_balance, amount, "transaction_logs", username, transactionDate);
                 break;
             case 3:
                 printf("\n---------------------------------------\n");
@@ -139,13 +149,13 @@ int main(int argc, char *argv[]) {
                 printf("\n---------------------------------------\n");
                 printf("\nPlease Enter The Amount You Want To Spend: ");
                 scanf("%lf", &amount);
-                spend_money_credit(&credit_balance, &debit_balance, amount, "transaction_logs", username, date);
+                spend_money_credit(&credit_balance, &debit_balance, amount, "transaction_logs", username, transactionDate);
                 break;
             case 5:
                 printf("\n---------------------------------------\n");
                 printf("\nPlease Enter The Amount You Want To Pay Off: ");
                 scanf("%lf", &amount);
-                pay_off_credit(&debit_balance, &credit_balance, amount, "transaction_logs", username, date);
+                pay_off_credit(&debit_balance, &credit_balance, amount, "transaction_logs", username, transactionDate);
                 break;
             case 6:
                 printf("\n---------------------------------------\n");
