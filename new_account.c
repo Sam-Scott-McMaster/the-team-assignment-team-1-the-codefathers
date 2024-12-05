@@ -226,27 +226,6 @@ char *to_hex(long num){
     return hex;
 } 
 
-int to_int(char *hex){
-/* Name: to_int
- * Parameters:
- *      - hex (char*): Pointer to a string containing a hexadecimal number.
- * Description: Converts a string representation of a hexadecimal number to its integer value.
- * Return Value: Integer representation of the hexadecimal input.
- */
-    int value = 0;
-    int hex_digit;
-
-    for (int i = strlen(hex)-1; i>=0; i--){
-
-        if (hex[i] <= '9'){
-            hex_digit = hex[i] - 48;
-        } else {
-            hex_digit = hex[i] - 55;
-        }
-        value += hex_digit*pow(16, strlen(hex)-1-i);
-    }
-    return value;
-}
 
 char *password_encryption(const char *username, const char* password) {
 /* Name: password_encryption
