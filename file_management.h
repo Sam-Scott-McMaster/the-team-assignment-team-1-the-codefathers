@@ -1,3 +1,17 @@
+ /* 
+ * This header file defines functions related to user file management, including operations such as:
+ * - Creating user history files.
+ * - Retrieving and updating user information (password, budget, transactions).
+ * - Managing transactions (adding and displaying).
+ * - Accessing recent balance information.
+ * 
+ * The functions rely on Bash scripts for interacting with user files and updating or retrieving data.
+ * 
+ */
+
+
+#ifndef FILE_MANAGEMENT_H
+#define FILE_MANAGEMENT_H
 
 void create_user_history_file(const char *username); 
 int find_user_file(const char *username, const char *folder_name); 
@@ -9,3 +23,5 @@ void get_recent_debit_balance(const char *folder_name, const char *username, dou
 void get_budget_from_user_file(const char *username); 
 void update_budget_file(const char *username, float *new_budget);
 void display_transactions(const char *username);
+
+#endif
