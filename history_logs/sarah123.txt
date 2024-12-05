@@ -1,7 +1,0 @@
-Name: Sarah Brown
-Password: 2F52C42D62D62D22CA2D72C12E5294297296
-Birthday: 09/09/2005
-Email: sarahbrown@gmail.com
-Phone Number: 4168881122
-Budget: 300.00
-------------------------
