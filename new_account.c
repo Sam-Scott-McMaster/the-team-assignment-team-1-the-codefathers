@@ -290,13 +290,6 @@ char *password_processing(char *username) {
     char *pattern = "^[A-Za-z0-9.@#$!*?&():;]{8,32}$";
 
     int ret = regcomp(&regex, pattern, REG_EXTENDED);
-    if (ret) {
-        char errbuf[100];
-        regerror(ret, &regex, errbuf, sizeof(errbuf));
-        fprintf(stderr, "Regex Compilation Failed: %s\n", errbuf);
-        free(password);  // Free the allocated memory before exiting
-        exit(1);  // Or handle appropriately
-    }
 
     puts("\nPassword Format:");
     puts("- At Least 1 Upper Case Letter");
