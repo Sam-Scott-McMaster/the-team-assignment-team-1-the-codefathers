@@ -1,3 +1,19 @@
+/*
+ * Author: Leyla Kutlu
+ * 
+ * Description:
+ * Contains functions to handle transactions related to credit and debit balance.
+ * 
+ * Main Features: 
+ *  - spending money with a credit card
+ *  - paying off the credit balance with a debit card
+ *  - checking credit card balance
+ * 
+ * Usage:
+ * Each function can be called individually to validate or process a specific user account field, 
+ * with memory management handled through dynamic allocations.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -5,7 +21,26 @@
 #include "debit.h"
 #include "file_management.h"
 
-//function to spend money with credit account
+/* spend_money_credit
+ * 
+ * Parameters:
+ *  - credit_balance: pointer to user's current credit balance
+ *  - debit_balance: pointer to the user's current debit balance
+ *  - amount: the amount to be spent using the credit account
+ *  - folder_name: the folder where the user's transaction records are stored
+ *  - username: the user's username for transaction record
+ *  - date: the date of the transaction
+ *
+ * Description:
+ * Allows user to spend money using their credit account.
+ * The credit limit is 1000 cad as this is a simple budgeting system which target audience is student.
+ * If the user did not exceed their credit limit, the credit balance is updated accordingly.
+ * A transaction record is added to the user's file.
+ * If the credit limit is reached, a corresponding message is displayed.
+ * 
+ * Return values:
+ *  - None
+ */
 void spend_money_credit(double *credit_balance, double *debit_balance, double amount, const char *folder_name, const char *username, const char *date) {
     printf("Your Credit Limit is 1000.00\n");
     if (*credit_balance <= 1000.00) {
@@ -22,7 +57,25 @@ void spend_money_credit(double *credit_balance, double *debit_balance, double am
     }
 }
 
-//function to pay off credit card balance with debit card
+/* pay_off_credit
+ * 
+ * Parameters:
+ *  - credit_balance: pointer to user's current credit balance
+ *  - debit_balance: pointer to the user's current debit balance
+ *  - amount: the amount to be pay off the credit balance using the debit account
+ *  - folder_name: the folder where the user's transaction records are stored
+ *  - username: the user's username for transaction record
+ *  - date: the date of the transaction
+ *
+ * Description:
+ * Allows user to pay off their credit balance.
+ * If the user has sufficient funds in their debit account, the credit balance reduced.
+ * A transaction record is added to the user's file.
+ * If the cdebit balance is insufficient or other conditions are met, a corresponding message is displayed.
+ * 
+ * Return values:
+ *  - None
+ */
 void pay_off_credit(double *debit_balance, double *credit_balance, double amount, const char *folder_name, const char *username, const char *date) {
     if (amount <= *debit_balance) {
         if (*credit_balance == 0) {
@@ -45,7 +98,18 @@ void pay_off_credit(double *debit_balance, double *credit_balance, double amount
     } 
 }
 
-//function to check balance for credit card
+/* check_balance_credit
+ * 
+ * Parameters:
+ *  - credit_balance: pointer to user's current credit balance
+ *
+ * Description:
+ * Allows user to display their credit balance.
+ * If the balance is negative, the absolute is displayed
+ * 
+ * Return values:
+ *  - None
+ */
 void check_balance_credit(double credit_balance) {
     printf("\nYour Current Credit Balance is %.2f.\n", fabs(credit_balance));
 }
