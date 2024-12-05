@@ -66,7 +66,7 @@ Follow the steps below to install and run the budgeting system locally:
 - **Prompt for Username:**
     - The user is prompted to enter their username.
     - The system checks if the entered username exists in the user database.
-- **If Username Exits:**
+- **If Username Exist:**
     - The user is prompted to enter their password.
     - If the password is correct, the user is logged in and the system proceeds to the main menu.
     - If the password is incorrect, the user is prompted to try again.
