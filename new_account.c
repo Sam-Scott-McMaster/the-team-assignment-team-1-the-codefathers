@@ -1,4 +1,4 @@
-/** 
+/** Authors: Stella Liu and Rachel Nyonje
  * Contains functions for input validation and processing related to user account
  * creation, including checking names, email, birthday, username, phone number, password strength, and
  * password encryption.
@@ -14,6 +14,12 @@
 #include "file_management.h"
 
 char *check_first_name() {
+/* Name: check_first_name
+ * Parameters: None
+ * Description: Prompts the user to input their first name and validates it against a regex pattern 
+ *              to ensure it contains only alphabetical characters. Repeats prompt until valid input is given.
+ * Return Value: Pointer to a dynamically allocated string containing the validated first name.
+ */
     const char *pattern = "^[A-Za-z]+$";
     regex_t regex;
     regcomp(&regex, pattern, REG_EXTENDED);
@@ -31,6 +37,12 @@ char *check_first_name() {
 }
 
 char *check_last_name() {
+/* Name: check_last_name
+ * Parameters: None
+ * Description: Prompts the user to input their last name and validates it against a regex pattern 
+ *              to ensure it contains only alphabetical characters. Repeats prompt until valid input is given.
+ * Return Value: Pointer to a dynamically allocated string containing the validated last name.
+ */
     const char *pattern = "^[A-Za-z]+$";
     regex_t regex;
     regcomp(&regex, pattern, REG_EXTENDED);
@@ -47,6 +59,12 @@ char *check_last_name() {
 }
 
 char *check_email() {
+/* Name: check_email
+ * Parameters: None
+ * Description: Prompts the user to input their email and validates it against a regex pattern 
+ *              to ensure it follows a standard email format (e.g., username@domain.com or .ca).
+ * Return Value: Pointer to a dynamically allocated string containing the validated email.
+ */
     const char *pattern = "^[A-Za-z0-9]+[@][a-z]+[\\.](ca|com)$";
     regex_t regex;
     regcomp(&regex, pattern, REG_EXTENDED);
@@ -69,6 +87,12 @@ typedef struct {
 } Date;
 
 char *scan_birthday() {
+/* Name: scan_birthday
+ * Parameters: None
+ * Description: Prompts the user to input their birthday in the format DD/MM/YYYY and validates the input 
+ *              to ensure the date is valid. Repeats prompt until valid input is given.
+ * Return Value: Pointer to a dynamically allocated string containing the formatted birthday.
+ */
     Date date;
     char *birthday = malloc(11*sizeof(char));
 
@@ -86,6 +110,15 @@ char *scan_birthday() {
 }
 
 char *scan_username(){
+/* Name: scan_username
+ * Parameters: None
+ * Description: Prompts the user to input a username and validates it against a regex pattern to ensure it:
+ *              - Contains 4-18 characters.
+ *              - Contains only alphanumeric and underscore characters.
+ *              - Does not start or end with an underscore.
+ *              Ensures the username is unique by checking against existing user files.
+ * Return Value: Pointer to a dynamically allocated string containing the validated username.
+ */
     const char *pattern = "^[a-zA-Z][_0-9a-zA-z]{2,18}[a-zA-Z0-9]$";
     regex_t regex;
     regcomp(&regex, pattern, REG_EXTENDED);
@@ -110,6 +143,12 @@ char *scan_username(){
 }
 
 char *scan_phone(){
+/* Name: scan_phone
+ * Parameters: None
+ * Description: Prompts the user to input a 10-digit phone number and validates it against a regex pattern 
+ *              to ensure it contains only numerical characters. Repeats prompt until valid input is given.
+ * Return Value: Pointer to a dynamically allocated string containing the validated phone number.
+ */
     char *phone_num = malloc(11*sizeof(char));
     regex_t regex;
     char *pattern = "[0-9]{10}";
@@ -126,7 +165,12 @@ char *scan_phone(){
 }
 
 char *int_to_char(long num){
-// Function to convert a number between 0-36 into its character representation
+/* Name: int_to_char
+ * Parameters:
+ *      - num (long): A number between 0-36 to be converted to its character representation.
+ * Description: Converts a number (0-36) to its character representation (0-9 as digits, 10-36 as uppercase letters).
+ * Return Value: Pointer to a dynamically allocated string containing the character representation.
+ */
     char c;
     if (num < 10){ // For 0-9, convert to ASCII digits
         c = (char) num + 48;
@@ -139,7 +183,13 @@ char *int_to_char(long num){
 }
 
 char *to_hex(long num){ 
-    
+/* Name: to_hex
+ * Parameters:
+ *      - num (long): A number to be converted to its hexadecimal representation.
+ * Description: Converts a given number to its hexadecimal representation by repeatedly dividing by 16 
+ *              and appending the remainder in reverse order.
+ * Return Value: Pointer to a dynamically allocated string containing the hexadecimal representation.
+ */   
     char *hex_reverse = malloc(sizeof(char) * 1000);
     char *hex = malloc(sizeof(char) * 1000);
     long rem;
@@ -161,6 +211,12 @@ char *to_hex(long num){
 } 
 
 int to_int(char *hex){
+/* Name: to_int
+ * Parameters:
+ *      - hex (char*): Pointer to a string containing a hexadecimal number.
+ * Description: Converts a string representation of a hexadecimal number to its integer value.
+ * Return Value: Integer representation of the hexadecimal input.
+ */
     int value = 0;
     int hex_digit;
 
@@ -177,6 +233,14 @@ int to_int(char *hex){
 }
 
 char *password_encryption(const char *username, const char* password) {
+/* Name: password_encryption
+ * Parameters:
+ *      - username (const char*): The username used as the key for encryption.
+ *      - password (const char*): The plaintext password to be encrypted.
+ * Description: Encrypts the password using a simple XOR operation with a key derived from the username
+ *              and converts the result into a hexadecimal string.
+ * Return Value: Pointer to a dynamically allocated string containing the encrypted password.
+ */
     int key = 0;
 
     for (int i=0; i<strlen(username); i++){
@@ -192,6 +256,13 @@ char *password_encryption(const char *username, const char* password) {
 }
 
 int check_valid_password(char *password) {
+/* Name: check_valid_password
+ * Parameters:
+ *      - password (char*): Pointer to the string containing the password to be validated.
+ * Description: Checks if a password meets complexity requirements: at least one uppercase letter, 
+ *              one lowercase letter, one digit, and one special character.
+ * Return Value: Integer value (1 for valid, 0 for invalid).
+ */
     int has_lower = 0, has_upper = 0, has_digit = 0, has_special = 0;
     char *special_char = ".@#$!*?&():;";
     
@@ -208,6 +279,13 @@ int check_valid_password(char *password) {
 }
 
 char *password_processing(char *username) {
+/* Name: password_processing
+ * Parameters:
+ *      - username (char*): The username associated with the password.
+ * Description: Prompts the user to create a password that meets complexity requirements and validates it.
+ *              Encrypts the password using the username as the encryption key.
+ * Return Value: Pointer to a dynamically allocated string containing the encrypted password.
+ */
     char *password = malloc(32*sizeof(char));
     regex_t regex;
     char *pattern = "^[A-Za-z0-9.@#$!*?&():;]{8,32}$";
