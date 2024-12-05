@@ -1,0 +1,67 @@
+
+---------------------------------------
+
+Welcome To The Codefathers Budgeting System!
+
+---------------------------------------
+
+Enter Your Username: Enter Your Password: 
+---------------------------------------
+
+Login Successful
+
+Your Current Debit Balance: 70.00
+Your Current Credit Balance: 0.00
+Please Enter The Transaction Date (DD/MM/YYYY): 
+---------------------------------------
+
+Please Select a Transaction Type:
+    1. Add Money To Debit Account
+    2. Spend Money From Debit Account
+    3. Check Debit Account Balance
+    4. Spend Money From Credit Account
+    5. Pay Off Credit Debt
+    6. Check Credit Account Balance
+    7. Display Transaction History
+    8. Set New Budget
+    9. Display Budget
+
+---------------------------------------
+
+Please Enter The Amount You Want To Spend: Your Credit Limit is 1000.00
+Transaction Date: 05/12/2024
+You Spent 10.00.
+Your New Credit Balance is 10.00.
+
+---------------------------------------
+
+Enter Y To Select Another Transaction or Press Any Other Key To Exit: 
+---------------------------------------
+
+Please Select a Transaction Type:
+    1. Add Money To Debit Account
+    2. Spend Money From Debit Account
+    3. Check Debit Account Balance
+    4. Spend Money From Credit Account
+    5. Pay Off Credit Debt
+    6. Check Credit Account Balance
+    7. Display Transaction History
+    8. Set New Budget
+    9. Display Budget
+
+---------------------------------------
+
+Please Enter The Amount You Want To Pay Off: Amount You Want To Pay Off is Greater Than The Credit Balance To Pay
+Transaction Date: 05/12/2024
+Credit Balance Paid Off is 0.00.
+Your Debit Balance is 70.00.
+Your Credit Balance is 10.00.
+
+---------------------------------------
+
+Enter Y To Select Another Transaction or Press Any Other Key To Exit: 
+---------------------------------------
+
+Thank You For Using The Codefathers Budgeting System!
+
+---------------------------------------

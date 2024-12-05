@@ -45,7 +45,7 @@
  */
 void spend_money_credit(double *credit_balance, double *debit_balance, double amount, const char *folder_name, const char *username, const char *date) {
     printf("Your Credit Limit is 1000.00\n");
-    if (*credit_balance <= 1000.00) {
+    if (*credit_balance + amount <= 1000.00) {
         *credit_balance += amount;
         add_transaction_to_user_file(folder_name, username, "Credit", amount, debit_balance, credit_balance, date, "Money Spent With Credit.");
         //add budget
@@ -55,7 +55,7 @@ void spend_money_credit(double *credit_balance, double *debit_balance, double am
     } else {
         add_transaction_to_user_file(folder_name, username, "Credit", amount, debit_balance, credit_balance, date, "Credit Limit Reached.");
         printf("Transaction Date: %s\n", date);
-        printf("You Spent %.2f.\nYou Reached Your Credit Limit", amount);
+        printf("You Reached Your Credit Limit");
     }
 }
 

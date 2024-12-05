@@ -8,31 +8,9 @@ Welcome To The Codefathers Budgeting System!
 Enter Your Username: Enter Your Password: 
 ---------------------------------------
 
-Username Not Found. What Would You Like To Do?
-1. Re-enter The Username
-2. Create a New Account
+Login Successful
 
----------------------------------------
-
-Creating New Account: 
-
-Please Enter Your First Name: Please Enter Your Last Name: Please Enter Your Email: 
-Enter a Username That Fits The Following Criteria: 
-    -Between 4-18 Characters.
-    -Contains Only Alphabetical, Numerical And Underscore Characters.
-    -Does Not Begin or End With an Underscore Character.
-
-This Username Already Exists. Please Choose a Unique Username: 
-Password Format:
-- At Least 1 Upper Case Letter
-- At Least 1 Lower Case Letter
-- At Least 1 Numerical Character
-- At Least 1 Special Character From This Selection: .@#$!*?&():;
-
-Create a password containing 8-32 letters: Enter Your Birthday (DD/MM/YYYY): Enter Phone Number in The Format "DDDDDDDDDD": 
----------------------------------------
-
-What Is Your Monthly Spending Budget?: Your Current Debit Balance: 0.00
+Your Current Debit Balance: 70.00
 Your Current Credit Balance: 0.00
 Please Enter The Transaction Date (DD/MM/YYYY): 
 ---------------------------------------
@@ -50,7 +28,8 @@ Please Select a Transaction Type:
 
 ---------------------------------------
 
-Budget: 300.00
+Please Enter The Amount You Want To Spend: Insufficient Balance.
+Your Current Debit Balance is 70.00.
 
 ---------------------------------------
 

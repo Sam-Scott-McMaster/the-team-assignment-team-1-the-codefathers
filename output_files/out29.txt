@@ -1,0 +1,14 @@
+
+---------------------------------------
+
+Welcome To The Codefathers Budgeting System!
+
+---------------------------------------
+
+Enter Your Username: Enter Your Password: 
+---------------------------------------
+
+Username Not Found. What Would You Like To Do?
+1. Re-enter The Username
+2. Create a New Account
+Invalid Choice. Please Try Again.

@@ -109,10 +109,18 @@ test './budget_test' 'input_files/inp22.txt' 'output_files/out22.txt' 'output_fi
 test './budget_test' 'input_files/inp23.txt' 'output_files/out23.txt' 'output_files/empty.txt'
 test './budget_test' 'input_files/inp24.txt' 'output_files/out24.txt' 'output_files/empty.txt'
 test './budget_test' 'input_files/inp25.txt' 'output_files/out25.txt' 'output_files/empty.txt'
+test './budget_test' 'input_files/inp26.txt' 'output_files/out26.txt' 'output_files/empty.txt'
+test './budget_test' 'input_files/inp27.txt' 'output_files/out27.txt' 'output_files/empty.txt'
+test './budget_test' 'input_files/inp28.txt' 'output_files/out28.txt' 'output_files/empty.txt'
+test './budget_test' 'input_files/inp29.txt' 'output_files/out29.txt' 'output_files/error.txt'
+test './budget_test' 'input_files/inp30.txt' 'output_files/out30.txt' 'output_files/empty.txt'
+test './budget_test' 'input_files/inp31.txt' 'output_files/out31.txt' 'output_files/empty.txt'
+test './budget_test' 'input_files/inp32.txt' 'output_files/out32.txt' 'output_files/empty.txt'
 
 # clean up
 rm test_err.txt test_out.txt 
-#rm transaction_logs/sarah123.txt history_logs/sarah123.txt
+rm transaction_logs/sarah123.txt history_logs/sarah123.txt
+rm transaction_logs/sarah1234.txt history_logs/sarah1234.txt
 rm transaction_logs/johndoe.txt history_logs/johndoe.txt
 rm transaction_logs/janedoe.txt history_logs/janedoe.txt
 rm transaction_logs/ggabby.txt history_logs/ggabby.txt
