@@ -86,26 +86,28 @@ test() {
 test './budget_test --help' 'input_files/empty.txt' 'output_files/help.txt' 'output_files/empty.txt'
 test './budget_test' 'input_files/inp1.txt' 'output_files/out1.txt' 'output_files/empty.txt' #create user
 test './budget_test' 'input_files/inp2.txt' 'output_files/out2.txt' 'output_files/empty.txt' #test option 1
-#test './budget_test' 'input_files/inp3.txt' 'output_files/out3.txt' 'empty.txt'
-#test './budget_test' 'input_files/inp4.txt' 'output_files/out4.txt' 'empty.txt'
-#test './budget_test' 'input_files/inp5.txt' 'output_files/out5.txt' 'empty.txt'
-#test './budget_test' 'input_files/inp6.txt' 'output_files/out6.txt' 'empty.txt'
-#test './budget_test' 'input_files/inp7.txt' 'output_files/out7.txt' 'empty.txt'
+test './budget_test' 'input_files/inp3.txt' 'output_files/out3.txt' 'output_files/empty.txt'
+#test './budget_test' 'inp4.txt' 'out4.txt' 'empty.txt'
+#test './budget_test' 'inp5.txt' 'out5.txt' 'empty.txt'
+#test './budget_test' 'inp6.txt' 'out6.txt' 'empty.txt'
+#test './budget_test' 'inp7.txt' 'out7.txt' 'empty.txt'
 #rm transaction_logs/auser.txt history_logs/auser.txt
-#test './budget_test' 'input_files/inp8.txt' 'output_files/out8.txt' 'empty.txt'
+#test './budget_test' 'inp8.txt' 'out8.txt' 'empty.txt'
 #rm transaction_logs/auser.txt history_logs/auser.txt
-#test './budget_test' 'input_files/inp9.txt' 'output_files/out9.txt' 'empty.txt'
+#test './budget_test' 'inp9.txt' 'out9.txt' 'empty.txt'
 #rm transaction_logs/auser.txt history_logs/auser.txt
-#test './budget_test' 'input_files/inp10.txt' 'output_files/out10.txt' 'empty.txt'
+#test './budget_test' 'inp10.txt' 'out10.txt' 'empty.txt'
 #rm transaction_logs/auser.txt history_logs/auser.txt
-#test './budget_test' 'input_files/inp11.txt' 'output_files/out11.txt' 'empty.txt'
+#test './budget_test' 'inp11.txt' 'out11.txt' 'empty.txt'
 #rm transaction_logs/auser.txt history_logs/auser.txt
-#test './budget_test' 'input_files/inp12.txt' 'output_files/out12.txt' 'empty.txt'
+#test './budget_test' 'inp12.txt' 'out12.txt' 'empty.txt'
 #rm transaction_logs/auser.txt history_logs/auser.txt
 
 # clean up
 rm test_err.txt test_out.txt
-echo -n > transaction_logs/rachel.txt
+
+echo -n > transaction_logs/sarah123.txt
+echo -n > history_logs/sarah123.txt
 
 # return code
 exit $fails
