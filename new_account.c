@@ -1,7 +1,21 @@
 /** Authors: Stella Liu and Rachel Nyonje
- * Contains functions for input validation and processing related to user account
- * creation, including checking names, email, birthday, username, phone number, password strength, and
- * password encryption.
+ * 
+ * Description:
+ * This program contains a set of functions designed to handle user input validation and account 
+ * creation processes. It validates first and last names, emails, birthdays, usernames, and phone 
+ * numbers according to specific patterns or rules. Additionally, the program ensures password 
+ * strength requirements are met and provides functionality for password encryption using a username-based 
+ * key.
+ * 
+ * Main Features:
+ * - Validation of input formats using regular expressions.
+ * - Enforcement of rules for username uniqueness.
+ * - Password encryption through a simple XOR-based scheme and hexadecimal representation.
+ * - Modular, reusable functions for better maintainability and readability.
+ * 
+ * Usage:
+ * Each function can be called individually to validate or process a specific user account field, 
+ * with memory management handled through dynamic allocations.
  */
 
 #include <stdio.h>
@@ -20,16 +34,17 @@ char *check_first_name() {
  *              to ensure it contains only alphabetical characters. Repeats prompt until valid input is given.
  * Return Value: Pointer to a dynamically allocated string containing the validated first name.
  */
-    const char *pattern = "^[A-Za-z]+$";
+    const char *pattern = "^[A-Za-z]+$"; // Regex pattern allowing only alphabetical characters
     regex_t regex;
-    regcomp(&regex, pattern, REG_EXTENDED);
+    regcomp(&regex, pattern, REG_EXTENDED); // Compile regex for validation
 
-    char *first_name = malloc(20 * sizeof(char));
+    char *first_name = malloc(20 * sizeof(char)); // Allocate memory for the first name
     printf("Please Enter Your First Name: ");
 
+    // Loop until valid input is entered
     while (scanf("%20s", first_name) !=1 || regexec(&regex, first_name, 0, NULL, 0) != 0) {
         puts("Your First Name Cannot Contain Non-alphabetical Characters");
-        while(getchar()!='\n');
+        while(getchar()!='\n'); // Clear input buffer
     }
 
     return first_name;
@@ -149,19 +164,20 @@ char *scan_phone(){
  *              to ensure it contains only numerical characters. Repeats prompt until valid input is given.
  * Return Value: Pointer to a dynamically allocated string containing the validated phone number.
  */
-    char *phone_num = malloc(11*sizeof(char));
+    char *phone_num = malloc(11*sizeof(char)); // Allocate memory for a 10-digit phone number
     regex_t regex;
-    char *pattern = "[0-9]{10}";
+    char *pattern = "[0-9]{10}"; // Regex pattern for 10 digits
     regcomp(&regex, pattern, REG_EXTENDED);
 
     printf("Enter Phone Number in The Format \"DDDDDDDDDD\": ");
 
+    // Validate input until a 10-digit phone number is entered
     while(scanf("%10s", phone_num) != 1 || regexec(&regex, phone_num, 0, NULL, 0) != 0){
         printf("Invalid Phone Number. Please Enter In The Format \"DDDDDDDDDD\" Where D Is a Digit: ");
-        while(getchar()!='\n');
+        while(getchar()!='\n'); // Clear input buffer
     }
 
-    return phone_num;
+    return phone_num; // Return the validated phone number
 }
 
 char *int_to_char(long num){
@@ -243,16 +259,20 @@ char *password_encryption(const char *username, const char* password) {
  */
     int key = 0;
 
+    // Generate the encryption key by summing ASCII values of username characters
     for (int i=0; i<strlen(username); i++){
         key += username[i];
     }
+
+    // Allocate memory for the encrypted password as a hexadecimal string
     char *hashed_password = calloc(strlen(password) * 2 + 1, sizeof(char));  // Initialize memory
 
 
     for (int i=0; i<strlen(password); i++){
+        // Encrypt each character with XOR and convert to hexadecimal
         strcat(hashed_password, to_hex(password[i] ^ key));
     }         
-    return hashed_password;
+    return hashed_password; // Return the encrypted password
 }
 
 int check_valid_password(char *password) {

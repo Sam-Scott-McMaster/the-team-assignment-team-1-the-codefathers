@@ -29,7 +29,7 @@ void pay_off_credit(double *debit_balance, double *credit_balance, double amount
             printf("No Credit Balance To Pay\n");
             printf("Transaction Date: %s\n", date);
             printf("Credit Balance Paid Off is 0.00.\nYour New Debit Balance is %.2f.\nYour Remaining Credit Balance is %.2f.\n", *debit_balance, *credit_balance);
-        } else if (*credit_balance <= amount) {
+        } else if (*credit_balance < amount) {
             printf("Amount You Want To Pay Off is Greater Than The Credit Balance To Pay\n");
             printf("Transaction Date: %s\n", date);
             printf("Credit Balance Paid Off is 0.00.\nYour Debit Balance is %.2f.\nYour Credit Balance is %.2f.\n", *debit_balance, *credit_balance);
@@ -41,10 +41,9 @@ void pay_off_credit(double *debit_balance, double *credit_balance, double amount
         }
         add_transaction_to_user_file(folder_name, username, "Credit", amount, debit_balance, credit_balance, date, "Paid off Credit Balance.");
     } else {
-        printf("Insufficient Debit Balance.\nYour Current Debit Balance is %.2f.\n", *debit_balance);
-    }
+        printf("Insufficient Debit Balance.\nYour Current Debit Balance is %.2f\n", *debit_balance);
+    } 
 }
-
 
 //function to check balance for credit card
 void check_balance_credit(double credit_balance) {
