@@ -1,3 +1,11 @@
+/*Names:
+* Student IDs:
+* 12/5/2024
+*
+* This program is a budgeting system that allows users to log in, create an account, 
+* view and manage their debit and credit balances, set a budget, and track their transactions.
+*/
+
 #include <stdio.h> 
 #include <stdlib.h> 
 #include <string.h>
@@ -11,28 +19,39 @@
 #include "help.h"
 #include "budget.h"
 
+/*main
+*
+* Main function handles user login, account creation, transaction management, and budget tracking.
+* It prompts the user to log in or create a new account, and then allows the user to interact 
+* with their account through various transaction options.
+*
+* Returns: 0 on success, exits with code 1 on failure.
+*/
 int main(int argc, char *argv[]) { 
     if (argc > 1 && strcmp(argv[1], "--help") == 0) {
         help();
         return 0;
     }
+
+    // Declare necessary variables
     //char username[50];
-    double debit_balance;
-    double credit_balance;
-    double credit_debt;
-    double amount;
+    double debit_balance;  // Stores the current balance in the debit account
+    double credit_balance; // Stores the current balance in the credit account
+    double credit_debt;    // Stores the current credit debt (if any)
+    double amount;         // Used for transaction amounts
     typedef struct {
         int day;
         int month;
         int year;
-    } Date;
+    } Date;  // Date structure to hold transaction date
     Date date;
-    char transactionDate[11];
-    char username[50], password[50]; 
-    float new_budget;
-    float budget; 
-    int login_attempts = 0;
+    char transactionDate[11];  // String to hold formatted transaction date (DD/MM/YYYY)
+    char username[50], password[50];  // Strings to hold user login credentials
+    float new_budget;         // Stores the new budget input by the user
+    float budget;             // Stores the current budget
+    int login_attempts = 0;   // Counter for login attempts
 
+    // Greet the user
     printf("\n---------------------------------------\n");
     printf("\nWelcome To The Codefathers Budgeting System!\n");
     printf("\n---------------------------------------\n");
@@ -43,8 +62,10 @@ int main(int argc, char *argv[]) {
     printf("Enter Your Password: ");
     scanf("%s", password);
 
+    //Attempt login
     int result = login(username, password); 
 
+    // Allow up to 2 retries for login
     while (result == 0 && login_attempts < 2){ 
         printf("\n---------------------------------------\n");
         printf("\nEnter Your Username Again: ");
@@ -56,16 +77,18 @@ int main(int argc, char *argv[]) {
         login_attempts++;
     }
 
+    // Exit if login fails after 3 attempts
     if (login_attempts == 2 && result == 0){
         puts("\nYou have reached the maximum number of login attempts. \nThank You For Using The Codefathers Budgeting System!");
         exit(1);
     }
 
+    // Handle new account creation if login returns 2
     if (result == 2){
         printf("\n---------------------------------------\n");
         printf("\nCreating New Account: \n\n");
 
-        //Get first and last name 
+        // Get user details for account creation 
         char *name = check_first_name();
         strcat(name, " ");
         strcat(name, check_last_name());
@@ -93,14 +116,16 @@ int main(int argc, char *argv[]) {
         exit(1); 
     }
 
-    //Display account information
+    //Display account balance
     void display_account_balance(const char *username); 
 
+    // Fetch recent account balances
     get_recent_debit_balance("transaction_logs", username, &debit_balance);
     get_recent_credit_balance("transaction_logs", username, &credit_balance);
     printf("Your Current Debit Balance: %.2f\n", fabs(debit_balance));
     printf("Your Current Credit Balance: %.2f\n", fabs(credit_balance));
 
+    // Get transaction date from user
     printf("Please Enter The Transaction Date (DD/MM/YYYY): ");
     while (scanf("%d/%d/%d", &date.day, &date.month, &date.year) != 3 || date.day < 1 || date.day > 31 || date.month < 1 || date.month > 12 || date.year < 1900 || date.month > 2100) {
         printf("Invalid Input. Please Enter Your Transaction Date In The Format DD/MM/YYYY: ");
@@ -108,13 +133,17 @@ int main(int argc, char *argv[]) {
         while (getchar() != '\n');
     }
 
+    // Format transaction date into string
     sprintf(transactionDate, "%02d/%02d/%d", date.day, date.month, date.year);
 
+    // Variable to store user's choice for transaction
     int choice;
     char check;
 
+    // Main loop to handle user transactions
     while (1) {
 
+        // Display transaction menu
         printf("\n---------------------------------------\n");
         printf("\nPlease Select a Transaction Type:\n");
         printf("    1. Add Money To Debit Account\n");
@@ -128,6 +157,7 @@ int main(int argc, char *argv[]) {
         printf("    9. Display Budget\n");
         scanf("%d", &choice);
 
+        // Handle user transaction choice
         switch (choice) {
             case 1:
                 printf("\n---------------------------------------\n");
@@ -180,6 +210,7 @@ int main(int argc, char *argv[]) {
                 printf("\nInvalid Option.\n");
         }
 
+        // Wait for user input to continue or exit
         while(getchar() != '\n');
 
         printf("\n---------------------------------------\n");        
@@ -190,6 +221,7 @@ int main(int argc, char *argv[]) {
         }
     }
 
+    // Exit message
     printf("\n---------------------------------------\n");
     printf("\nThank You For Using The Codefathers Budgeting System!\n");
     printf("\n---------------------------------------\n");
