@@ -1,4 +1,8 @@
  /* 
+ * Author: Leyla Kutlu
+ * Student IDs: 400501110
+ * Hand In Date: 12/5/2024
+ 
  * This header file defines functions related to credit account, including operations such as:
  * - spending money using credit card.
  * - paying off credit card balance.
