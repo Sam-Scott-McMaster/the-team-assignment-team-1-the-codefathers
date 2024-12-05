@@ -4,5 +4,10 @@ trial
 budget_system
 *.gcda
 *.gcno
+<<<<<<< Updated upstream
 budget_test
 *.gcov
+=======
+*.gcov
+budget_test
+>>>>>>> Stashed changes

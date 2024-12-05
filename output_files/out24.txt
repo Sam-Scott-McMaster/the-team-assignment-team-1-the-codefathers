@@ -10,7 +10,7 @@ Enter Your Username: Enter Your Password:
 
 Login Successful
 
-Your Current Debit Balance: 2870.00
+Your Current Debit Balance: 2970.00
 Your Current Credit Balance: 0.00
 Please Enter The Transaction Date (DD/MM/YYYY): 
 ---------------------------------------
@@ -28,9 +28,10 @@ Please Select a Transaction Type:
 
 ---------------------------------------
 
-Please Enter The Amount You Want To Spend: Transaction Date: 05/12/2024
-You Spent 2800.00.
-Your New Debit Balance is 70.00.
+Please Enter The Amount You Want To Spend: Your Credit Limit is 1000.00
+Transaction Date: 05/12/2024
+You Spent 100.00.
+Your New Credit Balance is 100.00.
 
 ---------------------------------------
 
@@ -50,8 +51,10 @@ Please Select a Transaction Type:
 
 ---------------------------------------
 
-Please Enter The Amount You Want To Pay Off: Insufficient Debit Balance.
-Your Current Debit Balance is 70.00
+Please Enter The Amount You Want To Pay Off: Transaction Date: 05/12/2024
+Credit Debt Paid Off is 100.00.
+Your New Debit Balance is 2870.00.
+Your Credit Balance is 0.00.
 
 ---------------------------------------
 

@@ -105,11 +105,14 @@ test './budget_test' 'input_files/inp18.txt' 'output_files/out18.txt' 'output_fi
 test './budget_test' 'input_files/inp19.txt' 'output_files/out19.txt' 'output_files/empty.txt'
 test './budget_test' 'input_files/inp20.txt' 'output_files/out20.txt' 'output_files/empty.txt'
 test './budget_test' 'input_files/inp21.txt' 'output_files/out21.txt' 'output_files/empty.txt'
-
+test './budget_test' 'input_files/inp22.txt' 'output_files/out22.txt' 'output_files/empty.txt'
+test './budget_test' 'input_files/inp23.txt' 'output_files/out23.txt' 'output_files/empty.txt'
+test './budget_test' 'input_files/inp24.txt' 'output_files/out24.txt' 'output_files/empty.txt'
+test './budget_test' 'input_files/inp25.txt' 'output_files/out25.txt' 'output_files/empty.txt'
 
 # clean up
 rm test_err.txt test_out.txt 
-rm transaction_logs/sarah123.txt history_logs/sarah123.txt
+#rm transaction_logs/sarah123.txt history_logs/sarah123.txt
 rm transaction_logs/johndoe.txt history_logs/johndoe.txt
 rm transaction_logs/janedoe.txt history_logs/janedoe.txt
 rm transaction_logs/ggabby.txt history_logs/ggabby.txt
