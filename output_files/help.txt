@@ -13,12 +13,15 @@ FEATURES:
         - Set and monitor your monthly spending budget.
         - Manage debit and credit accounts efficiently.
         - Perform a variety of transactions, such as:
-            1. Add funds to your debit account.
-            2. Spend money from your debit account.
-            3. Check your debit account balance.
-            4. Spend money from your credit account.
-            5. Pay off credit debt.
-            6. View your credit account balance.
+            1. Add Money To Debit Account
+            2. Spend Money From Debit Account
+            3. Check Debit Account Balance
+            4. Spend Money From Credit Account
+            5. Pay Off Credit Debt
+            6. Check Credit Account Balance
+            7. Display Transaction History
+            8. Set New Budget
+            9. Display Budget
 
 USAGE DETAILS:
     On program launch:

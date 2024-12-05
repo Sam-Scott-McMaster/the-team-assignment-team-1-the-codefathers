@@ -1,17 +1,42 @@
-Welcome to the Budgeting System
-Enter your username: Enter your password: Login successful
-Your Current Debit Balance: 100.00
+---------------------------------------
+
+Welcome To The Codefathers Budgeting System!
+
+---------------------------------------
+
+Enter Your Username: Enter Your Password: 
+---------------------------------------
+
+Login Successful
+
+Your Current Debit Balance: 1000.00
 Your Current Credit Balance: 0.00
-Credit debt: 0.00
-Please Enter The Transaction Date (YYYY-MM-DD): 
-Please select a transaction type:
+
+---------------------------------------
+
+Please Select a Transaction Type:
     1. Add Money To Debit Account
     2. Spend Money From Debit Account
     3. Check Debit Account Balance
     4. Spend Money From Credit Account
-    5. Check Credit Account Balance
-Please Enter The Amount You Want To Spend: Insufficient Balance.
-Your Current Debit Balance is 100.00.
+    5. Pay Off Credit Debt
+    6. Check Credit Account Balance
+    7. Display Transaction History
+    8. Set New Budget
+    9. Display Budget
+1
 
-Would You Like To Select Another Transaction? (Y/N)
+---------------------------------------
+
+Please Enter The Amount You Want To Add: Transaction Date: 03/12/2024
+You Added 10.00.
+Your New Debit Balance is 1010.00.
+
+---------------------------------------
+
+Enter Y To Select Another Transaction or Press Any Other Key To Exit: 
+---------------------------------------
+
 Thank You For Using The Codefathers Budgeting System!
+
+---------------------------------------
