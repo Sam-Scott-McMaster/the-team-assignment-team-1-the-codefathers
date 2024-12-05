@@ -5,16 +5,34 @@ Welcome To The Codefathers Budgeting System!
 
 ---------------------------------------
 
-Enter Your Username: Enter Your Password: Invalid Password, Try Again.
+Enter Your Username: Enter Your Password: 
+---------------------------------------
+
+Username Not Found. What Would You Like To Do?
+1. Re-enter The Username
+2. Create a New Account
 
 ---------------------------------------
 
-Enter Your Username Again: Enter Your Password Again: 
+Creating New Account: 
+
+Please Enter Your First Name: Please Enter Your Last Name: Please Enter Your Email: Please Enter a Valid Email: 
+Enter a Username That Fits The Following Criteria: 
+    -Between 4-18 Characters.
+    -Contains Only Alphabetical, Numerical And Underscore Characters.
+    -Does Not Begin or End With an Underscore Character.
+
+
+Password Format:
+- At Least 1 Upper Case Letter
+- At Least 1 Lower Case Letter
+- At Least 1 Numerical Character
+- At Least 1 Special Character From This Selection: .@#$!*?&():;
+
+Create a password containing 8-32 letters: Enter Your Birthday (DD/MM/YYYY): Enter Phone Number in The Format "DDDDDDDDDD": 
 ---------------------------------------
 
-Login Successful
-
-Your Current Debit Balance: 970.00
+What Is Your Monthly Spending Budget?: Your Current Debit Balance: 0.00
 Your Current Credit Balance: 0.00
 Please Enter The Transaction Date (DD/MM/YYYY): 
 ---------------------------------------
@@ -32,9 +50,7 @@ Please Select a Transaction Type:
 
 ---------------------------------------
 
-Please Enter The Amount You Want To Add: Transaction Date: 05/12/2024
-You Added 1000.00.
-Your New Debit Balance is 1970.00.
+Budget: 500.00
 
 ---------------------------------------
 

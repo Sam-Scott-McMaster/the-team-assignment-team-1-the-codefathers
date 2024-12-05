@@ -43,7 +43,7 @@ char *check_first_name() {
 
     // Loop until valid input is entered
     while (scanf("%20s", first_name) !=1 || regexec(&regex, first_name, 0, NULL, 0) != 0) {
-        puts("Your First Name Cannot Contain Non-alphabetical Characters");
+        printf("Your First Name Cannot Contain Non-alphabetical Characters: ");
         while(getchar()!='\n'); // Clear input buffer
     }
 
@@ -66,7 +66,7 @@ char *check_last_name() {
     printf("Please Enter Your Last Name: ");
 
     while (scanf("%20s", last_name) != 1 || regexec(&regex, last_name, 0, NULL, 0) != 0) {
-        puts("Your Last Name Cannot Contain Non-alphabetical Characters");
+        printf("Your Last Name Cannot Contain Non-alphabetical Characters: ");
         while(getchar()!='\n');
     }
 
