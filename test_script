@@ -86,12 +86,12 @@ test() {
 test './budget_test --help' 'input_files/empty.txt' 'output_files/help.txt' 'output_files/empty.txt'
 test './budget_test' 'input_files/inp1.txt' 'output_files/out1.txt' 'output_files/empty.txt' #create user
 test './budget_test' 'input_files/inp2.txt' 'output_files/out2.txt' 'output_files/empty.txt' #test option 1
-test './budget_test' 'input_files/inp3.txt' 'output_files/out3.txt' 'output_files/empty.txt'
-#test './budget_test' 'inp4.txt' 'out4.txt' 'empty.txt'
-#test './budget_test' 'inp5.txt' 'out5.txt' 'empty.txt'
-#test './budget_test' 'inp6.txt' 'out6.txt' 'empty.txt'
-#test './budget_test' 'inp7.txt' 'out7.txt' 'empty.txt'
-#rm transaction_logs/auser.txt history_logs/auser.txt
+test './budget_test' 'input_files/inp3.txt' 'output_files/out3.txt' 'output_files/empty.txt' #test option 2
+test './budget_test' 'input_files/inp4.txt' 'output_files/out4.txt' 'output_files/empty.txt' #test option 3 
+test './budget_test' 'input_files/inp5.txt' 'output_files/out5.txt' 'output_files/empty.txt' #test option 4
+test './budget_test' 'input_files/inp6.txt' 'output_files/out6.txt' 'output_files/empty.txt'
+test './budget_test' 'input_files/inp7.txt' 'output_files/out7.txt' 'output_files/empty.txt'
+test './budget_test' 'input_files/inp8.txt' 'output_files/out8.txt' 'output_files/empty.txt'
 #test './budget_test' 'inp8.txt' 'out8.txt' 'empty.txt'
 #rm transaction_logs/auser.txt history_logs/auser.txt
 #test './budget_test' 'inp9.txt' 'out9.txt' 'empty.txt'
@@ -104,10 +104,8 @@ test './budget_test' 'input_files/inp3.txt' 'output_files/out3.txt' 'output_file
 #rm transaction_logs/auser.txt history_logs/auser.txt
 
 # clean up
-rm test_err.txt test_out.txt
-
-echo -n > transaction_logs/sarah123.txt
-echo -n > history_logs/sarah123.txt
+rm test_err.txt test_out.txt 
+#rm transaction_logs/sarah123.txt history_logs/sarah123.txt
 
 # return code
 exit $fails
