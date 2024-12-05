@@ -79,7 +79,7 @@ int main(int argc, char *argv[]) {
     // Exit if login fails after 3 attempts
     if (login_attempts == 2 && result == 0){
         puts("\nYou have reached the maximum number of login attempts. \nThank You For Using The Codefathers Budgeting System!");
-        exit(0);
+        exit(0); 
     }
 
     // Handle new account creation if login returns 2
