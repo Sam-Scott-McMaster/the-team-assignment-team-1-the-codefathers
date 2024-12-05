@@ -34,7 +34,7 @@ Create a password containing 8-32 letters: Enter Your Birthday (DD/MM/YYYY): Ent
 
 What Is Your Monthly Spending Budget?: Your Current Debit Balance: 0.00
 Your Current Credit Balance: 0.00
-
+Please Enter The Transaction Date (DD/MM/YYYY): 
 ---------------------------------------
 
 Please Select a Transaction Type:
@@ -51,28 +51,6 @@ Please Select a Transaction Type:
 ---------------------------------------
 
 Budget: 300.00
-
----------------------------------------
-
-Enter Y To Select Another Transaction or Press Any Other Key To Exit: 
----------------------------------------
-
-Please Select a Transaction Type:
-    1. Add Money To Debit Account
-    2. Spend Money From Debit Account
-    3. Check Debit Account Balance
-    4. Spend Money From Credit Account
-    5. Pay Off Credit Debt
-    6. Check Credit Account Balance
-    7. Display Transaction History
-    8. Set New Budget
-    9. Display Budget
-
----------------------------------------
-
-Please Enter The Amount You Want To Add: Transaction Date: 03/12/2024
-You Added 1000.00.
-Your New Debit Balance is 1000.00.
 
 ---------------------------------------
 

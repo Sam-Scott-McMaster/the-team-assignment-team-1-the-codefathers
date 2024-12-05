@@ -44,5 +44,5 @@ void pay_off_credit(double *debit_balance, double *credit_balance, double amount
 
 //function to check balance for credit card
 void check_balance_credit(double credit_balance) {
-    printf("\nYour Current Credit Balance is %.2f.\n", credit_balance);
+    printf("\nYour Current Credit Balance is %.2f.\n", fabs(credit_balance));
 }

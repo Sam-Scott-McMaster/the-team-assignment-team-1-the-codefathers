@@ -84,8 +84,8 @@ test() {
 #input and output files are stored under directories, the test cases will be modified accordingly
 
 test './budget_test --help' 'input_files/empty.txt' 'output_files/help.txt' 'output_files/empty.txt'
-test './budget_test' 'input_files/inp1.txt' 'output_files/out1.txt' 'output_files/empty.txt'
-test './budget_test' 'input_files/inp2.txt' 'output_files/out2.txt' 'output_files/empty.txt'
+test './budget_test' 'input_files/inp1.txt' 'output_files/out1.txt' 'output_files/empty.txt' #create user
+test './budget_test' 'input_files/inp2.txt' 'output_files/out2.txt' 'output_files/empty.txt' #test option 1
 #test './budget_test' 'inp3.txt' 'out3.txt' 'empty.txt'
 #test './budget_test' 'inp4.txt' 'out4.txt' 'empty.txt'
 #test './budget_test' 'inp5.txt' 'out5.txt' 'empty.txt'
