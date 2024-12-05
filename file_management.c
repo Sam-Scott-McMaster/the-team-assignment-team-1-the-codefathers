@@ -1,5 +1,8 @@
 /* 
-* 
+* Author: Nithika Karunamoorthy
+* Student Number: 400511869 
+* Date Handed In: 05/12/2024
+*
 * This file contains functions for managing user data, transaction history, and budget updates. 
 * It interacts with various Bash scripts for reading and writing data related to users' budget and transactions.
 * 

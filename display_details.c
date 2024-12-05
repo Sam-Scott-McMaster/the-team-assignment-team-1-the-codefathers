@@ -21,16 +21,3 @@ void display_account_balance(const char *username) {
     printf("Your current debit balance: $%.2f\n", debit_balance);
     printf("Your current credit balance: $%.2f\n", fabs(credit_balance)); //use fabs to ensure the credit balance is displayed as positive
 }
-
-//Displays the user's personal information
-void display_personal_info(const char *name) {
-
-    printf("Name: %s\n", name);
-}
-
-//Displays the user's budget baseed on their stored account details
-void display_budget(char *username) {
-    
-    double budget = returnBudget(username);
-    printf("Budget: $%.2f\n", budget);
-}

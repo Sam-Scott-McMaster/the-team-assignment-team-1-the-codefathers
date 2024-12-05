@@ -1,4 +1,8 @@
  /* 
+ * Author: Nithika Karunamoorthy
+ * Student Number: 400511869 
+ * Date Handed In: 05/12/2024
+ *
  * This header file defines functions related to user file management, including operations such as:
  * - Creating user history files.
  * - Retrieving and updating user information (password, budget, transactions).
