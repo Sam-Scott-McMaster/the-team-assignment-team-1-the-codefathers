@@ -35,10 +35,9 @@ int main(int argc, char *argv[]) {
 
     // Declare necessary variables
     //char username[50];
-    double debit_balance;  // Stores the current balance in the debit account
-    double credit_balance; // Stores the current balance in the credit account
-    double credit_debt;    // Stores the current credit debt (if any)
-    double amount;         // Used for transaction amounts
+    double debit_balance = 0.00;
+    double credit_balance = 0.00;
+    double amount;
     typedef struct {
         int day;
         int month;
