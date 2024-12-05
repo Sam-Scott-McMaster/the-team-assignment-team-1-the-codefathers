@@ -10,14 +10,14 @@ LDFLAGS = --coverage
 all: budget_system budget_test
 
 # Build the budget system executable
-budget_system: main.c credit.c debit.c help.c login.c new_account.c file_management.c budget.c\
-                credit.h debit.h help.h login.h new_account.h file_management.h budget.h
-	gcc -o budget_system main.c credit.c debit.c help.c login.c new_account.c file_management.c budget.c -lm
+budget_system: main.c credit.c debit.c help.c login.c new_account.c file_management.c budget.c display_details.c\
+                credit.h debit.h help.h login.h new_account.h file_management.h budget.h display_details.h
+	gcc -o budget_system main.c credit.c debit.c help.c login.c new_account.c file_management.c budget.c display_details.c -lm
 
 # Build the budget test executable with coverage enabled
-budget_test: main.c credit.c debit.c help.c login.c new_account.c file_management.c budget.c\
-             credit.h debit.h help.h login.h new_account.h file_management.h budget.h
-	gcc -o budget_test $(CFLAGS) main.c credit.c debit.c help.c login.c new_account.c file_management.c budget.c $(LDFLAGS) -lm
+budget_test: main.c credit.c debit.c help.c login.c new_account.c file_management.c budget.c display_details.c\
+             credit.h debit.h help.h login.h new_account.h file_management.h budget.h display_details.h
+	gcc -o budget_test $(CFLAGS) main.c credit.c debit.c help.c login.c new_account.c file_management.c budget.c display_details.c $(LDFLAGS) -lm
 
 # Clean build artifacts and coverage files
 clean:

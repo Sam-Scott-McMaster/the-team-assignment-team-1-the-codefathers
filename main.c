@@ -29,6 +29,7 @@
 #include <time.h>
 #include "file_management.h"
 #include "new_account.h"
+#include "display_details.h"
 #include "debit.h"
 #include "credit.h"
 #include "login.h"
@@ -137,14 +138,8 @@ int main(int argc, char *argv[]) {
         exit(1); 
     }
 
-    //Display account balance
-    void display_account_balance(const char *username); 
-
     // Fetch recent account balances
-    get_recent_debit_balance("transaction_logs", username, &debit_balance);
-    get_recent_credit_balance("transaction_logs", username, &credit_balance);
-    printf("Your Current Debit Balance: %.2f\n", fabs(debit_balance));
-    printf("Your Current Credit Balance: %.2f\n", fabs(credit_balance));
+    display_account_balance(username, &credit_balance, &debit_balance);
 
     // Get transaction date from user
     printf("Please Enter The Transaction Date (DD/MM/YYYY): ");
