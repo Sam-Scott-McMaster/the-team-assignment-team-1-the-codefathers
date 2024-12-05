@@ -1,6 +1,6 @@
-/*Names:
-* Student IDs:
-* 12/5/2024
+/*Names: Nithika Karunamoorthy, Stella Liu, Rachel Nyonje, Leyla Kutlu, Fatima Alsalahi 
+* Student IDs: 400511869, 400528859, 400501476, 400501110, 400508645
+* Hand in date: 12/5/2024
 *
 * This program is a budgeting system that allows users to log in, create an account, 
 * view and manage their debit and credit balances, set a budget, and track their transactions.
