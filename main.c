@@ -2,8 +2,24 @@
 * Student IDs: 400511869, 400528859, 400501476, 400501110, 400508645
 * Hand in date: 12/5/2024
 *
-* This program is a budgeting system that allows users to log in, create an account, 
-* view and manage their debit and credit balances, set a budget, and track their transactions.
+* Description:
+*   This file implements the main functionality for the Codefathers Budgeting System.
+*   It handles user login, account creation, transaction management, and budget tracking.
+*   The user can log in, create a new account, and perform various operations like adding
+*   money to their debit or credit accounts, checking balances, and updating budgets.
+* 
+* Main Features:
+* - User login and account creation.
+* - Transaction management for debit and credit accounts.
+* - Budget setting and tracking.
+* - Transaction history display.
+* - Input validation and error handling.
+* - Help option via `--help`.
+*
+* Usage:
+* - On start, users log in or create an account if they don’t have one.
+* - Users can perform transactions (add/spend money, check balances) and manage their budget.
+* - Help is available with the `--help` argument.
 */
 
 #include <stdio.h> 
@@ -21,11 +37,17 @@
 
 /*main
 *
-* Main function handles user login, account creation, transaction management, and budget tracking.
-* It prompts the user to log in or create a new account, and then allows the user to interact 
-* with their account through various transaction options.
-*
-* Returns: 0 on success, exits with code 1 on failure.
+* Parameters:
+*   int argc - argument count
+*   char *argv[] - argument values
+* 
+* Description:  
+*   Main function handles user login, account creation, transaction management, and budget tracking.
+*   It prompts the user to log in or create a new account, and then allows the user to interact 
+*   with their account through various transaction options.
+* 
+* Returns: 
+*   0 on success, exits with code 1 on failure.
 */
 int main(int argc, char *argv[]) { 
     if (argc > 1 && strcmp(argv[1], "--help") == 0) {
