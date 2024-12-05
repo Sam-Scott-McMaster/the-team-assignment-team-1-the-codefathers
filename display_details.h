@@ -1,3 +1,10 @@
+ /* 
+ * This header file defines functions related to display_details, including operations such as:
+ * - displaying account type.
+ * - displaying account balance.
+ * - displaying personal information
+ */
+
 #ifndef DISPLAY_DETAILS_H
 #define DISPLAY_DETAILS_H
 

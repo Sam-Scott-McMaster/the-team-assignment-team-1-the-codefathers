@@ -1,3 +1,10 @@
+ /* 
+ * This header file defines functions related to login, including operations such as:
+ * - checking if the user has an account.
+ * - logging the user in.
+ * - checking the user's credentials.
+ */
+
 #ifndef LOGIN_H
 #define LOGIN_H
 
