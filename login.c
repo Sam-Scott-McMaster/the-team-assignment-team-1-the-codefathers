@@ -36,17 +36,6 @@ int check_username(const char *username) {
 
 }
 
-//Verifies that the crdentials file for the given username exists
-int check_credentials(const char *username) {
-    //checks if file is in the files
-    if (find_user_file(username, "history_logs") != 0) {
-        printf("Error: Credentials File For User '%s' Not Found.\n", username);
-        return 0; 
-    }
-    return 1; //file not found
-}
-
-
 //Handles the user login process by checking the username, verifying the password and managing cases like incorrect credentials or missing accounts
 int login(char *username, const char *password) {
 
@@ -64,18 +53,11 @@ int login(char *username, const char *password) {
     //Retrieved the stored password from the system
     get_user_password(username, stored_password, 1000);
 
-    //Verify the credentials if the file exists
-    if (check_credentials(username)) {
-        if (strcmp(stored_password, hashed_password) == 0) {
-            return 1; // successful login
-        }
-        else {
-            printf("Invalid Password, Try Again.\n");
-            return 0; //failed login
-        }
+    if (strcmp(stored_password, hashed_password) == 0) {
+        return 1; // successful login
+    } else {
+        printf("Invalid Password, Try Again.\n");
+        return 0; //failed login
     }
-    else {
-        printf("Account Not Found. Please Create a New Account.\n");
-        return 2; //create new account
-    }
+    
 }
