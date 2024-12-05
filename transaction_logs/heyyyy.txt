@@ -1,0 +1,7 @@
+Transaction Type: Debit
+Debit Balance: 100.00
+Credit Balace: 0.00
+Amount: 100.00
+Date: 2024-11-29
+Description: Money deposited to debit account.
+
