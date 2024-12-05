@@ -93,6 +93,7 @@ test './budget_test' 'input_files/inp6.txt' 'output_files/out6.txt' 'output_file
 test './budget_test' 'input_files/inp7.txt' 'output_files/out7.txt' 'output_files/empty.txt'
 test './budget_test' 'input_files/inp8.txt' 'output_files/out8.txt' 'output_files/empty.txt'
 test './budget_test' 'input_files/inp9.txt' 'output_files/out9.txt' 'output_files/empty.txt'
+test './budget_test' 'input_files/inp10.txt' 'output_files/out10.txt' 'output_files/empty.txt'
 #test './budget_test' 'inp9.txt' 'out9.txt' 'empty.txt'
 #rm transaction_logs/auser.txt history_logs/auser.txt
 #test './budget_test' 'inp10.txt' 'out10.txt' 'empty.txt'
