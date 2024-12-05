@@ -99,7 +99,7 @@ int main(int argc, char *argv[]) {
     get_recent_debit_balance("transaction_logs", username, &debit_balance);
     get_recent_credit_balance("transaction_logs", username, &credit_balance);
     printf("Your Current Debit Balance: %.2f\n", fabs(debit_balance));
-    printf("Your Current Credit Balance: %.2f\n", credit_balance);
+    printf("Your Current Credit Balance: %.2f\n", fabs(credit_balance));
 
     printf("Please Enter The Transaction Date (DD/MM/YYYY): ");
     while (scanf("%d/%d/%d", &date.day, &date.month, &date.year) != 3 || date.day < 1 || date.day > 31 || date.month < 1 || date.month > 12 || date.year < 1900 || date.month > 2100) {
