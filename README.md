@@ -39,7 +39,7 @@ Follow the steps below to install and run the budgeting system locally:
 
 2. Clone the repository using Git:
     ```bash
-    git clone add link
+    git clone https://github.com/Sam-Scott-McMaster/the-team-assignment-team-1-the-codefathers
     ```
 3. Compile the program using a make:
     - To compile the program, run:
