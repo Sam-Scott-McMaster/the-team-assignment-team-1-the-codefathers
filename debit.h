@@ -1,3 +1,9 @@
+ /* 
+ * This header file defines functions related to debit account, including operations such as:
+ * - spending money using debit card.
+ * - adding money to debit account.
+ * - checking debit card balance.
+ */
 #ifndef DEBIT_H
 #define DEBIT_H
 
