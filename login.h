@@ -1,4 +1,8 @@
  /* 
+ * Author: Fatima Alsalahi
+ * Student IDs: 400508645
+ * Hand In Date: 05/12/2024
+ *
  * This header file defines functions related to login, including operations such as:
  * - checking if the user has an account.
  * - logging the user in.

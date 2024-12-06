@@ -1,4 +1,8 @@
  /* 
+ * Author: Fatima Alsalahi
+ * Student IDs: 400508645
+ * Hand In Date: 05/12/2024
+ *
  * This header file defines functions related to display_details, including operations such as:
  * - displaying account type.
  * - displaying account balance.
