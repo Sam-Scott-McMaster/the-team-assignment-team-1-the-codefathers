@@ -1,7 +1,7 @@
 /*
 * Author: Fatima Alsalahi
 * Student IDs: 400508645
-* Hand in Date: 12/5/2024
+* Hand in Date: 05/12/2024
 *
 * Description: This file contains a C program for login functionality in * a student banking app. It verifies usernames, validates credentials, 
 * and handles user actions like re-entering usernames or creating 
