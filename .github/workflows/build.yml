@@ -19,7 +19,7 @@ jobs:
         run: ./test_script > test_results.txt
 
       - name: Generate main code coverage
-        run: gcov budget_test-main.c > main_coverage.txt
+        run: gcov budget_test-* > main_coverage.txt
 
       - name: Upload Test Results
         if: ${{ always() }}
@@ -28,65 +28,9 @@ jobs:
           name: Test Results
           path: ./test_results.txt
 
-      - name: Upload Main Coverage Report
+      - name: Upload Coverage Report
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
           name: Main Coverage
-          path: ./main.c.gcov
-
-      - name: Upload Budget Coverage Report
-        if: ${{ always() }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: Budget Coverage
-          path: ./budget.c.gcov
-
-      - name: Upload Credit Coverage Report
-        if: ${{ always() }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: Credit Coverage
-          path: ./main.c.gcov
-
-      - name: Upload Debit Coverage Report
-        if: ${{ always() }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: Debit Coverage
-          path: ./debit.c.gcov
-
-      - name: Upload Display Details Coverage Report
-        if: ${{ always() }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: Display Details Coverage
-          path: ./display_details.c.gcov
-
-      - name: Upload File Management Report
-        if: ${{ always() }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: File Management Coverage
-          path: ./file_management.c.gcov
-
-      - name: Upload Help Report
-        if: ${{ always() }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: Help Coverage
-          path: ./help.c.gcov
-
-      - name: Upload Login Report
-        if: ${{ always() }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: Login Coverage
-          path: ./login.c.gcov
-
-      - name: Upload New Account Report
-        if: ${{ always() }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: New Account Coverage
-          path: ./new_account.c.gcov
+          path: ./main_coverage.txt
