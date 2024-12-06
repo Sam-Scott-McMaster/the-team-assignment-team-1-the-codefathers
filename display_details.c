@@ -11,8 +11,6 @@
  * 
  * Main Features:
  *  - Displaying current debit and credit balances.
- *  - Showing user's personal information.
- *  - Displaying user's budget.
  * 
  * Usage:
  * Each function fetches relevant information from external modules and displays it for the user.
