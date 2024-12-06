@@ -1,3 +1,23 @@
+/*
+ * Author: Fatima Alsalahi
+ * Student IDs: 400508645
+ * Hand In Date: 12/5/2024
+ * 
+ * Description:
+ * Contains functions to display user account details in a student banking application.
+ * Displays current debit and credit balances, as well as personal information and budget.
+ * Integrates with external modules such as display_details.h, budget.h, and file_management.h 
+ * to fetch and display relevant account information securely and accurately.
+ * 
+ * Main Features:
+ *  - Displaying current debit and credit balances.
+ *  - Showing user's personal information.
+ *  - Displaying user's budget.
+ * 
+ * Usage:
+ * Each function fetches relevant information from external modules and displays it for the user.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,9 +26,22 @@
 #include "budget.h"
 #include "file_management.h"
 
-/*This file contains functions for displaying account details in a student banking application. These include showing the current debit and credit balances, personal information, and the user's budget. The program integrates with external modules such as display_details.h, budget.h, and file_management.h to fetch and display relevant information securely and accurately.*/
 
-//Displays the user's current debit and credit balances
+/* display_account_balance
+ * 
+ * Parameters:
+ *  - username: the username of the account for which balances are to be displayed
+ *  - credit_balance: pointer to store the user's current credit balance
+ *  - debit_balance: pointer to store the user's current debit balance
+ *
+ * Description:
+ * Retrieves and displays the current debit and credit balances for a given user.
+ * The balances are fetched from the "transaction_logs" file.
+ * The credit balance is displayed as a positive value using `fabs` to ensure it is presented as an absolute value.
+ * 
+ * Return values:
+ *  - None
+ */
 void display_account_balance(const char *username, double *credit_balance, double *debit_balance) {
 
     //retrieves the most recent balance

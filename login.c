@@ -1,3 +1,18 @@
+/*
+* Author: Fatima Alsalahi
+* Student IDs: 400508645
+* Hand in Date: 12/5/2024
+*
+* Description: This file contains a C program for login functionality in * a student banking app. It verifies usernames, validates credentials, 
+* and handles user actions like re-entering usernames or creating 
+* accounts. The program uses login.h, file_management.h, and new_account.* h for secure data handling, including password encryption, guiding 
+* users through appropriate login steps.
+* 
+* Usage: Each function can be used individually to verify or process 
+* specific login-related taskes, ensuring secure and user friendly 
+* account management.
+*/
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -5,9 +20,23 @@
 #include "file_management.h"
 #include "new_account.h"
 
-/*This file contains a C program for login functionality in a student banking app. It verifies usernames, validates credentials, and handles user actions like re-entering usernames or creating accounts. The program uses login.h, file_management.h, and new_account.h for secure data handling, including password encryption, guiding users through appropriate login steps.*/
 
-//Checks if the provided username exists in the system
+/* spend_money_credit
+ * 
+ * Parameters:
+ *  - username: th username to check in the system
+ *
+ * Description:
+ * Checks if the provided username exists in the system.
+ * If the username is not found, it prompts the user to either re-enter the username or create a new account.
+ * Based on user input, it returns a code indicating whether the username needs to be re-entered, a new account should be created, or an invalid choice was made..
+ * 
+ * Return values:
+ *  - 0: Username needs to be re-entered.
+ *  - 2: User wants to create a new account.
+ *  - -1: Invalid choice; retry.
+ *  - 1: Username exists, proceed with login
+ */
 int check_username(const char *username) {
     
     //Checks if the user file exists in "history_logs"
@@ -36,7 +65,25 @@ int check_username(const char *username) {
 
 }
 
-//Handles the user login process by checking the username, verifying the password and managing cases like incorrect credentials or missing accounts
+/* login
+ * 
+ * Parameters:
+ *  - username: the username provided by the user attempting to log in
+ *  - password: the password provided by the user attempting to log in
+ *
+ * Description:
+ * Handles the user login process by verifying the username, checking the password, and managing actions like re-entering usernames or creating new accounts.
+ * First, the function checks if the username exists. If not, it asks the user to either re-enter the username or create a new account.
+ * Then, it compares the provided password with the stored, encrypted password.
+ * If the credentials are valid, the login is successful and the user is granted access.
+ * If the credentials are invalid, an error message is displayed and the user is prompted to try again.
+ * 
+ * Return values:
+ *  - 1: Successful login.
+ *  - 0: Invalid password or failed login attempt.
+ *  - 2: User needs to create a new account.
+ *  - -1: Invalid action requiring retry.
+ */
 int login(char *username, const char *password) {
 
     char *stored_password = malloc(1000); //Allocating memory for storing the password
