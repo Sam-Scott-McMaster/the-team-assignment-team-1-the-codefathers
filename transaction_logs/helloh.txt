@@ -1,5 +1,0 @@
-Transaction Type: Debit
-Amount: 300.00
-Date: 2000-04-04
-Description: Money deposited to debit account.
-

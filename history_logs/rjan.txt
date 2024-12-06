@@ -1,7 +1,0 @@
-Name: Rachel Nyonje
-Password: 1FB1CA1D81D81DC1C41D91CF1EB19A199198
-Birthday: 11/11/2000
-Email: rjan@coolperson.com
-Phone Number: 1234567890
-Budget: 1000.00
-------------------------

@@ -1,5 +1,0 @@
-Transaction Type: Debit
-Amount: 2000.00
-Date: 2024-11-28
-Description: Money deposited to debit account.
-

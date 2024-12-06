@@ -1,7 +1,0 @@
-Name: Leyla Kutlu
-Password: 20E22723B22E223273271263
-Birthday: 30/10/2004
-Email: kds@kdj.ca
-Phone Number: 1234567890
-Budget: 2000.00
-------------------------

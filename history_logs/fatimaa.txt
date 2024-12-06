@@ -1,7 +1,0 @@
-Name: fatima alsalahi
-Password: 2832B22A02A02A42BC2A12B72932E22E12E0
-Birthday: 17/05/2005
-Email: alsalahi@kjh.com
-Phone Number: 1234567890
-Budget: 100.00
-------------------------

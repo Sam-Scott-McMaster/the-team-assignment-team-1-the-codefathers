@@ -1,7 +1,0 @@
-Name: Stella Liu
-Password: 31937B37837937E37F36B32B
-Birthday: 11/11/2000
-Email: liu2136@mcmaster.ca
-Phone Number: 1111111111
-Budget: 100.00
-------------------------
