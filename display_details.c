@@ -5,8 +5,8 @@
  * 
  * Description:
  * Contains functions to display user account details in a student banking application.
- * Displays current debit and credit balances, as well as personal information and budget.
- * Integrates with external modules such as display_details.h, budget.h, and file_management.h 
+ * Displays current debit and credit balances
+ * Integrates with external modules such as display_details.h, and file_management.h 
  * to fetch and display relevant account information securely and accurately.
  * 
  * Main Features:
