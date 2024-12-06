@@ -8,7 +8,7 @@
 
 ## Description
 - This is a simple budgeting system program written in C, utilizing standard input and output functions with a menu-driven interface for interacting with the system. 
-- The program allows users to manage their finances by performing basic budgeting operations by performing basic budgeting operations such as creating an account, logging in, updating their budget, and maintaining their transaction history. Below is a breif overview of the program's features and capabilities.
+- The program allows users to manage their finances by performing basic budgeting operations by performing basic budgeting operations such as creating an account, logging in, updating their budget, and maintaining their transaction history. Below is a brief overview of the program's features and capabilities.
 
 ## Features:
 - **Add Money To Debit Account**: 

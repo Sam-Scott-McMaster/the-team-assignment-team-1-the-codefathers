@@ -4,7 +4,9 @@
  * Date Handed In: 05/12/2024
  * 
  * 
- * This header file contains function declarations related to function.
+ * This header file contains function declarations related to user input validation and account creation processes, operations include:
+ * - validating first and last names, emails, birthdays, usernames, and phone numbers according to specific patterns or rules. 
+ * - ensuring password strength requirements are met and provides functionality for password encryption using a username-based 
  * 
  */ 
 
