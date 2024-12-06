@@ -1,3 +1,13 @@
+/* 
+ * Authors: Stella Liu and Rachel Nyonje
+ * Student Numbers: 400528859 and 400501476
+ * Date Handed In: 05/12/2024
+ * 
+ * 
+ * This header file contains function declarations related to function.
+ * 
+ */ 
+
 #ifndef NEW_ACCOUNT_H
 #define NEW_ACCOUNT_H
 

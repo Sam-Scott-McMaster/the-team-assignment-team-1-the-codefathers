@@ -1,3 +1,19 @@
+/** 
+ * Authors: Rachel Nyonje
+ * Student Number: 400501476
+ * Date Handed In: 05/12/2024
+ * 
+ * Description:
+ * Provides detailed information about how to use the budgeting system. 
+ * including options, features, examples, important notes and usage details.
+ * 
+ * Main Features:
+ * - Maintaining debit and credit accounts
+ * - Setting budgets
+ * - Tracking transactions
+ * 
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 

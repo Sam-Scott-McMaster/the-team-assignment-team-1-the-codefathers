@@ -1,5 +1,6 @@
 /** Authors: Stella Liu and Rachel Nyonje
- * 
+ * Student Numbers: 400528859 and 400501476
+ * Date Handed In: 05/12/2024
  * Description:
  * This program contains a set of functions designed to handle user input validation and account 
  * creation processes. It validates first and last names, emails, birthdays, usernames, and phone 
